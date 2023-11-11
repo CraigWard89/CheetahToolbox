@@ -3,6 +3,7 @@
 using System;
 using System.Runtime.Versioning;
 using CheeseyUI;
+using CheeseyUtils;
 
 public static class WinToolbox
 {
@@ -24,10 +25,8 @@ public static class WinToolbox
         }
 
         string title = $"WinToolbox v{AppInfo.Version}";
-        if (debug)
-        {
-            title += " (Debug)";
-        }
+        if (debug) title += " (Debug)";
+        title += $" . CheeseyUtils v{CheesyUtils.Version}";
 
         _app = new(new AppSettings(800, 600, title));
         _app.RootElement.AddChild(new Button(new(0, 0), new(128, 64), "Test 1", () => throw new NotImplementedException()));
