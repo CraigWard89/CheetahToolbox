@@ -1,0 +1,3 @@
+[submodule "CheeseyUtils"]
+	path = CheeseyUtils
+	url = git@github.com:CraigCraig/CheeseyUtils.git
