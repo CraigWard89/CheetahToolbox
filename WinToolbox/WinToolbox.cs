@@ -6,7 +6,7 @@ using CheeseyUI;
 
 public static class WinToolbox
 {
-    private static bool _isRunning;
+    private static App? _app;
 
     [SupportedOSPlatform("windows")]
     public static void Initialize(string[] args)
@@ -28,38 +28,14 @@ public static class WinToolbox
             return;
         }
 
-        App app = new(new AppSettings(800, 600, "WinToolbox"));
-
-        //CommandHandler.Initialize();
-        //Console.Write($"$ ");
-        //_isRunning = true;
-        //while (true)
-        //{
-        //    if (!_isRunning)
-        //    {
-        //        break;
-        //    }
-
-        //    var line = Console.ReadLine();
-        //    if (!string.IsNullOrEmpty(line))
-        //    {
-        //        string command = line.Split(' ')[0];
-        //        string[] arguments = line.Split(' ')[1..];
-        //        Console.Clear();
-        //        CommandHandler.HandleCommand(command, arguments);
-        //        Console.Write($"$ ");
-        //    }
-        //    else
-        //    {
-        //        continue;
-        //    }
-        //}
-        //Console.Clear();
+        _app = new(new AppSettings(800, 600, "WinToolbox"));
+        _app.RootElements.Add(new Button(new(32, 32), new(128, 64), "Test", () => Console.WriteLine("Clicked!")));
+        _app.Run();
         Console.WriteLine("Exiting...");
     }
 
     internal static void Close()
     {
-        _isRunning = false;
+        _app?.Close();
     }
 }
