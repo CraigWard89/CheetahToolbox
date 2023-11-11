@@ -28,7 +28,7 @@ public static class WinToolbox
             return;
         }
 
-        App app = new();
+        App app = new(new AppSettings(800, 600, "WinToolbox"));
 
         //CommandHandler.Initialize();
         //Console.Write($"$ ");
