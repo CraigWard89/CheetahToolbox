@@ -3,7 +3,6 @@
 using System;
 using System.Runtime.Versioning;
 using CheeseyUI;
-using global::WinToolbox.Exceptions;
 
 public static class WinToolbox
 {
@@ -12,6 +11,7 @@ public static class WinToolbox
     [SupportedOSPlatform("windows")]
     public static void Initialize(string[] args)
     {
+        AppInfo.Version = Program.Version;
         var debug = args.Contains("--debug");
 
 #if DEBUG
@@ -23,7 +23,7 @@ public static class WinToolbox
             throw new Exception("Windows is the only supported OS.");
         }
 
-        string title = $"WinToolbox v{Program.Version}";
+        string title = $"WinToolbox v{AppInfo.Version}";
         if (debug)
         {
             title += " (Debug)";
