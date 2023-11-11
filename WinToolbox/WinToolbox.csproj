@@ -11,7 +11,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\CheeseyUI\CheeseyUI.csproj" />
-	  <ProjectReference Include="..\CheeseyUtils\CheesyUtils.csproj" />
+	  <ProjectReference Include="..\CheeseyUtils\CheeseyUtils.csproj" />
 	</ItemGroup>
 
 </Project>

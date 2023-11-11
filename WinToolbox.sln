@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34219.65
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinToolbox", "WinToolbox\WinToolbox.csproj", "{5BE0395A-B33F-4265-9FCF-C0DA8B9E1F9D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheesyUtils", "CheeseyUtils\CheesyUtils.csproj", "{A1A091C8-DE96-4C3B-8597-C744EC007B08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheeseyUtils", "CheeseyUtils\CheeseyUtils.csproj", "{A1A091C8-DE96-4C3B-8597-C744EC007B08}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9EF28634-6775-4083-AF4D-01090A333F71}"
 	ProjectSection(SolutionItems) = preProject
