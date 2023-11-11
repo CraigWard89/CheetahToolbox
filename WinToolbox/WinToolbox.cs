@@ -13,6 +13,10 @@ public static class WinToolbox
     {
         var debug = args.Contains("--debug");
 
+#if DEBUG
+        debug = true;
+#endif
+
         if (debug)
         {
             Console.WriteLine("Debug mode enabled.");
