@@ -2,7 +2,7 @@
 
 using System;
 using System.Runtime.Versioning;
-using Commands;
+using CheeseyUI;
 
 public static class WinToolbox
 {
@@ -28,31 +28,33 @@ public static class WinToolbox
             return;
         }
 
-        CommandHandler.Initialize();
-        Console.Write($"$ ");
-        _isRunning = true;
-        while (true)
-        {
-            if (!_isRunning)
-            {
-                break;
-            }
+        App app = new();
 
-            var line = Console.ReadLine();
-            if (!string.IsNullOrEmpty(line))
-            {
-                string command = line.Split(' ')[0];
-                string[] arguments = line.Split(' ')[1..];
-                Console.Clear();
-                CommandHandler.HandleCommand(command, arguments);
-                Console.Write($"$ ");
-            }
-            else
-            {
-                continue;
-            }
-        }
-        Console.Clear();
+        //CommandHandler.Initialize();
+        //Console.Write($"$ ");
+        //_isRunning = true;
+        //while (true)
+        //{
+        //    if (!_isRunning)
+        //    {
+        //        break;
+        //    }
+
+        //    var line = Console.ReadLine();
+        //    if (!string.IsNullOrEmpty(line))
+        //    {
+        //        string command = line.Split(' ')[0];
+        //        string[] arguments = line.Split(' ')[1..];
+        //        Console.Clear();
+        //        CommandHandler.HandleCommand(command, arguments);
+        //        Console.Write($"$ ");
+        //    }
+        //    else
+        //    {
+        //        continue;
+        //    }
+        //}
+        //Console.Clear();
         Console.WriteLine("Exiting...");
     }
 
