@@ -2,7 +2,7 @@
 
 public class Version : Command
 {
-    public Version() : base("version") { }
+    public Version() : base("version", "version") { }
 
     public override void Execute(string[] args)
     {
