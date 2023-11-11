@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WinToolbox": {
+      "commandName": "Project",
+      "hotReloadEnabled": false
+    }
+  }
+}
