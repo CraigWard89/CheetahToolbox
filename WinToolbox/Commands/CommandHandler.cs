@@ -3,7 +3,7 @@
 using System;
 using System.Reflection;
 using System.Runtime.Versioning;
-using CheesyUtils;
+using CheeseyUtils;
 using Exceptions;
 
 internal static class CommandHandler
