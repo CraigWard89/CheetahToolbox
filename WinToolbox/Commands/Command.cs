@@ -1,4 +1,4 @@
-﻿namespace WinToolbox;
+﻿namespace WinToolbox.Commands;
 
 public abstract class Command(string name)
 {

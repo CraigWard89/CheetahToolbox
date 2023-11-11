@@ -1,4 +1,4 @@
-﻿namespace WinToolbox;
+﻿namespace WinToolbox.Commands;
 
 using System;
 using System.Reflection;

@@ -1,10 +1,10 @@
-﻿namespace WinToolbox;
+﻿namespace WinToolbox.Commands;
 
 using System.Text;
 
-public class HelpCommand : Command
+public class Help : Command
 {
-    public HelpCommand() : base("help") { }
+    public Help() : base("help") { }
 
     public override void Execute(string[] args)
     {
