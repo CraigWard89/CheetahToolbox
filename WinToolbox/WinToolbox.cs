@@ -48,9 +48,8 @@ public static class WinToolbox
                 continue;
             }
         }
-
+        Console.Clear();
         Console.WriteLine("Exiting...");
-        Console.WriteLine("Press any key to close...");
     }
 
     internal static void Close()
