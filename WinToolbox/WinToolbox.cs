@@ -3,6 +3,7 @@
 using System;
 using System.Runtime.Versioning;
 using CheeseyUI;
+using global::WinToolbox.Exceptions;
 
 public static class WinToolbox
 {
@@ -17,21 +18,20 @@ public static class WinToolbox
         debug = true;
 #endif
 
-        if (debug)
-        {
-            Console.WriteLine("Debug mode enabled.");
-        }
-
         if (!OperatingSystem.IsWindows())
         {
-            Console.WriteLine("This program is only supported on Windows.");
-            return;
+            throw new Exception("Windows is the only supported OS.");
         }
 
-        _app = new(new AppSettings(800, 600, "WinToolbox"));
-        _app.RootElements.Add(new Button(new(32, 32), new(128, 64), "Test", () => Console.WriteLine("Clicked!")));
+        string title = $"WinToolbox v{Program.Version}";
+        if (debug)
+        {
+            title += " (Debug)";
+        }
+
+        _app = new(new AppSettings(800, 600, title));
+        _app.RootElement.AddChild(new Button(new(0, 0), new(128, 64), "Test 1", () => throw new NotImplementedException()));
         _app.Run();
-        Console.WriteLine("Exiting...");
     }
 
     internal static void Close()
