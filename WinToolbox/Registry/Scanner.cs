@@ -1,6 +1,7 @@
 ﻿namespace WinToolbox.Registry;
 
 using System.Runtime.Versioning;
+using CheeseyUtils;
 using Microsoft.Win32;
 
 internal static class Scanner
@@ -43,19 +44,28 @@ internal static class Scanner
         var displayIcon = subKey.GetValue("DisplayIcon")?.ToString();
         if (!string.IsNullOrEmpty(displayIcon))
         {
+            displayIcon = displayIcon.Split(',')[0];
             //Log.WriteLine($"\t{displayIcon}");
+            if (!File.Exists(displayIcon))
+            {
+                Log.WriteLine($"{Colors.DarkRed}Invalid{Colors.White} Display Icon: {displayIcon}");
+            }
         }
 
         var installLocation = subKey.GetValue("InstallLocation")?.ToString();
         if (!string.IsNullOrEmpty(installLocation))
         {
             //Log.WriteLine($"\t{installLocation}");
+            if (!Directory.Exists(installLocation))
+            {
+                Log.WriteLine($"{Colors.DarkRed}Invalid{Colors.White} Install Location: {installLocation}");
+            }
         }
 
         var uninstallString = subKey.GetValue("UninstallString")?.ToString();
         if (!string.IsNullOrEmpty(uninstallString))
         {
-            //Log.WriteLine($"\t{uninstallString}");
+            // TODO: Check if the uninstall string is valid
         }
 
         return false; // TODO: Return true if the entry is a ghost app
