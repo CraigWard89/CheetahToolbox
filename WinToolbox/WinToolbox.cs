@@ -12,7 +12,9 @@ public static class WinToolbox
     [SupportedOSPlatform("windows")]
     public static void Initialize(string[] args)
     {
-        AppInfo.Version = Program.Version;
+        App.Name = "WinToolbox";
+        App.Author = "Craig Craig";
+        App.Version = Program.Version;
         var debug = args.Contains("--debug");
 
 #if DEBUG
@@ -24,7 +26,7 @@ public static class WinToolbox
             throw new Exception("Windows is the only supported OS.");
         }
 
-        string title = $"WinToolbox v{AppInfo.Version}";
+        string title = $"WinToolbox v{App.Version}";
         if (debug) title += " (Debug)";
         title += $" . CheeseyUtils v{CheesyUtils.Version}";
 
