@@ -1,6 +1,7 @@
 ﻿namespace WinToolbox;
 
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.Versioning;
 using CheeseyUI;
 using CheeseyUtils;
@@ -32,7 +33,7 @@ public static class WinToolbox
 
         _app = new(new AppSettings(800, 600, title));
         var label = new Label(_app.RootElement, new(0, 0), new(128, 64), "Label");
-        _ = new Button(_app.RootElement, new(0, 0), new(128, 64), "Button", () => App.Close());
+        _ = new Button(_app.RootElement, new(0, 0), new(128, 64), "Button", () => Console.WriteLine($"Button Clicked"));
         _app.Run();
     }
 
