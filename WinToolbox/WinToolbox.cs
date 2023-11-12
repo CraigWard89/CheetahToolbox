@@ -31,12 +31,13 @@ public static class WinToolbox
         title += $" . CheeseyUtils v{CheesyUtils.Version}";
 
         _app = new(new AppSettings(800, 600, title));
-        _ = new Button(_app.RootElement, new(0, 0), new(128, 64), "Test 1", () => throw new NotImplementedException());
+        var label = new Label(_app.RootElement, new(0, 0), new(128, 64), "Label");
+        _ = new Button(_app.RootElement, new(0, 0), new(128, 64), "Button", () => App.Close());
         _app.Run();
     }
 
     internal static void Close()
     {
-        _app?.Close();
+        App.Close();
     }
 }
