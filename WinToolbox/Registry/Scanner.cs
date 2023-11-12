@@ -9,6 +9,8 @@ internal static class Scanner
     [SupportedOSPlatform("windows")]
     public static void DoScan()
     {
+        Log.Warning("This feature is still in development and may not work properly.");
+
         var uninstallKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall")
             ?? throw new Exception("Uninstall key not found.");
 
@@ -33,39 +35,35 @@ internal static class Scanner
     [SupportedOSPlatform("windows")]
     private static bool CheckUninstallEntry(RegistryKey subKey)
     {
-        // TODO: Check if the entry is a ghost app
+        bool isGhostApp = false;
 
         var displayName = subKey.GetValue("DisplayName")?.ToString();
-        if (!string.IsNullOrEmpty(displayName))
-        {
-            //Log.WriteLine(displayName);
-        }
-
         var displayIcon = subKey.GetValue("DisplayIcon")?.ToString();
+        var installLocation = subKey.GetValue("InstallLocation")?.ToString();
+        var uninstallString = subKey.GetValue("UninstallString")?.ToString();
+
         if (!string.IsNullOrEmpty(displayIcon))
         {
             displayIcon = displayIcon.Split(',')[0];
-            //Log.WriteLine($"\t{displayIcon}");
             if (!File.Exists(displayIcon))
             {
-                Log.WriteLine($"{Colors.DarkRed}Invalid{Colors.White} Display Icon: {displayIcon}");
+                //Log.WriteLine($"{Colors.DarkRed}Invalid{Colors.Gray} Display Icon: {displayIcon}");
+                isGhostApp = true;
             }
         }
 
-        var installLocation = subKey.GetValue("InstallLocation")?.ToString();
         if (!string.IsNullOrEmpty(installLocation))
         {
-            //Log.WriteLine($"\t{installLocation}");
             if (!Directory.Exists(installLocation))
             {
-                Log.WriteLine($"{Colors.DarkRed}Invalid{Colors.White} Install Location: {installLocation}");
+                //Log.WriteLine($"{Colors.DarkRed}Invalid{Colors.Gray} Install Location: {installLocation}");
+                isGhostApp = true;
             }
         }
 
-        var uninstallString = subKey.GetValue("UninstallString")?.ToString();
-        if (!string.IsNullOrEmpty(uninstallString))
+        if (isGhostApp && !string.IsNullOrEmpty(displayName))
         {
-            // TODO: Check if the uninstall string is valid
+            Log.Info($"{Colors.DarkOrange}{displayName}{Log.DefaultColor} is a ghost app");
         }
 
         return false; // TODO: Return true if the entry is a ghost app
