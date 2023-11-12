@@ -17,14 +17,10 @@ internal static class Scanner
         foreach (var subKeyName in uninstallKey.GetSubKeyNames())
         {
             var subKey = uninstallKey.OpenSubKey(subKeyName);
-            if (subKey is not null)
+            if (subKey is not null && CheckUninstallEntry(subKey))
             {
-                var result = CheckUninstallEntry(subKey);
-                if (result)
-                {
-                    Log.Info("Removing Registry Entries Not Supported Yet");
-                    //uninstallKey.DeleteSubKey(subKeyName, true);
-                }
+                Log.Info("Removing Registry Entries Not Supported Yet");
+                //uninstallKey.DeleteSubKey(subKeyName, true);
             }
         }
     }
@@ -39,17 +35,13 @@ internal static class Scanner
     {
         bool result = false;
         var displayName = subKey.GetValue("DisplayName")?.ToString();
-        var displayIcon = subKey.GetValue("DisplayIcon")?.ToString();
+        var displayIcon = subKey.GetValue("DisplayIcon")?.ToString()?.Split(',')[0];
         var installLocation = subKey.GetValue("InstallLocation")?.ToString();
         var uninstallString = subKey.GetValue("UninstallString")?.ToString();
 
-        if (!string.IsNullOrEmpty(displayIcon))
+        if (!string.IsNullOrEmpty(displayIcon) && !File.Exists(displayIcon))
         {
-            displayIcon = displayIcon.Split(',')[0];
-            if (!File.Exists(displayIcon))
-            {
-                result = true;
-            }
+            result = true;
         }
 
         if (!string.IsNullOrEmpty(installLocation))

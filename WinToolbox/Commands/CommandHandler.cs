@@ -36,8 +36,10 @@ internal static class CommandHandler
         }
     }
 
+    [SupportedOSPlatform("windows")]
     public static void HandleCommand(string command, string[] arguments)
     {
+        if (!_initialized) Initialize();
         if (string.IsNullOrEmpty(command))
         {
             Console.WriteLine("No command");
