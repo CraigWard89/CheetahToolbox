@@ -12,5 +12,10 @@
 	  <ProjectReference Include="..\CheeseyUI\CheeseyUI.csproj" />
 	  <ProjectReference Include="..\CheeseyUtils\CheeseyUtils.csproj" />
 	</ItemGroup>
-
+	
+	<ItemGroup>
+		<None Include="..\.github\workflows\release.yml" />
+		<None Include="..\.github\workflows\nightly.yml" />
+	</ItemGroup>
+	
 </Project>
