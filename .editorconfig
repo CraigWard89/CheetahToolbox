@@ -1,0 +1,21 @@
+root = true
+[*]
+# YAML
+[*.yml]
+indent_style = space
+indent_size = 2
+# CSharp Project File
+[*.csproj]
+indent_style = space
+indent_size = 2
+# CSharp
+[*.cs]
+indent_style = tab
+indent_size = 4
+# Appconfig
+[App.config]
+indent_style = space
+indent_size = 2
+
+[*]
+dotnet_diagnostic.CS0169.severity = none

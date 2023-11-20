@@ -8,7 +8,7 @@ internal static class Scanner
 	[SupportedOSPlatform("windows")]
 	public static void DoScan()
 	{
-		Log.WriteLine("This feature is still in development and may not work properly.");
+		Console.WriteLine("This feature is still in development and may not work properly.");
 
 		var uninstallKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall")
 			?? throw new Exception("Uninstall key not found.");
@@ -18,7 +18,7 @@ internal static class Scanner
 			var subKey = uninstallKey.OpenSubKey(subKeyName);
 			if (subKey is not null && CheckUninstallEntry(subKey))
 			{
-				Log.WriteLine("Removing Registry Entries Not Supported Yet");
+				Console.WriteLine("Removing Registry Entries Not Supported Yet");
 				//uninstallKey.DeleteSubKey(subKeyName, true);
 			}
 		}
@@ -53,7 +53,7 @@ internal static class Scanner
 
 		if (result && !string.IsNullOrEmpty(displayName))
 		{
-			Log.WriteLine($"{Colors.DarkOrange}{displayName}{Log.DefaultColor} is a ghost app");
+			Console.WriteLine($"{displayName} - is a ghost app");
 		}
 
 		return result;

@@ -1,6 +1,7 @@
 ﻿namespace CheetahToolbox.Commands;
 
 using System.Reflection;
+using CheetahApp.Commands;
 
 public class Version : Command
 {

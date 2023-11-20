@@ -1,6 +1,7 @@
 ﻿namespace CheetahToolbox.Commands;
 
 using System.Text;
+using CheetahApp.Commands;
 
 public class Help : Command
 {

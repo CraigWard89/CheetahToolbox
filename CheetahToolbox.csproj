@@ -3,24 +3,19 @@
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net8.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>preview</LangVersion>
-		<Version>0.0.1</Version>
 		<Platforms>Windows;Linux</Platforms>
 		<Configurations>Debug;Release;Debug_UI</Configurations>
-	</PropertyGroup>
-	
-	<PropertyGroup Condition="'$(Configuration)'=='Debug_UI'">
-		<DefineConstants>$(DefineConstants);SFML;CHEESEY_UI</DefineConstants>
-	</PropertyGroup>
-	
-	<PropertyGroup Condition="'$(OS)' == 'Windows_NT' ">
-		<DefineConstants>WINDOWS</DefineConstants>
+		<Version>0.0.1</Version>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(OS)' == 'Linux' ">
-		<DefineConstants>LINUX</DefineConstants>
+	<PropertyGroup Condition=" '$(Configuration)' == 'Windows' ">
+		<DefineConstants>$(DefineConstants)OS_WINDOWS;WINDOWS</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Linux' ">
+		<DefineConstants>$(DefineConstants)OS_LINUX;LINUX</DefineConstants>
 	</PropertyGroup>
 	
 	<ItemGroup>
@@ -28,13 +23,20 @@
 		<EmbeddedResource Remove="Submodules\**" />
 		<None Remove="Submodules\**" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
-		<None Include=".github\workflows\*.yml" />	
+		<None Include=".github\workflows\*.yml" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
-	  <ProjectReference Include="Submodules\CheeseyUtils\CheetahUtils.csproj" />
+	  <None Remove=".editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EditorConfigFiles Include=".editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="Submodules\CheetahApp\CheetahApp.csproj" />
 	  <ProjectReference Include="Submodules\CheetahUtils\CheetahUtils.csproj" />
 	</ItemGroup>

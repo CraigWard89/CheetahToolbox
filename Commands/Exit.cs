@@ -1,6 +1,6 @@
 ﻿namespace CheetahToolbox.Commands;
 
-using CheetahToolbox;
+using CheetahApp.Commands;
 
 public class Exit : Command
 {
@@ -8,6 +8,6 @@ public class Exit : Command
 
 	public override void Execute(string[] args)
 	{
-		WinToolbox.Close();
+		CheetahToolbox.Close();
 	}
 }
