@@ -35,6 +35,8 @@
 	
 	<ItemGroup>
 	  <ProjectReference Include="Submodules\CheeseyUtils\CheetahUtils.csproj" />
+	  <ProjectReference Include="Submodules\CheetahApp\CheetahApp.csproj" />
+	  <ProjectReference Include="Submodules\CheetahUtils\CheetahUtils.csproj" />
 	</ItemGroup>
 	
 </Project>
