@@ -4,3 +4,9 @@
 [submodule "CheetahApp"]
 	path = Submodules/CheetahApp
 	url = git@github.com:CraigCraig/CheetahApp.git
+[submodule "Submodules/CheetahUtils"]
+	path = Submodules/CheetahUtils
+	url = https://github.com/CraigCraig/CheetahUtils.git
+[submodule "Submodules/CheetahApp"]
+	path = Submodules/CheetahApp
+	url = https://github.com/CraigCraig/CheetahApp.git
