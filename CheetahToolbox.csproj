@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>preview</LangVersion>
+		<Version>0.0.1</Version>
+		<Platforms>Windows;Linux</Platforms>
+		<Configurations>Debug;Release;Debug_UI</Configurations>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)'=='Debug_UI'">
+		<DefineConstants>$(DefineConstants);SFML;CHEESEY_UI</DefineConstants>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(OS)' == 'Windows_NT' ">
+		<DefineConstants>WINDOWS</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(OS)' == 'Linux' ">
+		<DefineConstants>LINUX</DefineConstants>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<Compile Remove="Submodules\**" />
+		<EmbeddedResource Remove="Submodules\**" />
+		<None Remove="Submodules\**" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<None Include=".github\workflows\*.yml" />	
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <ProjectReference Include="Submodules\CheeseyUtils\CheetahUtils.csproj" />
+	</ItemGroup>
+	
+</Project>
