@@ -1,6 +1,6 @@
-[submodule "CheeseyUtils"]
-	path = SubModules/CheeseyUtils
-	url = git@github.com:CraigCraig/CheeseyUtils.git
-[submodule "CheeseyUI"]
-	path = Submodules/CheeseyUI
-	url = git@github.com:CraigCraig/CheeseyUI.git
+[submodule "CheetahUtils"]
+	path = Submodules/CheetahUtils
+	url = git@github.com:CraigCraig/CheetahUtils.git
+[submodule "CheetahApp"]
+	path = Submodules/CheetahApp
+	url = git@github.com:CraigCraig/CheetahApp.git
