@@ -16,3 +16,10 @@ Investigate These Paths as Windows seems to leave entries from uninstalled progr
 HKEY_USERS\S-1-5-21-4135085899-3670623898-1780540100-1001\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\MuiCache
 HKEY_USERS\S-1-5-21-4135085899-3670623898-1780540100-1001\Control Panel\NotifyIconSettings
 ```
+
+## Misc
+
+When putting `Applications` in to Explorer, it will show the `Applications` folder.<br>
+I need to figure out how to modify the files in this folder.<br>
+As I believe this is where the `Start Menu` is stored when you click `All Apps`<br>
+Sometimes Windows will leave entries in the `Start Menu` even after uninstalling the program.<br>
