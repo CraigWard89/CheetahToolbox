@@ -19,9 +19,9 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-		<Compile Remove="Submodules\**" />
-		<EmbeddedResource Remove="Submodules\**" />
-		<None Remove="Submodules\**" />
+		<Compile Remove="CheetahApp\**" />
+		<EmbeddedResource Remove="CheetahApp\**" />
+		<None Remove="CheetahApp\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -37,8 +37,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="Submodules\CheetahApp\CheetahApp.csproj" />
-	  <ProjectReference Include="Submodules\CheetahUtils\CheetahUtils.csproj" />
+	  <ProjectReference Include="CheetahApp\CheetahApp.csproj" />
 	</ItemGroup>
 	
 </Project>

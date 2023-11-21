@@ -5,9 +5,7 @@ VisualStudioVersion = 17.8.34219.65
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheetahToolbox", "CheetahToolbox.csproj", "{5BE0395A-B33F-4265-9FCF-C0DA8B9E1F9D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheetahUtils", "Submodules\CheetahUtils\CheetahUtils.csproj", "{A1A091C8-DE96-4C3B-8597-C744EC007B08}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheetahApp", "Submodules\CheetahApp\CheetahApp.csproj", "{D0E2A58D-12F5-4383-BEDD-38E036018241}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheetahApp", "CheetahApp\CheetahApp.csproj", "{D0E2A58D-12F5-4383-BEDD-38E036018241}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Submodules", "Submodules", "{020ABE79-306C-46E5-90A0-2C71EDCCC0F6}"
 EndProject
@@ -33,36 +31,23 @@ Global
 		{5BE0395A-B33F-4265-9FCF-C0DA8B9E1F9D}.Release|Linux.Build.0 = Release|Linux
 		{5BE0395A-B33F-4265-9FCF-C0DA8B9E1F9D}.Release|Windows.ActiveCfg = Release|Windows
 		{5BE0395A-B33F-4265-9FCF-C0DA8B9E1F9D}.Release|Windows.Build.0 = Release|Windows
-		{A1A091C8-DE96-4C3B-8597-C744EC007B08}.Debug_UI|Linux.ActiveCfg = Debug_UI|Linux
-		{A1A091C8-DE96-4C3B-8597-C744EC007B08}.Debug_UI|Linux.Build.0 = Debug_UI|Linux
-		{A1A091C8-DE96-4C3B-8597-C744EC007B08}.Debug_UI|Windows.ActiveCfg = Debug|Windows
-		{A1A091C8-DE96-4C3B-8597-C744EC007B08}.Debug_UI|Windows.Build.0 = Debug|Windows
-		{A1A091C8-DE96-4C3B-8597-C744EC007B08}.Debug|Linux.ActiveCfg = Debug|Linux
-		{A1A091C8-DE96-4C3B-8597-C744EC007B08}.Debug|Linux.Build.0 = Debug|Linux
-		{A1A091C8-DE96-4C3B-8597-C744EC007B08}.Debug|Windows.ActiveCfg = Debug|Windows
-		{A1A091C8-DE96-4C3B-8597-C744EC007B08}.Debug|Windows.Build.0 = Debug|Windows
-		{A1A091C8-DE96-4C3B-8597-C744EC007B08}.Release|Linux.ActiveCfg = Release|Linux
-		{A1A091C8-DE96-4C3B-8597-C744EC007B08}.Release|Linux.Build.0 = Release|Linux
-		{A1A091C8-DE96-4C3B-8597-C744EC007B08}.Release|Windows.ActiveCfg = Release|Any CPU
-		{A1A091C8-DE96-4C3B-8597-C744EC007B08}.Release|Windows.Build.0 = Release|Any CPU
-		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Debug_UI|Linux.ActiveCfg = Debug_UI|Any CPU
-		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Debug_UI|Linux.Build.0 = Debug_UI|Any CPU
-		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Debug_UI|Windows.ActiveCfg = Debug_UI|Any CPU
-		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Debug_UI|Windows.Build.0 = Debug_UI|Any CPU
+		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Debug_UI|Linux.ActiveCfg = Debug_UI|Linux
+		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Debug_UI|Linux.Build.0 = Debug_UI|Linux
+		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Debug_UI|Windows.ActiveCfg = Debug_UI|Windows
+		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Debug_UI|Windows.Build.0 = Debug_UI|Windows
 		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Debug|Linux.ActiveCfg = Debug|Linux
 		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Debug|Linux.Build.0 = Debug|Linux
-		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Debug|Windows.ActiveCfg = Debug|Any CPU
-		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Debug|Windows.Build.0 = Debug|Any CPU
+		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Debug|Windows.ActiveCfg = Debug|Windows
+		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Debug|Windows.Build.0 = Debug|Windows
 		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Release|Linux.ActiveCfg = Release|Linux
 		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Release|Linux.Build.0 = Release|Linux
-		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Release|Windows.ActiveCfg = Release|Any CPU
-		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Release|Windows.Build.0 = Release|Any CPU
+		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Release|Windows.ActiveCfg = Release|Windows
+		{D0E2A58D-12F5-4383-BEDD-38E036018241}.Release|Windows.Build.0 = Release|Windows
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A1A091C8-DE96-4C3B-8597-C744EC007B08} = {020ABE79-306C-46E5-90A0-2C71EDCCC0F6}
 		{D0E2A58D-12F5-4383-BEDD-38E036018241} = {020ABE79-306C-46E5-90A0-2C71EDCCC0F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
