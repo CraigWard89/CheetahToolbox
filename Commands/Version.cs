@@ -2,13 +2,12 @@
 
 using System.Reflection;
 using CheetahApp.Commands;
+using CheetahUtils;
 
-public class Version : Command
+public class Version() : Command("version", "version")
 {
-	public Version() : base("version", "version") { }
-
 	public override void Execute(string[] args)
 	{
-		Console.WriteLine($"WinToolbox v{Assembly.GetExecutingAssembly().GetName().Version}");
+		Log.WriteLine($"WinToolbox v{Assembly.GetExecutingAssembly().GetName().Version}");
 	}
 }

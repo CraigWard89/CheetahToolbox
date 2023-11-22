@@ -2,19 +2,18 @@
 
 using System.Text;
 using CheetahApp.Commands;
+using CheetahUtils;
 
-public class Help : Command
+public class Help() : Command("help", "help")
 {
-	public Help() : base("help", "get a list of commands") { }
-
 	public override void Execute(string[] args)
 	{
-		Console.WriteLine("Commands:");
+		Log.WriteLine("Commands:");
 		StringBuilder sb = new();
 		foreach (var command in CommandHandler.Commands)
 		{
 			_ = sb.AppendLine($"{command.Key} - {command.Value.Description}");
 		}
-		Console.WriteLine(sb.ToString());
+		Log.WriteLine(sb.ToString());
 	}
 }

@@ -2,7 +2,7 @@
 
 using CheetahApp.Commands;
 
-public class Exit() : Command("exit", "quit the program")
+public class Repair() : Command("repair", "runs a variety of repair utilites, in attempts to fix the system.")
 {
 	public override void Execute(string[] args)
 	{

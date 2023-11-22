@@ -4,20 +4,20 @@
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
-		<LangVersion>preview</LangVersion>
+		<LangVersion>latest</LangVersion>
 		<Platforms>Windows;Linux</Platforms>
 		<Configurations>Debug;Release;Debug_UI</Configurations>
 		<Version>0.0.1</Version>
 	</PropertyGroup>
 
-	<PropertyGroup Condition=" '$(Configuration)' == 'Windows' ">
+	<PropertyGroup Condition=" '$(Platform)' == 'Windows' ">
 		<DefineConstants>$(DefineConstants)OS_WINDOWS;WINDOWS</DefineConstants>
 	</PropertyGroup>
 
-	<PropertyGroup Condition=" '$(Configuration)' == 'Linux' ">
+	<PropertyGroup Condition=" '$(Platform)' == 'Linux' ">
 		<DefineConstants>$(DefineConstants)OS_LINUX;LINUX</DefineConstants>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
 		<Compile Remove="CheetahApp\**" />
 		<EmbeddedResource Remove="CheetahApp\**" />
@@ -30,14 +30,10 @@
 
 	<ItemGroup>
 	  <None Remove=".editorconfig" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EditorConfigFiles Include=".editorconfig" />
-	</ItemGroup>
+  </ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="CheetahApp\CheetahApp.csproj" />
 	</ItemGroup>
-	
+
 </Project>

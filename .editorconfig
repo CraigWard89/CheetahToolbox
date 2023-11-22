@@ -19,3 +19,6 @@ indent_size = 2
 
 [*]
 dotnet_diagnostic.CS0169.severity = none
+
+# Default severity for all analyzer diagnostics
+dotnet_analyzer_diagnostic.severity = none

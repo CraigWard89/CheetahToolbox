@@ -1,11 +1,13 @@
-﻿namespace CheetahToolbox.Registry;
+﻿#if WINDOWS
+namespace CheetahToolbox.Registry;
 
+using System;
+using System.IO;
 using System.Runtime.Versioning;
 using Microsoft.Win32;
 
 internal static class Scanner
 {
-	[SupportedOSPlatform("windows")]
 	public static void DoScan()
 	{
 		Console.WriteLine("This feature is still in development and may not work properly.");
@@ -59,3 +61,4 @@ internal static class Scanner
 		return result;
 	}
 }
+#endif

@@ -1,5 +1,10 @@
 ﻿namespace CheetahToolbox;
-internal class Program
+internal static class Program
 {
-	private static void Main(string[] args) => CheetahToolbox.Initialize(args);
+	public static CheetahToolbox? App { get; private set; }
+
+	private static void Main(string[] args)
+	{
+		new CheetahToolbox().Start();
+	}
 }
