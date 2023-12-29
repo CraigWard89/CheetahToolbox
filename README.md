@@ -9,16 +9,11 @@ Nightly: v1.0.0
 
 CheetahToolbox is a comprehensive collection of tools for Windows, serving as a Swiss Army Knife for Developers and Power Users.<br>
 
-## Building
-This project utilizes [GoodKitty](https://github.com/GoodKittyBot), a private bot that handles building, testing, and releasing.<br>
-While you won't be able to use GoodKitty, you can still manually build the project.<br>
-
 ## Project Maintainers
 - [Craig](https://github.com/CraigCraig) - Founder & Lead Maintainer
 - [Kanedsodas](https://github.com/Kanedsodas) - Programmer
 - [Radix](https://github.com/RADIXTheProto) - Programmer
 - [Tchis](https://github.com/Tchisz) - Research/Testing/Ideas
-<br>
 - [GoodKitty](https://github.com/GoodKittyBot) - Bot used for automation (WIP)
 
 ## Contributing
