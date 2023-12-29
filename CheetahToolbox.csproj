@@ -1,39 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<OutputType>WinExe</OutputType>
+		<OutputType>Exe</OutputType>
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<Platforms>Windows;Linux</Platforms>
-		<Configurations>Debug;Release;Debug_UI</Configurations>
-		<Version>0.0.1</Version>
+		<Configurations>Debug;Release</Configurations>
+		<Version>1.0.0</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Platform)' == 'Windows' ">
-		<DefineConstants>$(DefineConstants)OS_WINDOWS;WINDOWS</DefineConstants>
+		<DefineConstants>$(DefineConstants);WINDOWS</DefineConstants>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Platform)' == 'Linux' ">
-		<DefineConstants>$(DefineConstants)OS_LINUX;LINUX</DefineConstants>
+		<DefineConstants>$(DefineConstants);LINUX</DefineConstants>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<Compile Remove="CheetahApp\**" />
-		<EmbeddedResource Remove="CheetahApp\**" />
-		<None Remove="CheetahApp\**" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<None Include=".github\workflows\*.yml" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove=".editorconfig" />
-  </ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="CheetahApp\CheetahApp.csproj" />
+	  <PackageReference Include="CliWrap" Version="3.6.5-test" />
 	</ItemGroup>
 
 </Project>
