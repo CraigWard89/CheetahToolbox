@@ -1,35 +1,38 @@
-# CheetahToolbox
+# <a href="http://github.com/CraigCraig"><img src="favicon.ico" width=24 height=24 /><a/> CheetahToolbox
 [![.NET](https://github.com/CraigCraig/CheetahToolbox/actions/workflows/release.yml/badge.svg)](https://github.com/CraigCraig/CheetahToolbox/actions/workflows/release.yml)
-[![.NET](https://github.com/CraigCraig/CheetahToolbox/actions/workflows/nightly.yml/badge.svg)](https://github.com/CraigCraig/CheetahToolbox/actions/workflows/nightly.yml)
+This project uses [.NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0)
 
-## :warning: This is a work in progress :warning:<br>
+## ⚠️ This is a work in progress ⚠️
 
-Stable: Unreleased<br>
-Nightly: v1.0.0<br>
+Stable: Unreleased
+Nightly: v1.0.0
 
-CheetahToolbox is a collection of tools for Windows.<br>
-
-This project uses [CheetahApp](https://github.com/CraigCraig/CheetahApp) and [CheetahUtils](https://github.com/CraigCraig/CheetahUtils)
+CheetahToolbox is a comprehensive collection of tools for Windows, serving as a Swiss Army Knife for Developers and Power Users.<br>
 
 ## Building
-This project uses <a href="https://github.com/GoodKittyBot">GoodKitty</a><br>
-A bot that handles building, testing, and releasing.<br>
-GoodKitty is a private bot, so you will not be able to use it.<br>
-You can still build the project manually.<br>
+This project utilizes [GoodKitty](https://github.com/GoodKittyBot), a private bot that handles building, testing, and releasing.<br>
+While you won't be able to use GoodKitty, you can still manually build the project.<br>
+
+## Project Maintainers
+- [Craig](https://github.com/CraigCraig) - Founder & Lead Maintainer
+- [Kanedsodas](https://github.com/Kanedsodas) - Programmer
+- [Radix](https://github.com/RADIXTheProto) - Programmer
+- [Tchis](https://github.com/Tchisz) - Research/Testing/Ideas
+<br>
+- [GoodKitty](https://github.com/GoodKittyBot) - Bot used for automation (WIP)
 
 ## Contributing
 If you would like to contribute to CheetahToolbox, please fork the repository and create a pull request.<br>
-Please make sure to document your code and add a description of your changes.<br>
-If you would like to report a bug or request a feature, please create an [issue](https://github.com/CraigCraig/CheetahToolbox/issues/new).<br>
-
-## Dependencies
-- My Projects
-    - [CheetahApp](https://github.com/CraigCraig/CheetahApp)
-    - [CheetahUtils](https://github.com/CraigCraig/CheetahUtils)
+Please ensure that you document your code and provide a description of your changes.<br>
+For bug reports or feature requests, please create an [issue](https://github.com/CraigCraig/CheetahToolbox/issues/new).<br>
 
 ## License
-CheetahToolbox is licensed under [MIT](LICENSE)<br>
+CheetahToolbox is licensed under the [MIT License](LICENSE)<br>
+The MIT License is a permissive license that allows you to do anything with the code as long as you provide attribution and don't hold the authors liable.<br>
 
+You can read more about the MIT License [here](https://choosealicense.com/licenses/mit/).
+
+<!-- TODO: Move This -->
 ## Roadmap
 
 - [ ] Registry Fixing / Cleaning
