@@ -1,5 +1,5 @@
 # <a href="http://github.com/CraigCraig"><img src="favicon.ico" width=24 height=24 /><a/> CheetahToolbox
-[![.NET](https://github.com/CraigCraig/CheetahToolbox/actions/workflows/release.yml/badge.svg)](https://github.com/CraigCraig/CheetahToolbox/actions/workflows/release.yml)
+[![.NET](https://github.com/CraigCraig/CheetahToolbox/actions/workflows/release.yml/badge.svg)](https://github.com/CraigCraig/CheetahToolbox/actions/workflows/release.yml)<br>
 This project uses [.NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0)
 
 ## 👷 ⚠️ Work in Progress ⚠️ 👷
