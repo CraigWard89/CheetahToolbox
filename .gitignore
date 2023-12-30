@@ -1,4 +1,10 @@
-# .gitignore
+# Global .gitignore file
+# ===========================================
+# Created and maintained by https://github.com/CraigCraig
+# ===========================================
+# This file is used by all of my projects.
+# It is a global .gitignore file that is used by all of my projects.
+# ===========================================
 
 # Common
 Builds/
@@ -6,5 +12,3 @@ obj/
 
 # Visual Studio
 .vs/
-*.csproj.user
-.fake

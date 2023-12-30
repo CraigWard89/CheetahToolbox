@@ -22,9 +22,10 @@ public class CheetahToolbox
 
         Console.WriteLine("======");
         Console.WriteLine("Press Any Key to Exit");
-        Console.ReadKey();
+        _ = Console.ReadKey();
     }
 
+    [STAThread]
     [SupportedOSPlatform("windows")]
     public static void Main(string[] args)
     {
