@@ -19,7 +19,6 @@ You can still build the project manually.<br>
 - [Kanedsodas](https://github.com/Kanedsodas) - Programmer
 - [Radix](https://github.com/RADIXTheProto) - Programmer
 - [Tchis](https://github.com/Tchisz) - Research/Testing/Ideas
-<br>
 - [GoodKitty](https://github.com/GoodKittyBot) - Bot used for automation (WIP)
 
 If you would like to contribute to CheetahToolbox, please fork the repository and create a pull request.<br>
@@ -34,6 +33,6 @@ You can read more about the MIT License [here](https://choosealicense.com/licens
 
 ## Information
 
-[Roadmap](Information\Roadmap.md)
-[Windows](Information\Windows.md)
+[Roadmap](Information\Roadmap.md)<br>
+[Windows](Information\Windows.md)<br>
 [Tchis' Research](Information\Tchis-Research.md)
