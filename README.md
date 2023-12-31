@@ -19,7 +19,6 @@ You can still build the project manually.<br>
 - [Kanedsodas](https://github.com/Kanedsodas) - Programmer
 - [Radix](https://github.com/RADIXTheProto) - Programmer
 - [Tchis](https://github.com/Tchisz) - Research/Testing/Ideas
-<br>
 - [GoodKitty](https://github.com/GoodKittyBot) - Bot used for automation (WIP)
 
 If you would like to contribute to CheetahToolbox, please fork the repository and create a pull request.<br>
