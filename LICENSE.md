@@ -1,4 +1,5 @@
-[MIT License](#license)
+# MIT License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Copyright (c) 2023 [Craig Craig](http://github.com/CraigCraig)
 
