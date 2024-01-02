@@ -33,9 +33,7 @@
     <!-- Hide Builds -->
     <ItemGroup>
         <Compile Remove="Builds\**" />
-        <Compile Remove="WinToolbox\obj\**" />
         <EmbeddedResource Remove="Builds\**" />
-        <EmbeddedResource Remove="WinToolbox\obj\**" />
         <None Remove="Builds\**" />
     </ItemGroup>
 
@@ -44,7 +42,6 @@
         <Compile Remove="CheetahUtils\**" />
         <EmbeddedResource Remove="CheetahUtils\**" />
         <None Remove="CheetahUtils\**" />
-        <None Remove="WinToolbox\obj\**" />
     </ItemGroup>
 
     <!-- References -->
@@ -53,10 +50,6 @@
         <PackageReference Include="CliWrap" Version="3.6.5-test" />
         <!-- Newtonsoft.Json -->
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-        <!-- Win-->
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="WinToolbox\" />
 	</ItemGroup>
 
 </Project>
