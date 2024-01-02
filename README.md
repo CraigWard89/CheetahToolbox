@@ -23,11 +23,23 @@ CheetahToolbox is a comprehensive collection of tools for Windows, serving as a 
 You use [SuperSolution](https://github.com/CraigCraig/SuperSolution) to build CheetahToolbox.<br>
 
 ## Project Maintainers
-- [Craig](https://github.com/CraigCraig) - Founder & Lead Maintainer
-- [Kanedsodas](https://github.com/Kanedsodas) - Programmer
-- [Radix](https://github.com/RADIXTheProto) - Programmer
-- [Tchis](https://github.com/Tchisz) - Research/Testing/Ideas
-- [GoodKitty](https://github.com/GoodKittyBot) - Bot used for automation (WIP)
+
+[Craig Craig](https://github.com/CraigCraig)<br>
+Founder & Lead Maintainer
+
+[Kanedsodas](https://github.com/Kanedsodas)<br>
+Programmer
+
+[Radix](https://github.com/RADIXTheProto)<br>
+Programmer
+
+[Tchis](https://github.com/Tchisz)<br>
+Research/Testing/Ideas
+
+[GoodKitty](https://github.com/GoodKittyBot)<br>
+Bot used for automation (WIP)
+
+---
 
 If you would like to contribute to CheetahToolbox, please fork the repository and create a pull request.<br>
 Please ensure that you document your code and provide a description of your changes.<br>
