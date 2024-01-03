@@ -13,6 +13,8 @@ public class CheetahToolbox
         //var cu = Registry.CurrentUser.Name;
         //Console.WriteLine(cu.ToString());
 
+        Console.WriteLine(Chocolatey.Version);
+
         // WIP: Chocolatey Caching
         Chocolatey.CachePrograms();
 

@@ -24,4 +24,5 @@ I need to figure out how to modify the files in this folder.<br>
 As I believe this is where the `Start Menu` is stored when you click `All Apps`<br>
 Sometimes Windows will leave entries in the `Start Menu` even after uninstalling the program.<br>
 
-[Readme](/README.md)
+---
+[Back to Readme](https://github.com/CraigCraig/CheetahToolbox/blob/main/README.md)

@@ -9,6 +9,8 @@ public static class Chocolatey
 {
     private static readonly List<AppEntry> appEntries = [];
 
+    public static string Version => NativeTerminal.Execute("choco", ["version"]);
+
     /// <summary>
     /// WIP: Check if Chocolatey result is valid.
     /// </summary>
@@ -37,7 +39,7 @@ public static class Chocolatey
 
         foreach (string temp in tempList)
         {
-            var item = Chocolatey.CheckResult(temp);
+            var item = CheckResult(temp);
             if (!string.IsNullOrEmpty(item))
             {
                 Console.WriteLine(item);
@@ -45,7 +47,7 @@ public static class Chocolatey
                 string name = split[0];
                 string version = split[1];
                 Console.WriteLine($"Found: {name} - {version}");
-                appEntries.Add(new AppEntry(name, version));
+                appEntries.Add(new AppEntry(name, version, AppSource.CHOCOLATEY));
             }
         }
         Console.WriteLine($"Chocolatey has {tempList.Count} packages installed.");

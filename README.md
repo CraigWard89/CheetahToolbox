@@ -18,7 +18,7 @@ Nightly: v1.0.0
 
 CheetahToolbox is a comprehensive collection of tools for Windows, serving as a Swiss Army Knife for Developers and Power Users.<br>
 
-## Building
+## How to Use
 
 You use [SuperSolution](https://github.com/CraigCraig/SuperSolution) to build CheetahToolbox.<br>
 You'll need [net8.0](http://microsoft.com/net/download/dotnet-core/8.0) installed.<br>
@@ -26,12 +26,6 @@ You will also need [Visual Studio 2022 Preview](https://visualstudio.microsoft.c
 
 Use this command to clone the repository
 `git clone https://github.com/CraigCraig/SuperSolution`
-
-Use this command to build the solution
-⚠ `This command is coming soon `
-
-Use this command to update the solution
-⚠️ `This command is coming soon `
 
 ## Project Maintainers
 
