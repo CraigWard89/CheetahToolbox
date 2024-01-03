@@ -50,5 +50,9 @@ could be blocked i guess.
 
 [connection endpoints none enterpriese](https://learn.microsoft.com/en-us/windows/privacy/windows-11-endpoints-non-enterprise-editions)
 
+```txt
+Dator\HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules
+pretty self explaning. is the firewall rules aka if its allowed through
+```
 
 👍 👎 💯
