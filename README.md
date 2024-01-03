@@ -53,8 +53,7 @@ You can read more about the MIT License [here](https://choosealicense.com/licens
 
 ## Information
 
-[Roadmap](Information\Roadmap.md)<br>
-[Windows](Information\Windows.md)<br>
-[Tchis' Research](Information\Tchis-Research.md)
-
+[Roadmap](Information/Roadmap.md)<br>
+[Windows](Information/Windows.md)<br>
+[Tchis' Research](Information/Windows.md)
 </div>
