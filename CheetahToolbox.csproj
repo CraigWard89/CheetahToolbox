@@ -1,23 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Build">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <ProjectName>CheetahToolbox</ProjectName>
         <OutputType>Exe</OutputType>
-        <OutDir>$(MSBuildStartupDirectory)\Builds\$(ProjectName)-$(Configuration)</OutDir>
-        <Nullable>enable</Nullable>
-        <EnableDefaultItems>false</EnableDefaultItems>
-        <Configurations>Release;Debug</Configurations>
-        <Platforms>Windows;Linux;MacOS</Platforms>
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="**\*.cs" Exclude="obj\**" />
-        <Content Include="**\*.md" />
-        <Content Include=".gitignore" />
+      <ProjectReference Include="$(CheetahUtils)" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\CheetahUtils\CheetahUtils.csproj" />
-    </ItemGroup>
 
 </Project>

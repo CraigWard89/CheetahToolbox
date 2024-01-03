@@ -3,49 +3,19 @@ namespace CheetahToolbox;
 using Microsoft.Win32;
 using System;
 using System.IO;
+using System.Runtime.Versioning;
 
 /// <summary>
 /// WIP: This is a placeholder for now.
 /// </summary>
-public static class Experimental
+public static class RegistryManager
 {
-    public static void TestPhase0()
+    public static void Initialize()
     {
-        //if (Chocolatey.Installed)
-        //{
-        //    Console.WriteLine("Chocolatey Detected");
-        //}
-        // TODO: Check if Chocolatey is installed
-        //try
-        //{
-        //	await using var stdOut = Console.OpenStandardOutput();
-        //	await using var stdErr = Console.OpenStandardError();
-
-        //	var result = await Cli.Wrap("choco")
-        //		.WithArguments("list")
-        //		.WithStandardOutputPipe(PipeTarget.ToStream(stdOut))
-        //		.WithStandardErrorPipe(PipeTarget.ToStream(stdErr))
-        //		.ExecuteAsync();
-
-        //	if (result is null)
-        //	{
-        //		throw new Exception("ERROR");
-        //	}
-
-
-
-        //	Console.WriteLine(result.ToString());
-        //}
-        //catch (Exception ex)
-        //{
-        //	Console.WriteLine(ex.Message);
-        //}
-
-        Console.WriteLine("Chocolatey Checks Done..");
-
-        // TODO: Add Installed Programs to Chocolatey
+        // TODO: Initialize the Manager
     }
 
+    [SupportedOSPlatform("windows")]
     public static void TestPhase1()
     {
         // TODO: Print All Installed Bloatware
@@ -58,9 +28,9 @@ public static class Experimental
             if (subKey != null)
             {
                 var displayName = subKey.GetValue("DisplayName")?.ToString();
-                var displayIcon = subKey.GetValue("DisplayIcon")?.ToString()?.Split(',')[0];
-                var installLocation = subKey.GetValue("InstallLocation")?.ToString();
-                var uninstallString = subKey.GetValue("UninstallString")?.ToString();
+                //var displayIcon = subKey.GetValue("DisplayIcon")?.ToString()?.Split(',')[0];
+                //var installLocation = subKey.GetValue("InstallLocation")?.ToString();
+                //var uninstallString = subKey.GetValue("UninstallString")?.ToString();
 
                 if (!string.IsNullOrEmpty(displayName))
                 {
@@ -75,6 +45,8 @@ public static class Experimental
         // TODO: Uninstaller Checker
     }
 
+#if WINDOWS
+    [SupportedOSPlatform("windows")]
     private static bool CheckUninstallEntry(RegistryKey subKey)
     {
         bool result = false;
@@ -103,4 +75,5 @@ public static class Experimental
 
         return result;
     }
+#endif
 }

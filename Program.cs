@@ -5,5 +5,5 @@ namespace CheetahToolbox;
 /// </summary>
 sealed internal class Program
 {
-    private static void Main(string[] args) => _ = new CheetahToolbox();
+    private static void Main(string[] args) => _ = new CheetahToolbox([.. args]);
 }

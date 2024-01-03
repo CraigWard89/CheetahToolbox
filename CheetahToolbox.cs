@@ -1,19 +1,20 @@
 namespace CheetahToolbox;
 
 #region Using Statements
-using CheetahUtils;
 using System;
 using System.Collections.Generic;
-using System.Runtime.Versioning;
 #endregion
 
 public class CheetahToolbox
 {
-    public CheetahToolbox()
+    public CheetahToolbox(List<string> args)
     {
         Console.WriteLine("CheetahToolbox");
         //var cu = Registry.CurrentUser.Name;
         //Console.WriteLine(cu.ToString());
+
+        // WIP: Chocolatey Caching
+        Chocolatey.CachePrograms();
 
         // TODO: Command Handler
         while (true)
@@ -29,9 +30,6 @@ public class CheetahToolbox
                     break;
                 case "exit":
                     Environment.Exit(0);
-                    break;
-                case "":
-                    Chocolatey.CheckPrograms();
                     break;
                 case "gh":
                     Console.WriteLine("Git/GitHub WIP");
