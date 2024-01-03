@@ -4,6 +4,7 @@
 - [ ] Chocolatey integration, install, update, remove, etc.
 - [ ] Detect and fix broken shortcuts
 - [ ] Detect and fix broken file associations
+- [ ] Detect a and fix broken clsid
 - [ ] Program/App Install Moving
 - [ ] Find and Remove Junk Files
 - [ ] File Searching
