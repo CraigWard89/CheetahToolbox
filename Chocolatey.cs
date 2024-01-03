@@ -1,9 +1,10 @@
 namespace CheetahToolbox;
 
+#region Using Statements
 using CheetahUtils;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+#endregion
 
 public static class Chocolatey
 {
@@ -18,7 +19,7 @@ public static class Chocolatey
     /// <returns></returns>
     public static AppEntry? CheckResult(string line)
     {
-        var lines = line.Split(' ').ToList();
+        List<string> lines = [.. line.Split(' ')];
         if (string.IsNullOrEmpty(lines[0])) return null;
         if (lines.Count != 2) return null;
 
@@ -32,13 +33,13 @@ public static class Chocolatey
     {
         appEntries.Clear();
 
-        var test = NativeTerminal.Execute("choco", ["list"]);
+        string test = NativeTerminal.Execute("choco", ["list"]);
         List<string> tempList = [.. test.Split('\n')];
         tempList.RemoveAt(0);
 
         foreach (string temp in tempList)
         {
-            var item = CheckResult(temp);
+            AppEntry? item = CheckResult(temp);
             if (item != null)
             {
                 appEntries.Add(item);

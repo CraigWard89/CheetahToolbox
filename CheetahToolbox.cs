@@ -19,7 +19,7 @@ public class CheetahToolbox
         while (true)
         {
             Console.Write("> ");
-            var line = Console.ReadLine();
+            string? line = Console.ReadLine();
             switch (line)
             {
                 case "help":

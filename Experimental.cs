@@ -1,8 +1,29 @@
 namespace CheetahToolbox;
 
+#region Using Statements
 using Microsoft.Win32;
 using System;
+using System.Collections;
 using System.Runtime.Versioning;
+#endregion
+
+public class UnknownKeyException : Exception
+{
+    public override IDictionary Data => base.Data;
+
+    public override string? HelpLink { get => base.HelpLink; set => base.HelpLink = value; }
+
+    public override string Message => base.Message;
+
+    public override string? Source { get => base.Source; set => base.Source = value; }
+
+    public override string? StackTrace => base.StackTrace;
+
+    public override bool Equals(object? obj) => base.Equals(obj);
+    public override Exception GetBaseException() => base.GetBaseException();
+    public override int GetHashCode() => base.GetHashCode();
+    public override string ToString() => base.ToString();
+}
 
 /// <summary>
 /// WIP: This is a placeholder for now.
@@ -19,14 +40,14 @@ public static class RegistryManager
     {
         // TODO: Print All Installed Bloatware
 
-        var uninstallKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall") ?? throw new Exception("Uninstall key not found.");
+        RegistryKey uninstallKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall") ?? throw new UnknownKeyException();
 
-        foreach (var subKeyName in uninstallKey.GetSubKeyNames())
+        foreach (string subKeyName in uninstallKey.GetSubKeyNames())
         {
-            var subKey = uninstallKey.OpenSubKey(subKeyName);
+            RegistryKey? subKey = uninstallKey.OpenSubKey(subKeyName);
             if (subKey != null)
             {
-                var displayName = subKey.GetValue("DisplayName")?.ToString();
+                string? displayName = subKey.GetValue("DisplayName")?.ToString();
                 //var displayIcon = subKey.GetValue("DisplayIcon")?.ToString()?.Split(',')[0];
                 //var installLocation = subKey.GetValue("InstallLocation")?.ToString();
                 //var uninstallString = subKey.GetValue("UninstallString")?.ToString();
