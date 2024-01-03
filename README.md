@@ -1,6 +1,6 @@
 <div align=center>
  
-# <a href="http://github.com/CraigCraig"><img src="Resources/cheetah.ico" width=24 height=24 /><a/> CheetahToolbox
+# <a href="http://github.com/CraigCraig"><img src="https://raw.githubusercontent.com/CraigCraig/SuperSolution/main/Resources/cheetah.ico" width=24 height=24 /><a/> CheetahToolbox
 
 [![MIT License](https://img.shields.io/github/license/CraigCraig/CheetahToolbox?style=flat-square)](https://pickalicense.com/licenses/mit/)
 [![.NET 8.0](https://img.shields.io/badge/.NET-8.0-512BD4?style=flat-square&logo=.net)](https://dotnet.microsoft.com/download/dotnet/8.0)
@@ -23,6 +23,10 @@ CheetahToolbox is a comprehensive collection of tools for Windows, serving as a 
 You use [SuperSolution](https://github.com/CraigCraig/SuperSolution) to build CheetahToolbox.<br>
 You'll need [net8.0](http://microsoft.com/net/download/dotnet-core/8.0) installed.<br>
 You will also need [Visual Studio 2022 Preview](https://visualstudio.microsoft.com/vs/preview/) installed.<br>
+
+<a href="https://github.com/CraigCraig/SuperSolution">
+<img src="https://craigcraig.vercel.app/api/pin/?username=CraigCraig&repo=SuperSolution&theme=transparent"></img>
+</a><br>
 
 Use this command to clone the repository
 `git clone https://github.com/CraigCraig/SuperSolution`
