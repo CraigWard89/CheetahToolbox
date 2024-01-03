@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Build">
 
     <PropertyGroup>
-        <ProjectName>CheetahToolbox</ProjectName>
         <TargetFramework>net8.0</TargetFramework>
         <OutputType>Exe</OutputType>
         <OutDir>$(MSBuildStartupDirectory)\Builds\$(ProjectName)-$(Configuration)</OutDir>
