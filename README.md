@@ -1,6 +1,6 @@
-﻿<div align=center>
+<div align=center>
  
-# <a href="http://github.com/CraigCraig"><img src="favicon.ico" width=24 height=24 /><a/> CheetahToolbox
+# <a href="http://github.com/CraigCraig"><img src="Resources/cheetah.ico" width=24 height=24 /><a/> CheetahToolbox
 
 [![MIT License](https://img.shields.io/github/license/CraigCraig/CheetahToolbox?style=flat-square)](https://pickalicense.com/licenses/mit/)
 [![.NET 8.0](https://img.shields.io/badge/.NET-8.0-512BD4?style=flat-square&logo=.net)](https://dotnet.microsoft.com/download/dotnet/8.0)
