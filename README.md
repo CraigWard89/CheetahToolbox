@@ -1,6 +1,15 @@
-# <a href="http://github.com/CraigCraig"><img src="cheetah.ico" width=32 height=32 /><a/> CheetahToolbox
-[![.NET](https://github.com/CraigCraig/CheetahToolbox/actions/workflows/release.yml/badge.svg)](https://github.com/CraigCraig/CheetahToolbox/actions/workflows/release.yml)<br>
-This project uses [.NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0)
+﻿<div align=center>
+ 
+# <a href="http://github.com/CraigCraig"><img src="favicon.ico" width=24 height=24 /><a/> CheetahToolbox
+
+[![MIT License](https://img.shields.io/github/license/CraigCraig/CheetahToolbox?style=flat-square)](https://pickalicense.com/licenses/mit/)
+[![.NET 8.0](https://img.shields.io/badge/.NET-8.0-512BD4?style=flat-square&logo=.net)](https://dotnet.microsoft.com/download/dotnet/8.0)
+[![Visual Studio 2022](https://img.shields.io/badge/Visual%20Studio-2022-5C2D91?style=flat-square&logo=visual-studio)](https://visualstudio.microsoft.com/vs/preview/)
+[![Windows 11](https://img.shields.io/badge/Windows-11-0078D6?style=flat-square&logo=windows)](https://www.microsoft.com/en-us/windows/windows-11)
+[![Repo Size](https://img.shields.io/github/repo-size/CraigCraig/CheetahToolbox?style=flat-square)](http://github.com/CraigCraig/CheetahToolbox)
+
+Join the Discord server.<br>
+[![Discord](https://img.shields.io/discord/1191111275749572658?style=flat-square&logo=discord)](https://discord.gg/cvfjHKE5Ee)
 
 ## 👷 ⚠️ Work in Progress ⚠️ 👷
 
@@ -24,12 +33,24 @@ Use this command to build the solution
 Use this command to update the solution
 ⚠️ `This command is coming soon `
 
-## Project Maintainers 
-- [Craig](https://github.com/CraigCraig) - Founder & Lead Maintainer
-- [Kanedsodas](https://github.com/Kanedsodas) - Programmer
-- [Radix](https://github.com/RADIXTheProto) - Programmer
-- [Tchis](https://github.com/Tchisz) - Research/Testing/Ideas
-- [GoodKitty](https://github.com/GoodKittyBot) - Bot used for automation (WIP)
+## Project Maintainers
+
+[Craig Craig](https://github.com/CraigCraig)<br>
+Founder & Lead Maintainer
+
+[Kanedsodas](https://github.com/Kanedsodas)<br>
+Programmer
+
+[Radix](https://github.com/RADIXTheProto)<br>
+Programmer
+
+[Tchis](https://github.com/Tchisz)<br>
+Research/Testing/Ideas
+
+[GoodKitty](https://github.com/GoodKittyBot)<br>
+Bot used for automation (WIP)
+
+---
 
 If you would like to contribute to CheetahToolbox, please fork the repository and create a pull request.<br>
 Please ensure that you document your code and provide a description of your changes.<br>
@@ -43,6 +64,7 @@ You can read more about the MIT License [here](https://choosealicense.com/licens
 
 ## Information
 
-[Roadmap](Information\Roadmap.md)<br>
-[Windows](Information\Windows.md)<br>
-[Tchis' Research](Information\Tchis-Research.md)
+[Roadmap](Information/Roadmap.md)<br>
+[Windows](Information/Windows.md)<br>
+[Tchis' Research](Information/Tchis-Research.md)
+</div>
