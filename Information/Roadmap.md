@@ -15,4 +15,4 @@
   - [ ] Plugin Management
 - [ ] Settings
 
-[README.md](..\README.md)
+[README.md](/README.md)
