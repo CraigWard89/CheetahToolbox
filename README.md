@@ -53,8 +53,8 @@ You can read more about the MIT License [here](https://choosealicense.com/licens
 
 ## Information
 
-[Roadmap](Information\Roadmap.md)<br>
-[Windows](Information\Windows.md)<br>
-[Tchis' Research](Information\Tchis-Research.md)
+[Roadmap](https://github.com/CraigCraig/CheetahToolbox/blob/main/Information/Roadmap.md)<br>
+[Windows](https://github.com/CraigCraig/CheetahToolbox/blob/main/Information/Windows.md)<br>
+[Tchis' Research](https://github.com/CraigCraig/CheetahToolbox/blob/main/Information/Tchis-Research.md)
 
 </div>
