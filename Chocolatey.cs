@@ -16,13 +16,13 @@ public static class Chocolatey
     /// </summary>
     /// <param name="line"></param>
     /// <returns></returns>
-    public static string CheckResult(string line)
+    public static AppEntry? CheckResult(string line)
     {
         var lines = line.Split(' ').ToList();
-        if (string.IsNullOrEmpty(lines[0])) return string.Empty; // Empty
-        if (lines.Count != 2) return string.Empty;
+        if (string.IsNullOrEmpty(lines[0])) return null;
+        if (lines.Count != 2) return null;
 
-        return lines[0];
+        return new AppEntry(lines[0], lines[0], AppSource.CHOCOLATEY);
     }
 
     /// <summary>
@@ -30,7 +30,6 @@ public static class Chocolatey
     /// </summary>
     public static void CachePrograms()
     {
-        Console.WriteLine("Caching Chocolatey List");
         appEntries.Clear();
 
         var test = NativeTerminal.Execute("choco", ["list"]);
@@ -40,14 +39,9 @@ public static class Chocolatey
         foreach (string temp in tempList)
         {
             var item = CheckResult(temp);
-            if (!string.IsNullOrEmpty(item))
+            if (item != null)
             {
-                Console.WriteLine(item);
-                string[] split = item.Split(' ');
-                string name = split[0];
-                string version = split[1];
-                Console.WriteLine($"Found: {name} - {version}");
-                appEntries.Add(new AppEntry(name, version, AppSource.CHOCOLATEY));
+                appEntries.Add(item);
             }
         }
         Console.WriteLine($"Chocolatey has {tempList.Count} packages installed.");
