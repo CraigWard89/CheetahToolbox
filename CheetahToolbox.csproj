@@ -1,55 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Build">
 
-	<PropertyGroup>
-		<OutputType>WinExe</OutputType>
-		<TargetFramework>net8.0-windows</TargetFramework>
-        <ImplicitUsings>true</ImplicitUsings>
-		<Nullable>enable</Nullable>
-		<LangVersion>latest</LangVersion>
-		<Platforms>Windows;Linux</Platforms>
-		<Configurations>Debug;Release</Configurations>
-		<Version>1.0.0</Version>
-		<UseWindowsForms>true</UseWindowsForms>
-        <OutDir>$(SolutionDir)Builds\</OutDir>
-        <ApplicationIcon>Resources\favicon.ico</ApplicationIcon>
-        <RepositoryUrl>https://github.com/CraigCraig/CheetahToolbox</RepositoryUrl>
-	</PropertyGroup>
+    <PropertyGroup>
+        <ProjectName>CheetahToolbox</ProjectName>
+        <TargetFramework>net8.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <OutDir>$(MSBuildStartupDirectory)\Builds\$(ProjectName)-$(Configuration)</OutDir>
+        <Nullable>enable</Nullable>
+        <EnableDefaultItems>false</EnableDefaultItems>
+        <Configurations>Release;Debug</Configurations>
+        <Platforms>Windows;Linux;MacOS</Platforms>
+    </PropertyGroup>
 
-    <!-- Windows -->
-	<PropertyGroup Condition=" '$(Platform)' == 'Windows' ">
-		<DefineConstants>$(DefineConstants);WINDOWS</DefineConstants>
-	</PropertyGroup>
-
-    <!-- Linux -->
-	<PropertyGroup Condition=" '$(Platform)' == 'Linux' ">
-		<DefineConstants>$(DefineConstants);LINUX</DefineConstants>
-	</PropertyGroup>
-
-    <!-- Workflows -->
-	<ItemGroup>
-		<None Include=".github\workflows\*.yml" />
-	</ItemGroup>
-
-    <!-- Hide Builds -->
     <ItemGroup>
-        <Compile Remove="Builds\**" />
-        <EmbeddedResource Remove="Builds\**" />
-        <None Remove="Builds\**" />
+        <Compile Include="**\*.cs" Exclude="obj\**" />
+        <Content Include="**\*.md" />
+        <Content Include=".gitignore" />
     </ItemGroup>
 
-    <!-- Hide CheetahUtils -->
     <ItemGroup>
-        <Compile Remove="CheetahUtils\**" />
-        <EmbeddedResource Remove="CheetahUtils\**" />
-        <None Remove="CheetahUtils\**" />
+      <ProjectReference Include="..\CheetahUtils\CheetahUtils.csproj" />
     </ItemGroup>
-
-    <!-- References -->
-	<ItemGroup>
-        <!-- CliWrap -->
-        <PackageReference Include="CliWrap" Version="3.6.5-test" />
-        <!-- Newtonsoft.Json -->
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-	</ItemGroup>
 
 </Project>

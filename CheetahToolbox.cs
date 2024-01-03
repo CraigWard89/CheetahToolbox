@@ -1,95 +1,126 @@
 namespace CheetahToolbox;
 
+using CheetahUtils;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.Versioning;
-using CliWrap;
-using Microsoft.Win32;
 
 public class CheetahToolbox
 {
-    [SupportedOSPlatform("windows")]
     public CheetahToolbox()
     {
         Console.WriteLine("CheetahToolbox");
-        var cu = Registry.CurrentUser.Name;
-        Console.WriteLine(cu.ToString());
+        //var cu = Registry.CurrentUser.Name;
+        //Console.WriteLine(cu.ToString());
 
-        Experimental.TestPhase0();
-        //Experimental.TestPhase1();
-        //Experimental.TestPhase2();
+        while (true)
+        {
+            var line = Console.ReadLine();
+            switch (line)
+            {
+                case "help":
+                    Console.WriteLine("help - Show this help");
+                    Console.WriteLine("exit - Exit the program");
+                    Console.WriteLine("choco - Chocolatey Experiments");
+                    Console.WriteLine("gh - Git/GitHub Experiments");
+                    break;
+                case "exit":
+                    Environment.Exit(0);
+                    break;
+                case "":
+                    Console.WriteLine("Doing Chocolatey Experiments..");
 
-        Console.WriteLine("======");
-        Console.WriteLine("Press Any Key to Exit");
-        _ = Console.ReadKey();
+                    var test = NativeTerminal.Execute("choco", ["list"]);
+                    List<string> tempList = [.. test.Split('\n')];
+
+                    foreach (string temp in tempList)
+                    {
+                        var item = Chocolatey.CheckResult(temp);
+                        if (!string.IsNullOrEmpty(item))
+                        {
+                            Console.WriteLine($"Found: {item}");
+                        }
+                    }
+                    Console.WriteLine($"Chocolatey has {tempList.Count} packages installed.");
+                    break;
+                case "gh":
+                    Console.WriteLine("Git/GitHub WIP");
+                    break;
+                default:
+                    Console.WriteLine($"Unknown Command: {line}");
+                    break;
+            }
+        }
     }
 
-    [STAThread]
-    [SupportedOSPlatform("windows")]
-    public static void Main(string[] args)
-    {
-        _ = new CheetahToolbox();
-    }
-}
-
-public class AppEntry
-{
-
-}
-
-public static class KnownApplications
-{
+    public static void Main(string[] args) => _ = new CheetahToolbox();
 }
 
 public static class Chocolatey
 {
-    public static bool Installed
+    /// <summary>
+    /// WIP: Check if Chocolatey result is valid.
+    /// </summary>
+    /// <param name="line"></param>
+    /// <returns></returns>
+    public static string CheckResult(string line)
     {
-        get
-        {
-            try
-            {
-                // WIP
-                var result = Cli.Wrap("choco").WithArguments("list").ExecuteAsync();
-                Console.WriteLine(result);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return false;
-        }
-    }
+        string result = string.Empty;
+        var lines = line.Split(' ').ToList();
+        if (string.IsNullOrEmpty(lines[0])) return string.Empty; // Empty
+        if (lines.Count != 2) return string.Empty;
 
-    public static List<string> Apps
-    {
-        get
-        {
-            try
-            {
-                // WIP
-                var result = Cli.Wrap("choco").WithArguments("list").ExecuteAsync();
-                Console.WriteLine(result);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return [];
-        }
+        return lines[0];
     }
 }
+//    public static bool Installed
+//    {
+//        get
+//        {
+//            try
+//            {
+//                var result = NativeTerminal.Execute("choco", []);
+//                if (!string)
+//                return true;
+//            }
+//            catch (Exception ex)
+//            {
+//                Console.WriteLine(ex.Message);
+//            }
+//            return false;
+//        }
+//    }
+
+//    public static List<string> Apps
+//    {
+//        get
+//        {
+//            try
+//            {
+//                // WIP
+//                var result = Cli.Wrap("choco").WithArguments("list").ExecuteAsync();
+//                Console.WriteLine(result);
+//            }
+//            catch (Exception ex)
+//            {
+//                Console.WriteLine(ex.Message);
+//            }
+//            return [];
+//        }
+//    }
+//}
 
 public static class Experimental
 {
     public static void TestPhase0()
     {
-        if (Chocolatey.Installed)
-        {
-            Console.WriteLine("Chocolatey Detected");
-        }
+        //if (Chocolatey.Installed)
+        //{
+        //    Console.WriteLine("Chocolatey Detected");
+        //}
         // TODO: Check if Chocolatey is installed
         //try
         //{

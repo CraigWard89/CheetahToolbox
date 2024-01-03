@@ -8,7 +8,22 @@
 
 # Common
 Builds/
+Publish/
 obj/
+bin/
 
 # Visual Studio
 .vs/
+*.suo
+
+# Upgrade Logs
+UpgradeLog*.htm
+
+# Craig's personal files
+/autorun.inf
+/desktop.ini
+
+# Extension Folders and Files
+.vshistory/*
+.fake
+.contextkeeper/

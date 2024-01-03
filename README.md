@@ -1,4 +1,4 @@
-# <a href="http://github.com/CraigCraig"><img src="favicon.ico" width=24 height=24 /><a/> CheetahToolbox
+# <a href="http://github.com/CraigCraig"><img src="cheetah.ico" width=32 height=32 /><a/> CheetahToolbox
 [![.NET](https://github.com/CraigCraig/CheetahToolbox/actions/workflows/release.yml/badge.svg)](https://github.com/CraigCraig/CheetahToolbox/actions/workflows/release.yml)<br>
 This project uses [.NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0)
 
@@ -12,8 +12,19 @@ CheetahToolbox is a comprehensive collection of tools for Windows, serving as a 
 ## Building
 
 You use [SuperSolution](https://github.com/CraigCraig/SuperSolution) to build CheetahToolbox.<br>
+You'll need [net8.0](http://microsoft.com/net/download/dotnet-core/8.0) installed.<br>
+You will also need [Visual Studio 2022 Preview](https://visualstudio.microsoft.com/vs/preview/) installed.<br>
 
-## Project Maintainers
+Use this command to clone the repository
+`git clone https://github.com/CraigCraig/SuperSolution`
+
+Use this command to build the solution
+⚠ `This command is coming soon `
+
+Use this command to update the solution
+⚠️ `This command is coming soon `
+
+## Project Maintainers 
 - [Craig](https://github.com/CraigCraig) - Founder & Lead Maintainer
 - [Kanedsodas](https://github.com/Kanedsodas) - Programmer
 - [Radix](https://github.com/RADIXTheProto) - Programmer
