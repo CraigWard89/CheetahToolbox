@@ -12,9 +12,10 @@ Join the Discord server.<br>
 [![Discord](https://img.shields.io/discord/1191111275749572658?style=flat-square&logo=discord)](https://discord.gg/cvfjHKE5Ee)
 
 ## 👷 ⚠️ Work in Progress ⚠️ 👷
+This project is still in development.<br>
+This means that there will be bugs and missing features.<br>
 
-Stable: Unreleased
-Nightly: v1.0.0
+# Description
 
 CheetahToolbox is a comprehensive collection of tools for Windows, serving as a Swiss Army Knife for Developers and Power Users.<br>
 
