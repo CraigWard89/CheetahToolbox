@@ -60,7 +60,8 @@ telemetry
 HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone\NonPackaged
 keep tracking when used the mic or when stop using it
 and other stuff
-
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\
+In here you can remove it from showing up on installed apps on windows
 ```
 
 👍 👎 💯
