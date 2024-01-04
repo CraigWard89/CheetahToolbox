@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class CommandHandler(Modules.ModuleBase module)
 {
     public readonly Modules.ModuleBase Module = module;
-    private readonly List<Command> _commands = [];
+    private readonly List<CommandBase> _commands = [];
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "WIP")]
     public void Start()
@@ -24,7 +24,7 @@ public class CommandHandler(Modules.ModuleBase module)
         if (string.IsNullOrEmpty(command))
             return new CommandResult(false, "Command is null or empty");
 
-        foreach (Command cmd in _commands)
+        foreach (CommandBase cmd in _commands)
         {
             if (cmd.Name == command)
                 return cmd.Execute(new CommandContext(Module, command, arguments));
@@ -33,5 +33,5 @@ public class CommandHandler(Modules.ModuleBase module)
         return new CommandResult(false, $"Command not found: {command}");
     }
 
-    public void AddCommand(Command command) => _commands.Add(command);
+    public void AddCommand(CommandBase command) => _commands.Add(command);
 }

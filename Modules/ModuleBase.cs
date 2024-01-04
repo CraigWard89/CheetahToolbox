@@ -10,7 +10,7 @@ using System.Collections.Generic;
 public class ModuleBase(ModuleInfo info)
 {
     public ModuleInfo Info { get; private set; } = info;
-    public List<Commands.Command> Commands { get; private set; } = [];
+    public List<Commands.CommandBase> Commands { get; private set; } = [];
 
     internal void Initialize() => Console.WriteLine($"Module: {Info.Name} initialized.");
 }

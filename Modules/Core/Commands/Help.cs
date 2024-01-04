@@ -1,24 +1,22 @@
-#if WIP
-namespace CheetahTerminal.Modules.Core.Commands;
+namespace CheetahToolbox.Modules.Core.Commands;
 
-using System.Text;
-using CheetahTerminal.Commands;
+using global::CheetahToolbox.Commands;
 
-public class Help() : Command("help", "this menu")
+public class Help() : CommandBase("help", "this menu")
 {
-	public override CommandResult Execute(CommandContext context)
-	{
-		foreach (Module module in ModuleManager.Modules)
-		{
-			Terminal.Output.Add($"Module: {module.Info.Name}{System.Environment.NewLine}");
+    public override CommandResult Execute(CommandContext context)
+    {
+        StringBuilder sb = new();
+        foreach (ModuleBase module in ModuleManager.Modules)
+        {
+            _ = sb.Append($"Module: {module.Info.Name}{Environment.NewLine}");
 
-			foreach (Command command in module.Commands)
-			{
-				Terminal.Output.Add($"\tCommand: {command.Name}");
-			}
-		}
+            foreach (CommandBase command in module.Commands)
+            {
+                _ = sb.Append($"\tCommand: {command.Name}");
+            }
+        }
 
-		return new CommandResult(true, "");
-	}
+        return new CommandResult(true, sb.ToString());
+    }
 }
-#endif

@@ -56,10 +56,10 @@ public static class ModuleManager
                         foreach (Type type2 in types)
                         {
                             if (type2.BaseType == null || type2.BaseType.FullName == null) continue;
-                            if (!type2.BaseType.FullName.Equals(typeof(Commands.Command).FullName, StringComparison.OrdinalIgnoreCase)) continue;
+                            if (!type2.BaseType.FullName.Equals(typeof(Commands.CommandBase).FullName, StringComparison.OrdinalIgnoreCase)) continue;
                             {
                                 if (type2 == null || string.IsNullOrEmpty(type2.FullName)) continue;
-                                if (assembly.CreateInstance(type2.FullName) is not Commands.Command command) continue;
+                                if (assembly.CreateInstance(type2.FullName) is not Commands.CommandBase command) continue;
                                 module.Commands.Add(command);
                             }
                         }
@@ -96,7 +96,7 @@ public static class ModuleManager
 
         foreach (ModuleBase module in Modules)
         {
-            foreach (Commands.Command cmd in module.Commands)
+            foreach (Commands.CommandBase cmd in module.Commands)
             {
                 if (cmd.Name != null && !string.IsNullOrEmpty(cmd.Name))
                 {

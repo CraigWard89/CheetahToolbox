@@ -1,6 +1,8 @@
 #if WINDOWS || EDITOR
 namespace CheetahToolbox;
 
+using System.Diagnostics;
+
 public static class KnownApplications
 {
 }
@@ -13,7 +15,16 @@ public static class ApplicationManager
     // TODO: Cache Locally Installed Programs
     private static readonly List<AppEntry> apps = [];
 
-    public static AppEntry? GetApp(string path)
+    public static void Start()
+    {
+        Console.WriteLine("Application Manager Starting..");
+        Stopwatch sw = Stopwatch.StartNew();
+        Scan();
+        sw.Stop();
+        Console.WriteLine($"Application Manager Started: {sw.ElapsedMilliseconds}ms");
+    }
+
+    private static AppEntry? GetApp(string path)
     {
         if (!Directory.Exists(path)) return null;
 
@@ -45,7 +56,7 @@ public static class ApplicationManager
         //Console.WriteLine($"Application Found: {app.Name}");
     }
 
-    public static void Scan()
+    private static void Scan()
     {
         string startMenuPath = Environment.GetFolderPath(Environment.SpecialFolder.Programs);
         //Console.WriteLine($"Start Menu Path: {startMenuPath}");

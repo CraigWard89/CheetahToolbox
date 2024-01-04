@@ -9,27 +9,20 @@ public class CheetahToolbox
         Console.WriteLine("CheetahToolbox");
         Console.WriteLine($"Chocolatey {Chocolatey.Version}");
 
+        ApplicationManager.Start();
+        RegistryManager.Start();
+
         Modules.ModuleManager.Start();
 
-#if WINDOWS
-        // WIP: Application Scanning
-        //ApplicationManager.Scan();
+        // WIP: Better Prompt
 
-        // WIP: Registry Scanning
-#pragma warning disable CA1416 // Validate platform compatibility
-        //RegistryManager.Scan(); // Warning Disabled: Compiler Constant Check
-#pragma warning restore CA1416 // Validate platform compatibility
+        string username = Environment.UserName;
+        string hostname = Environment.MachineName;
+        string prompt = string.Join("", username, "@", hostname, " $ ");
 
-        // WIP: Chocolatey Caching
-        //Chocolatey.CachePrograms();
-
-        // TODO: Scan for broken shortcuts in Start Menu
-        //ShortcutManager.Scan();
-#endif
-        // TODO: Port Command Handler from link:CommandHandler.cs#L2
         while (true)
         {
-            Console.Write(" > ");
+            Console.Write(prompt);
             string? line = Console.ReadLine();
 
             if (!string.IsNullOrEmpty(line))
