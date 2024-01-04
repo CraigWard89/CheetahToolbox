@@ -15,7 +15,11 @@ public class CheetahToolbox
         Console.WriteLine("CheetahToolbox");
         Console.WriteLine($"Chocolatey {Chocolatey.Version}");
 
+#if WINDOWS
+#pragma warning disable CA1416 // Validate platform compatibility
         Environment.Start();
+#pragma warning restore CA1416 // Validate platform compatibility
+#endif
         ApplicationManager.Start();
         RegistryManager.Start();
 
