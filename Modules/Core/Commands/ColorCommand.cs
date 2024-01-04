@@ -16,19 +16,18 @@ public class ColorCommand() : CommandBase("color", "Color Changer")
         }
         if (args != null && args[0].Contains("help"))
         {
-            Console.WriteLine("Simple color changer! provides a lil protogen aswell :3. see next line for available colors.");
+            Console.WriteLine("Simple color changer! provides a lil protogen as well :3. see next line for available colors.");
             Console.WriteLine("Black, Blue, Cyan, DarkBlue, DarkCyan, DarkGray, DarkGreen, DarkMagenta, DarkRed, DarkYellow, Gray, Green, Magenta, Red, White, Yellow ");
             return new CommandResult(true);
         }
-
-        if (args.Length >= 2)
+        if (args != null && args.Length >= 2)
         {
             Console.WriteLine("Cant change to more than one color!!");
             return new CommandResult(true);
         }
-        else if (args.Length == 1)
+        else if (args != null && args.Length == 1)
         {
-            foreach (var item in args)
+            foreach (string item in args)
             {
                 try
                 {

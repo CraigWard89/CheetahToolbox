@@ -33,7 +33,25 @@ public class ChocolateyManager
 
     public ChocolateyManager()
     {
-        Console.WriteLine($"Chocolatey Manager Starting..");
+        Console.WriteLine("Chocolatey Manager Initialized");
+    }
+
+    public void Uninstall()
+    {
+        // TODO: Remove Folders
+
+        // TODO: Remove Registry Entries
+
+        // TODO: Remove Environment Variables
+    }
+
+    public void Install()
+    {
+        if (!WindowsUtils.IsRunningAsAdmin())
+        {
+            Console.WriteLine("Must run this command as admin");
+            return;
+        }
 
         if (!IsInstalled)
         {
@@ -41,20 +59,45 @@ public class ChocolateyManager
             Console.WriteLine("Do you want to install it? Y / N: ");
             ConsoleKeyInfo input = Console.ReadKey();
 
+            string? result = NativeTerminal.Execute("pwsh", ["-Command", "Get-ExecutionPolicy"]);
+            if (!string.IsNullOrEmpty(result))
+            {
+                Console.WriteLine(result);
+            }
+
             if (input.KeyChar is 'Y' or 'y')
             {
-                string? result = NativeTerminal.Execute("pwsh", [installCommand]);
-                if (result == null)
-                {
-                    Console.WriteLine("Chocolatey Install Failed..");
-                    return;
-                }
-                else
-                {
-                    Console.WriteLine(result);
-                }
+                string[] lines = installCommand.Split(';');
 
-                Console.WriteLine("Chocolatey Installed");
+                foreach (string line in lines)
+                {
+                    string cleanLine = line.Trim();
+                    Console.WriteLine(cleanLine);
+
+                    string[] args = cleanLine.Split(' ');
+                    string[] args2 = args.Prepend("-Command").ToArray();
+
+                    string? result1 = NativeTerminal.Execute("pwsh", args2);
+                    Console.WriteLine(result1);
+                    if (result1 == null)
+                    {
+                        Console.WriteLine("Chocolatey Install Failed..");
+                        return;
+                    }
+                    else
+                    {
+                        if (result1.Contains("Chocolatey (choco.exe) is now ready"))
+                        {
+                            Console.WriteLine("Chocolatey Installed");
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Chocolatey Install Failed..");
+                            return;
+                        }
+                    }
+                }
             }
             else
             {
@@ -62,7 +105,7 @@ public class ChocolateyManager
                 return;
             }
         }
-        Console.WriteLine("Chocolatey Manager Started");
+        Console.WriteLine("Chocolatey already installed..");
     }
 
     /// <summary>

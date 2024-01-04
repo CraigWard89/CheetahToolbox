@@ -13,16 +13,39 @@ public static class Installer
     public static void Start()
     {
         Log.Write("Installing CheetahTerminal..");
+        RegistryKey? key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\CheetahTerminal");
+        if (key == null)
+        {
+            key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\CheetahTerminal");
+            if (key != null)
+            {
+                Console.WriteLine($"Key Found: {key}");
+            }
+            else
+            {
+                key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\CheetahTerminal");
+                Console.WriteLine($"Key Created: {key}");
+            }
 
-        RegistryKey key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\CheetahTerminal");
-        key.SetValue("InstallPath", FolderPaths.ProgramFiles);
+            string? value = key.GetValue(key.Name) as string;
 
-        RegistryKey uninstallKey = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\CheetahTerminal");
-        uninstallKey.SetValue("DisplayName", "CheetahTerminal");
+            if (!string.IsNullOrEmpty(value))
+            {
+                Console.WriteLine($"Found: {value}");
+            }
 
-        string path = Environment.GetEnvironmentVariable("Path", EnvironmentVariableTarget.Machine) ?? string.Empty;
-        if (path != null && !path.Contains(FolderPaths.ProgramFiles))
-            Environment.SetEnvironmentVariable("Path", path + ";" + FolderPaths.ProgramFiles, EnvironmentVariableTarget.Machine);
+            //key.SetValue("InstallPath", FolderPaths.ProgramFiles);
+            Console.WriteLine($"Registry Entry: {key}");
+        }
+
+        //key.SetValue("InstallPath", FolderPaths.ProgramFiles);
+
+        //RegistryKey uninstallKey = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\CheetahTerminal");
+        //uninstallKey.SetValue("DisplayName", "CheetahTerminal");
+
+        //string path = Environment.GetEnvironmentVariable("Path", EnvironmentVariableTarget.Machine) ?? string.Empty;
+        //if (path != null && !path.Contains(FolderPaths.ProgramFiles))
+        //    Environment.SetEnvironmentVariable("Path", path + ";" + FolderPaths.ProgramFiles, EnvironmentVariableTarget.Machine);
 
         //if (!Directory.Exists(FolderPaths.LocalAppData))
         //    _ = Directory.CreateDirectory(FolderPaths.LocalAppData);

@@ -1,12 +1,7 @@
 namespace CheetahToolbox.Modules;
 
-#region Using Statements
-using System;
-using System.Collections.Generic;
-using System.IO;
+using Commands;
 using System.Reflection;
-using System.Text;
-#endregion
 
 public static class ModuleManager
 {
@@ -56,10 +51,10 @@ public static class ModuleManager
                         foreach (Type type2 in types)
                         {
                             if (type2.BaseType == null || type2.BaseType.FullName == null) continue;
-                            if (!type2.BaseType.FullName.Equals(typeof(Commands.CommandBase).FullName, StringComparison.OrdinalIgnoreCase)) continue;
+                            if (!type2.BaseType.FullName.Equals(typeof(CommandBase).FullName, StringComparison.OrdinalIgnoreCase)) continue;
                             {
                                 if (type2 == null || string.IsNullOrEmpty(type2.FullName)) continue;
-                                if (assembly.CreateInstance(type2.FullName) is not Commands.CommandBase command) continue;
+                                if (assembly.CreateInstance(type2.FullName) is not CommandBase command) continue;
                                 module.Commands.Add(command);
                             }
                         }
@@ -79,34 +74,34 @@ public static class ModuleManager
         return null;
     }
 
-    internal static Commands.CommandResult? ExecuteCommand(string command, string[] cmdArgs)
+    internal static CommandResult? ExecuteCommand(CheetahToolbox toolbox, string command, string[] cmdArgs)
     {
         // TODO: Split commands by | and execute them in order, allowing for piping
         if (command.StartsWith('?'))
         {
             command = command[1..];
-            if (string.IsNullOrEmpty(command)) return new Commands.CommandResult(false, "No Module Specified");
+            if (string.IsNullOrEmpty(command)) return new(false, "No Module Specified");
 
             StringBuilder response = new();
 
             _ = response.Append($"Modules");
 
-            return new Commands.CommandResult(true, response.ToString());
+            return new(true, response.ToString());
         }
 
         foreach (ModuleBase module in Modules)
         {
-            foreach (Commands.CommandBase cmd in module.Commands)
+            foreach (CommandBase cmd in module.Commands)
             {
                 if (cmd.Name != null && !string.IsNullOrEmpty(cmd.Name))
                 {
                     if (cmd.Name.ToLowerInvariant().Equals(command.ToLowerInvariant(), StringComparison.OrdinalIgnoreCase))
                     {
-                        return cmd.Execute(new Commands.CommandContext(module, command, cmdArgs));
+                        return cmd.Execute(new(toolbox, module, command, cmdArgs));
                     }
                 }
             }
         }
-        return new Commands.CommandResult(false, $"Command Not Found: {command}");
+        return new(false, $"Command Not Found: {command}");
     }
 }

@@ -15,13 +15,10 @@ public static class ApplicationManager
     // TODO: Cache Locally Installed Programs
     private static readonly List<AppEntry> apps = [];
 
-    public static void Start()
+    public static void Init()
     {
-        Console.WriteLine("Application Manager Starting..");
-        Stopwatch sw = Stopwatch.StartNew();
-        Scan();
-        sw.Stop();
-        Console.WriteLine($"Application Manager Started: {sw.ElapsedMilliseconds}ms");
+        apps.Clear();
+        Console.WriteLine("Application Manager Initialized");
     }
 
     private static AppEntry? GetApp(string path)
@@ -48,16 +45,15 @@ public static class ApplicationManager
 
     private static void ScanAppFolder(string path)
     {
-        //Console.WriteLine($"Scanning App Folder: {path}");
-
         AppEntry? app = GetApp(path);
         if (app == null) return;
-
-        //Console.WriteLine($"Application Found: {app.Name}");
     }
 
-    private static void Scan()
+    public static void Scan()
     {
+        Console.WriteLine("Application Manager Scanning..");
+        Stopwatch sw = Stopwatch.StartNew();
+
         string startMenuPath = Environment.GetFolderPath(Environment.SpecialFolder.Programs);
         //Console.WriteLine($"Start Menu Path: {startMenuPath}");
 
@@ -114,7 +110,8 @@ public static class ApplicationManager
             ScanAppFolder(dir);
         }
 
-        Console.WriteLine($"Cached: {apps.Count} Applications");
+        sw.Stop();
+        Console.WriteLine($"Cached: {apps.Count} Applications: {sw.ElapsedMilliseconds}ms");
     }
 }
 #endif

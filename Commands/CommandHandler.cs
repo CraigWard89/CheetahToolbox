@@ -19,7 +19,7 @@ public class CommandHandler(Modules.ModuleBase module)
     {
     }
 
-    public CommandResult? HandleCommand(string command, string[] arguments)
+    public CommandResult? HandleCommand(CheetahToolbox toolbox, string command, string[] arguments)
     {
         if (string.IsNullOrEmpty(command))
             return new CommandResult(false, "Command is null or empty");
@@ -27,7 +27,7 @@ public class CommandHandler(Modules.ModuleBase module)
         foreach (CommandBase cmd in _commands)
         {
             if (cmd.Name == command)
-                return cmd.Execute(new CommandContext(Module, command, arguments));
+                return cmd.Execute(new(toolbox, Module, command, arguments));
         }
 
         return new CommandResult(false, $"Command not found: {command}");

@@ -4,32 +4,28 @@ namespace CheetahToolbox.OS.Windows;
 #region Using Statements
 using Exceptions;
 using Microsoft.Win32;
-using System;
 using System.Diagnostics;
 using System.Runtime.Versioning;
 #endregion
 
 /// <summary>
-/// WIP: This is a placeholder for now.
+/// Registry Manager
 /// </summary>
 public static class RegistryManager
 {
     private static readonly List<string> CLSID = [];
 
-    public static void Start()
+    public static void Init()
     {
-        Console.WriteLine("Registry Manager Starting..");
-        Stopwatch sw = Stopwatch.StartNew();
-#if WINDOWS
-        Scan();
-#endif
-        sw.Stop();
-        Console.WriteLine($"Registry Manager Started: {sw.ElapsedMilliseconds}ms");
+        CLSID.Clear();
+        Console.WriteLine("Registry Manager Initialized");
     }
 
     [SupportedOSPlatform("windows")]
     private static void Scan()
     {
+        Console.WriteLine("Registry Manager Scanning..");
+        Stopwatch sw = Stopwatch.StartNew();
         // WIP: Cache CLSID
         string[]? keys = Registry.ClassesRoot.GetSubKeyNames();
 
@@ -54,7 +50,7 @@ public static class RegistryManager
                 }
             }
 
-            RegistryKey? ckey = skey?.OpenSubKey("CLSID");
+            using RegistryKey? ckey = skey?.OpenSubKey("CLSID");
             if (ckey == null) return;
             string[]? cvalues = ckey.GetValueNames();
             if (cvalues == null) return;
@@ -74,9 +70,8 @@ public static class RegistryManager
             //CLSID.Add(key);
         }
 
-        Console.WriteLine($"Cached: {CLSID.Count} CLSIDs");
-
-
+        sw.Stop();
+        Console.WriteLine($"Cached: {CLSID.Count} CLSIDs: {sw.ElapsedMilliseconds}ms");
     }
 
     [SupportedOSPlatform("windows")]

@@ -1,8 +1,10 @@
 namespace CheetahToolbox.Commands;
 
 
-public class CommandContext(Modules.ModuleBase module, string name, string[] args)
+public class CommandContext(CheetahToolbox toolbox, Modules.ModuleBase module, string name, string[] args)
 {
+    public CheetahToolbox Toolbox { get; private set; } = toolbox;
+
     /// <summary>
     /// The module this command belongs to
     /// </summary>
