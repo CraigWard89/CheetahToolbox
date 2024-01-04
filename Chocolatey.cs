@@ -10,7 +10,7 @@ public static class Chocolatey
 {
     private static readonly List<AppEntry> appEntries = [];
 
-    public static string Version => NativeTerminal.Execute("choco", ["version"]);
+    public static string Version => NativeTerminal.Execute("choco", ["-v"]);
 
     /// <summary>
     /// WIP: Check if Chocolatey result is valid.
