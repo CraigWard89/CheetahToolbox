@@ -21,9 +21,7 @@ public static class RegistryManager
         Console.WriteLine("Registry Manager Starting..");
         Stopwatch sw = Stopwatch.StartNew();
 #if WINDOWS
-#pragma warning disable CA1416 // Validate platform compatibility
         Scan();
-#pragma warning restore CA1416 // Validate platform compatibility
 #endif
         sw.Stop();
         Console.WriteLine($"Registry Manager Started: {sw.ElapsedMilliseconds}ms");
