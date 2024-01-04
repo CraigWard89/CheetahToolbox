@@ -12,7 +12,8 @@ public class CheetahToolbox
 
     public CheetahToolbox(List<string> args)
     {
-        Console.WriteLine("CheetahToolbox");
+        Log.Level = Log.LogLevel.SUPER;
+        Log.Write("CheetahToolbox");
 
         if (Chocolatey.IsInstalled)
         {
@@ -21,9 +22,7 @@ public class CheetahToolbox
         }
 
 #if WINDOWS
-#pragma warning disable CA1416 // Validate platform compatibility
         Environment.Start();
-#pragma warning restore CA1416 // Validate platform compatibility
 #endif
         ApplicationManager.Start();
         RegistryManager.Start();
