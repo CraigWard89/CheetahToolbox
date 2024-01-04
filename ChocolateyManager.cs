@@ -6,17 +6,21 @@ public class ChocolateyManager
 {
     private readonly List<AppEntry> apps = [];
 
-    public string Version => NativeTerminal.Execute("choco", ["-v"]);
+    public string Version => NativeTerminal.Execute("choco", ["-v"]) ?? string.Empty;
 
     public bool IsInstalled
     {
         get
         {
-            string result = string.Empty;
+            string? result = null;
             try
             {
                 result = NativeTerminal.Execute("choco", ["-v"]);
-                return true;
+                if (result != null)
+                {
+                    return true;
+                }
+                return false;
             }
             catch
             {

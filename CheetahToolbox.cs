@@ -14,7 +14,7 @@ public class CheetahToolbox
     {
         Console.WriteLine("CheetahToolbox");
 
-        if (!Chocolatey.IsInstalled)
+        if (Chocolatey.IsInstalled)
         {
             Console.WriteLine($"Chocolatey {Chocolatey.Version}");
         }
