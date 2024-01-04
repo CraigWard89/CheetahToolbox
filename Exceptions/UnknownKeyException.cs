@@ -1,4 +1,4 @@
-namespace CheetahToolbox;
+namespace CheetahToolbox.Exceptions;
 
 #region Using Statements
 using System;

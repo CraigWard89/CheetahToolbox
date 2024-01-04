@@ -1,37 +1,40 @@
 namespace CheetahToolbox;
 
-#region Using Statements
 using CheetahUtils;
-using System;
-using System.Collections.Generic;
-#endregion
 
-public static class Chocolatey
+public class ChocolateyManager
 {
-    private static readonly List<AppEntry> appEntries = [];
+    private readonly List<AppEntry> apps = [];
 
-    public static string Version => NativeTerminal.Execute("choco", ["-v"]);
+    public string Version => NativeTerminal.Execute("choco", ["-v"]);
+
+    public ChocolateyManager()
+    {
+        Console.WriteLine($"Chocolatey Manager Starting..");
+
+        Console.WriteLine("Chocolatey Manager Started");
+    }
 
     /// <summary>
     /// WIP: Check if Chocolatey result is valid.
     /// </summary>
     /// <param name="line"></param>
     /// <returns></returns>
-    public static AppEntry? CheckResult(string line)
+    public AppEntry? CheckResult(string line)
     {
         List<string> lines = [.. line.Split(' ')];
         if (string.IsNullOrEmpty(lines[0])) return null;
         if (lines.Count != 2) return null;
 
-        return new AppEntry(lines[0], lines[0], AppSource.CHOCOLATEY);
+        return new AppEntry(lines[0], lines[0], AppEntry.AppSource.CHOCOLATEY);
     }
 
     /// <summary>
     /// WIP: Cache Programs installed by Chocolatey.
     /// </summary>
-    public static void CachePrograms()
+    public void CachePrograms()
     {
-        appEntries.Clear();
+        apps.Clear();
 
         string test = NativeTerminal.Execute("choco", ["list"]);
         List<string> tempList = [.. test.Split('\n')];
@@ -42,7 +45,7 @@ public static class Chocolatey
             AppEntry? item = CheckResult(temp);
             if (item != null)
             {
-                appEntries.Add(item);
+                apps.Add(item);
             }
         }
         Console.WriteLine($"Chocolatey has {tempList.Count} packages installed.");

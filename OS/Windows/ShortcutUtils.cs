@@ -1,4 +1,5 @@
-namespace CheetahToolbox;
+#if WINDOWS || WINDOWS_FAKE
+namespace CheetahToolbox.OS.Windows;
 
 using CheetahUtils;
 using System;
@@ -17,11 +18,10 @@ public static class ShortcutManager
         {
             //Console.WriteLine($"Start Menu File: {file}");
             if (ShortcutUtils.IsValid(file))
-            {
                 Console.WriteLine("File is a valid shortcut");
-            }
         }
 
         Console.WriteLine("Shortcut Scan Done");
     }
 }
+#endif

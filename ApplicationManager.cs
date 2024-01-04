@@ -34,7 +34,7 @@ public static class ApplicationManager
             foreach (string file in files)
             {
                 // WIP: Cache AppEntry
-                return new AppEntry(Path.GetFileNameWithoutExtension(file), null, AppSource.LOCAL);
+                return new AppEntry(Path.GetFileNameWithoutExtension(file), null, AppEntry.AppSource.LOCAL);
             }
             return null;
         }

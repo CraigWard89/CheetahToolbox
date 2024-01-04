@@ -1,14 +1,13 @@
-#if WINDOWS || EDITOR
-namespace CheetahToolbox;
+#if WINDOWS || WINDOWS_FAKE
+namespace CheetahToolbox.OS.Windows;
 
 #region Using Statements
+using Exceptions;
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.Runtime.Versioning;
 #endregion
-
-
 
 /// <summary>
 /// WIP: This is a placeholder for now.
@@ -28,14 +27,6 @@ public static class RegistryManager
 #endif
         sw.Stop();
         Console.WriteLine($"Registry Manager Started: {sw.ElapsedMilliseconds}ms");
-    }
-
-    public static string ComputerName
-    {
-        get
-        {
-            return "";
-        }
     }
 
     [SupportedOSPlatform("windows")]
@@ -108,9 +99,7 @@ public static class RegistryManager
                 //var uninstallString = subKey.GetValue("UninstallString")?.ToString();
 
                 if (!string.IsNullOrEmpty(displayName))
-                {
                     Console.WriteLine(displayName);
-                }
             }
         }
     }
@@ -125,22 +114,16 @@ public static class RegistryManager
         //string? uninstallString = subKey.GetValue("UninstallString")?.ToString();
 
         if (!string.IsNullOrEmpty(displayIcon) && !File.Exists(displayIcon))
-        {
             result = true;
-        }
 
         if (!string.IsNullOrEmpty(installLocation))
         {
             if (!Directory.Exists(installLocation))
-            {
                 result = true;
-            }
         }
 
         if (result && !string.IsNullOrEmpty(displayName))
-        {
             Console.WriteLine($"{displayName} - is a ghost app");
-        }
 
         return result;
     }

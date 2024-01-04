@@ -1,7 +1,13 @@
 namespace CheetahToolbox;
 
+using OS.Windows;
+
 public class CheetahToolbox
 {
+    public readonly CheetahEnvironment Environment = new();
+
+    public readonly ChocolateyManager Chocolatey = new();
+
     // TODO: CommandHandler
 
     public CheetahToolbox(List<string> args)
@@ -9,6 +15,7 @@ public class CheetahToolbox
         Console.WriteLine("CheetahToolbox");
         Console.WriteLine($"Chocolatey {Chocolatey.Version}");
 
+        Environment.Start();
         ApplicationManager.Start();
         RegistryManager.Start();
 
