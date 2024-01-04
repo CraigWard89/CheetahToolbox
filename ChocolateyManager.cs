@@ -8,6 +8,23 @@ public class ChocolateyManager
 
     public string Version => NativeTerminal.Execute("choco", ["-v"]);
 
+    public bool IsInstalled
+    {
+        get
+        {
+            string result = string.Empty;
+            try
+            {
+                result = NativeTerminal.Execute("choco", ["-v"]);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+    }
+
     public ChocolateyManager()
     {
         Console.WriteLine($"Chocolatey Manager Starting..");

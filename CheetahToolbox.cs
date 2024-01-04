@@ -13,7 +13,11 @@ public class CheetahToolbox
     public CheetahToolbox(List<string> args)
     {
         Console.WriteLine("CheetahToolbox");
-        Console.WriteLine($"Chocolatey {Chocolatey.Version}");
+
+        if (!Chocolatey.IsInstalled)
+        {
+            Console.WriteLine($"Chocolatey {Chocolatey.Version}");
+        }
 
 #if WINDOWS
 #pragma warning disable CA1416 // Validate platform compatibility
