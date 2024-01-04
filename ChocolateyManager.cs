@@ -4,6 +4,8 @@ using CheetahUtils;
 
 public class ChocolateyManager
 {
+    private static readonly string installCommand = "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))";
+
     private readonly List<AppEntry> apps = [];
 
     public string Version => NativeTerminal.Execute("choco", ["-v"]) ?? string.Empty;
@@ -33,6 +35,33 @@ public class ChocolateyManager
     {
         Console.WriteLine($"Chocolatey Manager Starting..");
 
+        if (!IsInstalled)
+        {
+            Console.WriteLine("Chocolatey is not installed.");
+            Console.WriteLine("Do you want to install it? Y / N: ");
+            ConsoleKeyInfo input = Console.ReadKey();
+
+            if (input.KeyChar is 'Y' or 'y')
+            {
+                string? result = NativeTerminal.Execute("pwsh", [installCommand]);
+                if (result == null)
+                {
+                    Console.WriteLine("Chocolatey Install Failed..");
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine(result);
+                }
+
+                Console.WriteLine("Chocolatey Installed");
+            }
+            else
+            {
+                Console.WriteLine("Chocolatey Install Skipped..");
+                return;
+            }
+        }
         Console.WriteLine("Chocolatey Manager Started");
     }
 
@@ -51,13 +80,14 @@ public class ChocolateyManager
     }
 
     /// <summary>
-    /// WIP: Cache Programs installed by Chocolatey.
+    /// Start the Chocolatey Manager
     /// </summary>
-    public void CachePrograms()
+    public void Start()
     {
         apps.Clear();
 
-        string test = NativeTerminal.Execute("choco", ["list"]);
+        string? test = NativeTerminal.Execute("choco", ["list"]);
+        if (test == null) return;
         List<string> tempList = [.. test.Split('\n')];
         tempList.RemoveAt(0);
 

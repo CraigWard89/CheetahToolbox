@@ -2,7 +2,7 @@ namespace CheetahToolbox.Modules.Core.Commands;
 
 using global::CheetahToolbox.Commands;
 
-public class Help() : CommandBase("help", "this menu")
+public class HelpCommand() : CommandBase("help", "this menu")
 {
     public override CommandResult Execute(CommandContext context)
     {

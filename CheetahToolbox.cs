@@ -17,6 +17,7 @@ public class CheetahToolbox
         if (Chocolatey.IsInstalled)
         {
             Console.WriteLine($"Chocolatey {Chocolatey.Version}");
+            Chocolatey.Start();
         }
 
 #if WINDOWS
