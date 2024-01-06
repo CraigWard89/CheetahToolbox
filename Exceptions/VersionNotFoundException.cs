@@ -1,10 +1,5 @@
 namespace CheetahToolbox.Exceptions;
 
-#region Using Statements
-using System;
-using System.Collections;
-#endregion
-
 public class VersionNotFoundException : Exception
 {
     public override IDictionary Data => base.Data;

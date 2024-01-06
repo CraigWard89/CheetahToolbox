@@ -1,9 +1,7 @@
-﻿#if WINDOWS || WINDOWS_FAKE
-namespace CheetahToolbox.Managers;
+#if WINDOWS || WINDOWS_FAKE
+namespace CheetahToolbox;
 
-#region Using Statements
 using Microsoft.Win32;
-#endregion
 
 public static class RegistryTweaker
 {

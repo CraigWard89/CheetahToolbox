@@ -1,8 +1,6 @@
 #if WINDOWS || EDITOR
 namespace CheetahToolbox.Managers;
 
-using System.Diagnostics;
-
 /// <summary>
 /// WIP: This is a placeholder for now.
 /// </summary>

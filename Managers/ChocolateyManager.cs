@@ -1,7 +1,5 @@
 namespace CheetahToolbox.Managers;
 
-using CheetahUtils;
-
 public class ChocolateyManager(ToolboxContext context) : ManagerBase(context, "Chocolatey")
 {
     private readonly List<AppEntry> apps = [];

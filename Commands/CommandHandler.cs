@@ -1,9 +1,5 @@
 namespace CheetahToolbox.Commands;
 
-#region Using Statements
-using System.Collections.Generic;
-#endregion
-
 public class CommandHandler(Modules.ModuleBase module)
 {
     public readonly Modules.ModuleBase Module = module;

@@ -1,10 +1,10 @@
 #if WINDOWS || WINDOWS_FAKE
 namespace CheetahToolbox.Managers;
 
+
 #region Using Statements
 using Exceptions;
 using Microsoft.Win32;
-using System.Diagnostics;
 #endregion
 
 /// <summary>
