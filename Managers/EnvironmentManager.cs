@@ -1,9 +1,19 @@
+/// ======================================================================
+///		CheetahToolbox: (https://github.com/CraigCraig/CheetahToolbox)
+///				Project:  Craig's CheetahToolbox a Swiss Army Knife
+///
+///
+///			Author: Craig Craig (https://github.com/CraigCraig)
+///		License:     MIT License (http://opensource.org/licenses/MIT)
+/// ======================================================================
 namespace CheetahToolbox.Managers;
+
+using Contexts;
 
 /// <summary>
 /// Contains information about the current environment.
 /// </summary>
-public class EnvironmentManager(ToolboxContext context) : ManagerBase(context, "Environment")
+public class EnvironmentManager : ManagerBase
 {
     public string UserName = Environment.UserName;
     public string MachineName = Environment.MachineName;
@@ -11,24 +21,33 @@ public class EnvironmentManager(ToolboxContext context) : ManagerBase(context, "
     public string Path = Environment.GetEnvironmentVariable("Path") ?? string.Empty;
     public string CurrentDirectory = Environment.CurrentDirectory;
 
-    //Console.WriteLine("Cheetah Environment Starting");
-    //Console.WriteLine("Settings Environment Variables");
-    //Console.WriteLine("==============================");
-    //Console.WriteLine($"UserName: {UserName}");
-    //Console.WriteLine($"MachineName: {MachineName}");
-    //Console.WriteLine($"MachineVersion: {MachineVersion}");
-    //Console.WriteLine("===============================");
-    //Console.WriteLine("Setting Paths");
+    public EnvironmentManager(ToolboxContext context) : base(context, "Environment")
+    {
+        Log.Write($"UserName: {UserName}");
+        Log.Write($"MachineName: {MachineName}");
+        Log.Write($"MachineVersion: {MachineVersion}");
+        //Log.Write($"Path: {Path}");
+        Log.Write($"CurrentDirectory: {CurrentDirectory}");
+    }
+
+    //Log.Write("Cheetah Environment Starting");
+    //Log.Write("Settings Environment Variables");
+    //Log.Write("==============================");
+    //Log.Write($"UserName: {UserName}");
+    //Log.Write($"MachineName: {MachineName}");
+    //Log.Write($"MachineVersion: {MachineVersion}");
+    //Log.Write("===============================");
+    //Log.Write("Setting Paths");
     //Path = Environment.GetEnvironmentVariable("PATH") ?? "";
     //RegistryKey? key = Registry.CurrentUser.OpenSubKey(GlobalStrings.InstallPath);
-    //Console.WriteLine(key);
+    //Log.Write(key);
     //if (key == null)
     //{
     //    key = Registry.CurrentUser.CreateSubKey(GlobalStrings.InstallPath);
-    //    Console.WriteLine(key);
+    //    Log.Write(key);
     //    if (key == null)
     //    {
-    //        Console.WriteLine("Error: Unable to create registry key");
+    //        Log.Write("Error: Unable to create registry key");
     //        return;
     //    }
     //    key.SetValue("InstallPath", InstallPath);
@@ -36,6 +55,6 @@ public class EnvironmentManager(ToolboxContext context) : ManagerBase(context, "
     //}
     //else
     //{
-    //    Console.WriteLine("Key Found");
+    //    Log.Write("Key Found");
     //}
 }

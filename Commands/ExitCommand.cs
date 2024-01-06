@@ -6,20 +6,16 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox.Managers;
 
-using Contexts;
+//namespace CheetahToolbox.Modules.Core.Commands;
 
-public abstract class ManagerBase
-{
-    public readonly string Name;
-    public readonly ToolboxContext Context;
-    public readonly Logger Log;
+//using global::CheetahToolbox.Commands;
 
-    public ManagerBase(ToolboxContext context, string name)
-    {
-        Name = name;
-        Context = context;
-        Log = new Logger($"{Name}");
-    }
-}
+//public class ExitCommand(ModuleBase module) : CommandBase(module, "exit", "quit the program")
+//{
+//    public override CommandResult Execute(string? subCommand, string[]? args)
+//    {
+//        Environment.Exit(0);
+//        return new CommandResult(true, "Exiting..");
+//    }
+//}

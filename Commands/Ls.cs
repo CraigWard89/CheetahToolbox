@@ -6,20 +6,21 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox.Managers;
+#if WIP
+namespace CheetahTerminal.Modules.Core.Commands;
 
-using Contexts;
+using System.IO;
+using CheetahTerminal.Commands;
 
-public abstract class ManagerBase
+public class Ls() : Command("ls", "")
 {
-    public readonly string Name;
-    public readonly ToolboxContext Context;
-    public readonly Logger Log;
-
-    public ManagerBase(ToolboxContext context, string name)
-    {
-        Name = name;
-        Context = context;
-        Log = new Logger($"{Name}");
-    }
+	public override CommandResult Execute(CommandContext context)
+	{
+		foreach (string entry in Directory.GetFileSystemEntries(Terminal.Environment.CurrentDirectory))
+		{
+			Terminal.Output.Add(entry);
+		}
+		return new CommandResult(true, "");
+	}
 }
+#endif

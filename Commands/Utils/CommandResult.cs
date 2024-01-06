@@ -6,20 +6,10 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox.Managers;
+namespace CheetahToolbox.Commands.Utils;
 
-using Contexts;
-
-public abstract class ManagerBase
+public class CommandResult(bool success = true, string message = "")
 {
-    public readonly string Name;
-    public readonly ToolboxContext Context;
-    public readonly Logger Log;
-
-    public ManagerBase(ToolboxContext context, string name)
-    {
-        Name = name;
-        Context = context;
-        Log = new Logger($"{Name}");
-    }
+    public bool Success { get; private set; } = success;
+    public string Message { get; private set; } = message;
 }

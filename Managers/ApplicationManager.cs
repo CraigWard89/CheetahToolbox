@@ -1,13 +1,28 @@
-#if WINDOWS || EDITOR
+/// ======================================================================
+///		CheetahToolbox: (https://github.com/CraigCraig/CheetahToolbox)
+///				Project:  Craig's CheetahToolbox a Swiss Army Knife
+///
+///
+///			Author: Craig Craig (https://github.com/CraigCraig)
+///		License:     MIT License (http://opensource.org/licenses/MIT)
+/// ======================================================================
+#if WINDOWS
 namespace CheetahToolbox.Managers;
+
+using Contexts;
 
 /// <summary>
 /// WIP: This is a placeholder for now.
 /// </summary>
-public class ApplicationManager(ToolboxContext context) : ManagerBase(context, "Applications")
+public class ApplicationManager : ManagerBase
 {
     // TODO: Cache Locally Installed Programs
     private static readonly List<AppEntry> apps = [];
+
+    public ApplicationManager(ToolboxContext context) : base(context, "Applications")
+    {
+        Log.Write($"Application Manager");
+    }
 
     private static AppEntry? GetApp(string path)
     {
@@ -19,7 +34,7 @@ public class ApplicationManager(ToolboxContext context) : ManagerBase(context, "
             foreach (string file in files)
             {
                 // WIP: Cache AppEntry
-                return new AppEntry(Path.GetFileNameWithoutExtension(file), null, file, AppEntry.AppSource.LOCAL);
+                return new AppEntry(Path.GetFileNameWithoutExtension(file), null, null, file, AppEntry.AppSource.LOCAL);
             }
             return null;
         }

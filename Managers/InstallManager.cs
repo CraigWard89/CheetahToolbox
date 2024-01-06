@@ -1,8 +1,17 @@
-#if WINDOWS || WINDOWS_FAKE
+/// ======================================================================
+///		CheetahToolbox: (https://github.com/CraigCraig/CheetahToolbox)
+///				Project:  Craig's CheetahToolbox a Swiss Army Knife
+///
+///
+///			Author: Craig Craig (https://github.com/CraigCraig)
+///		License:     MIT License (http://opensource.org/licenses/MIT)
+/// ======================================================================
+#if WINDOWS
 namespace CheetahToolbox.Managers;
 
-using System.Runtime.Versioning;
+using Contexts;
 using Microsoft.Win32;
+using System.Runtime.Versioning;
 
 public class InstallManager(ToolboxContext context) : ManagerBase(context, "Installer")
 {

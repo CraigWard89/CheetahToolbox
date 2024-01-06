@@ -6,20 +6,18 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox.Managers;
+namespace CheetahToolbox.Commands;
 
-using Contexts;
+using Attributes;
+using Utils;
 
-public abstract class ManagerBase
+[Command("Console", null, "Console Commands")]
+public class ConsoleCommands() : CommandBase()
 {
-    public readonly string Name;
-    public readonly ToolboxContext Context;
-    public readonly Logger Log;
-
-    public ManagerBase(ToolboxContext context, string name)
+    [Command("Clear", ["Clr"], "Clear the console")]
+    public static CommandResult? Clear()
     {
-        Name = name;
-        Context = context;
-        Log = new Logger($"{Name}");
+        Console.Clear();
+        return new CommandResult(true);
     }
 }

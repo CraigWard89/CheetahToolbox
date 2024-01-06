@@ -1,8 +1,16 @@
+/// ======================================================================
+///		CheetahToolbox: (https://github.com/CraigCraig/CheetahToolbox)
+///				Project:  Craig's CheetahToolbox a Swiss Army Knife
+///
+///
+///			Author: Craig Craig (https://github.com/CraigCraig)
+///		License:     MIT License (http://opensource.org/licenses/MIT)
+/// ======================================================================
 namespace CheetahToolbox;
 
-using Commands;
 using Exceptions;
-using System;
+using Contexts;
+using Commands.Utils;
 
 public class CheetahToolbox
 {
@@ -11,52 +19,70 @@ public class CheetahToolbox
 
     public CheetahToolbox(List<string> args)
     {
-        Log = new Logger("[CheetahToolbox]", Logger.LogLevel.WARNING);
-        Log.Write("test");
+        Log = new Logger("CheetahToolbox");
 
         Version version = typeof(CheetahToolbox).Assembly.GetName().Version ?? throw new VersionNotFoundException();
-        Console.WriteLine($"CheetahToolbox v{version}");
+        Log.Write($"CheetahToolbox v{version}");
 
         Context = new(this);
 
-        if (Context.Chocolatey.IsInstalled)
+#if WINDOWS
+        if (Context.Packages.Chocolatey.IsInstalled)
         {
-            Console.WriteLine($"Chocolatey {Context.Chocolatey.Version}");
+            Log.Write($"Chocolatey v{Context.Packages.Chocolatey.Version}");
         }
 
-        if (args.Count > 0)
+        if (Context.Packages.Scoop.IsInstalled)
         {
-            // WIP: Argument Parsing
-            Console.WriteLine("Arguments detected, parsing..");
+            Log.Write($"Scoop {Context.Packages.Scoop.Version}");
         }
 
-        while (true)
+        if (Context.Packages.Winget.IsInstalled)
         {
-            Console.Write(Prompt.Build(Context));
+            Log.Write($"Winget {Context.Packages.Winget.Version}");
+        }
+
+        if (Context.Packages.HasAny)
+        {
+            Log.Write("Package Managers Detected");
+            Log.Write("Would you like to auto update?");
+            Log.Write("Y/N");
             string? line = Console.ReadLine();
-
-            if (!string.IsNullOrEmpty(line))
+            if (line != null && line.Equals("y", StringComparison.OrdinalIgnoreCase))
             {
-                string[] split = line.Split(' ');
-                string command = split[0];
-                string[] arguments = split[1..];
-
-                CommandResult? result = Context.Modules.ExecuteCommand(command, arguments);
-                if (result == null) break;
-
-                Console.WriteLine(result.Message);
+                Context.Packages.Update();
             }
         }
-    }
-}
+#endif
 
-public static class Prompt
-{
-    public static string Build(ToolboxContext context)
-    {
-        string username = context.Environment.UserName;
-        string hostname = context.Environment.MachineName;
-        string current = context.Environment.CurrentDirectory;
-        return string.Join("", username, "@", hostname, $" {current} $ ");
+        // TODO: Command Flags (e.g. --help, --version, etc.)
+        if (args.Count > 0)
+        {
+            string command = args[0];
+            string[] arguments = args.Take(1).ToArray();
+            CommandResult? result = Context.Commands.HandleCommand(command, arguments);
+            if (result == null) return;
+            Log.Write(result.Message);
+        }
+        else
+        {
+            while (true)
+            {
+                Console.Write(Prompt.Build(Context));
+                string? line = Console.ReadLine();
+
+                if (!string.IsNullOrEmpty(line))
+                {
+                    string[] split = line.Split(' ');
+                    string command = split[0];
+                    string[] arguments = split[1..];
+
+                    CommandResult? result = Context.Commands.HandleCommand(command, arguments);
+                    if (result == null) break;
+
+                    Log.Write(result.Message);
+                }
+            }
+        }
     }
 }

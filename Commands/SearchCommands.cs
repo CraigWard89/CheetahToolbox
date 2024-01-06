@@ -6,20 +6,20 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox.Managers;
+#if DEBUG && EDITOR
+namespace CheetahToolbox.Commands;
 
-using Contexts;
+using Attributes;
+using Utils;
 
-public abstract class ManagerBase
+[Command]
+public class SearchCommands() : CommandBase()
 {
-    public readonly string Name;
-    public readonly ToolboxContext Context;
-    public readonly Logger Log;
+    [Command("Search")]
+    public static void Search() => Console.WriteLine("WIP: Coming Soon.."); // WIP: Search
 
-    public ManagerBase(ToolboxContext context, string name)
-    {
-        Name = name;
-        Context = context;
-        Log = new Logger($"{Name}");
-    }
+    // TODO: Search Files
+    // TODO: Search Registry
+    // TODO: Search Package Managers
 }
+#endif

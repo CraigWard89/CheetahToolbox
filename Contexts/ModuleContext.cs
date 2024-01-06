@@ -6,20 +6,14 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox.Managers;
+namespace CheetahToolbox.Contexts;
 
-using Contexts;
+using Modules;
 
-public abstract class ManagerBase
+public class ModuleContext : ToolboxContext
 {
-    public readonly string Name;
-    public readonly ToolboxContext Context;
-    public readonly Logger Log;
-
-    public ManagerBase(ToolboxContext context, string name)
+    public ModuleContext(CheetahToolbox toolbox, ModuleBase module) : base(toolbox)
     {
-        Name = name;
-        Context = context;
-        Log = new Logger($"{Name}");
+        Console.WriteLine($"ModuleContext: {GetType().FullName}");
     }
 }

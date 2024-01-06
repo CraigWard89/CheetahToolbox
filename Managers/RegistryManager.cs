@@ -1,49 +1,21 @@
-#if WINDOWS || WINDOWS_FAKE
+/// ======================================================================
+///		CheetahToolbox: (https://github.com/CraigCraig/CheetahToolbox)
+///				Project:  Craig's CheetahToolbox a Swiss Army Knife
+///
+///
+///			Author: Craig Craig (https://github.com/CraigCraig)
+///		License:     MIT License (http://opensource.org/licenses/MIT)
+/// ======================================================================
+/// Windows Registry Information
+/// https://renenyffenegger.ch/notes/Windows/registry/
+#if WINDOWS
 namespace CheetahToolbox.Managers;
 
 #region Using Statements
-using Exceptions;
+using Contexts;
+using Registry;
 using Microsoft.Win32;
 #endregion
-
-public static class RegistryUtils
-{
-    public static string? GetString(RegistryTarget target, string keyPath, string? valuePath = null)
-    {
-        RegistryKey? key = target switch
-        {
-            RegistryTarget.HKLM => Registry.LocalMachine.OpenSubKey(keyPath),
-            RegistryTarget.HKCU => Registry.CurrentUser.OpenSubKey(keyPath),
-            _ => throw new UnknownKeyException()
-        };
-
-        if (key != null)
-        {
-            if (key.GetValue(valuePath) is string value)
-            {
-                Console.WriteLine($"{keyPath} => {value}");
-                return value;
-            }
-            else
-            {
-                Console.WriteLine(key.Name);
-                return null;
-            }
-        }
-
-        return null;
-    }
-
-    public static void SetString(RegistryTarget target, string keyPath, string? valuePath, string? value)
-    {
-        // TODO: Implement
-    }
-}
-
-public enum RegistryTarget
-{
-    HKLM, HKCU
-}
 
 /// <summary>
 /// Registry Manager
@@ -54,13 +26,27 @@ public class RegistryManager : ManagerBase
 
     public RegistryManager(ToolboxContext context) : base(context, "Registry")
     {
-        string path = RegistryUtils.GetString(RegistryTarget.HKCU, GlobalStrings.RegistryInstallPath) ?? string.Empty;
-        Console.WriteLine($"Registry InstallPath: {path}");
+#if DEBUG && VERBOSE
+        // TODO: Move to commands
+        Log.Write($"Paint Desktop Version: {RegistryLocations.Desktop.PaintDesktopVersion.GetBool()}");
+        Log.Write($"Show Menu Delay: {RegistryLocations.Desktop.MenuShowDelay.GetInt()}");
 
+        //Log.Write($"Show Copilot Button: {RegistryLocations.Explorer.ShowCopilotButton.GetBool()}");
+        //Log.Write($"Show Hidden Files: {RegistryLocations.Explorer.ShowHiddenFiles.GetBool()}");
+        //Log.Write($"Show System Files: {RegistryLocations.Explorer.ShowSystemFiles.GetBool()}");
 
-        return;
-        //Console.WriteLine("Registry Manager Initializing..");
-        Stopwatch sw = Stopwatch.StartNew();
+        //int? paintDesktopVersion = RegistryUtils.GetInt(RegistryTarget.HKCU, RegistryLocations.Desktop.PaintDesktopVersion);
+        //if (paintDesktopVersion is not null)
+        //{
+        //    Log.Write($"PaintDesktopVersion: {paintDesktopVersion}");
+        //}
+
+        //string? menuShowDelay = RegistryUtils.GetString(RegistryTarget.HKCU, RegistryLocations.Desktop.MenuShowDelay);
+        //if (!string.IsNullOrEmpty(menuShowDelay))
+        //{
+        //    Log.Write($"MenuShowDelay: {menuShowDelay}");
+        //}
+#endif
 
         // Scan Root Key
         RegistryKey? root = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes\CLSID");
@@ -74,122 +60,132 @@ public class RegistryManager : ManagerBase
                 RegistryKey? skey = root.OpenSubKey(key);
                 if (skey?.GetValue(string.Empty) is string value)
                 {
-                    //Console.WriteLine($"{key} => {value}");
+                    CLSID.Add(key);
                 }
             }
-            //Console.WriteLine($"[RegistryManager] Cached: {CLSID.Count} CSLID");
+            Log.Write($"[RegistryManager] Cached: {CLSID.Count} CSLID");
         }
 
-        // Census
-        RegistryKey? census = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Census");
-        if (census != null)
-        {
-            if (census?.GetValue("StartTimeBin") is long startTimeBin)
-            {
-                string startTime = new DateTime(startTimeBin).ToString();
-            }
-        }
+        //string installPath = RegistryUtils.GetString(RegistryTarget.HKCU, RegistryLocations.InstallPath) ?? string.Empty;
+        //Log.Write($"Registry InstallPath: {installPath}");
 
-        // Privacy
-        RegistryKey? privacy = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Privacy");
-        if (privacy != null)
-        {
-            if (privacy?.GetValue("TailoredExperiencesWithDiagnosticDataEnabled") is int tailoredExperiencesWithDiagnosticDataEnabled)
-            {
-                if (tailoredExperiencesWithDiagnosticDataEnabled == 1)
-                    tailoredExperiencesWithDiagnosticDataEnabled = 0;
-            }
-        }
+        // Test Setting InstallPath
+        //RegistryUtils.SetString(RegistryTarget.HKCU, RegistryLocations.InstallPath, "test");
 
-        // Desktop Settings
-        RegistryKey? desktop = Registry.CurrentUser.OpenSubKey("Control Panel\\Desktop");
-        if (desktop != null)
-        {
-            string[] values = desktop.GetValueNames();
-            foreach (string value in values)
-            {
-                //Console.WriteLine($"{value}");
+        return;
+        ////Log.Write("Registry Manager Initializing..");
+        //Stopwatch sw = Stopwatch.StartNew();
 
-                if (desktop.GetValue(value) is string data)
-                {
-                    //Console.WriteLine($"{data}");
-                }
+        //// Census
+        //RegistryKey? census = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Census");
+        //if (census != null)
+        //{
+        //    if (census?.GetValue("StartTimeBin") is long startTimeBin)
+        //    {
+        //        string startTime = new DateTime(startTimeBin).ToString();
+        //    }
+        //}
 
-                if (desktop.GetValue(value) is int data2)
-                {
-                    //Console.WriteLine($"{data2}");
-                }
-            }
-        }
+        //// Privacy
+        //RegistryKey? privacy = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Privacy");
+        //if (privacy != null)
+        //{
+        //    if (privacy?.GetValue("TailoredExperiencesWithDiagnosticDataEnabled") is int tailoredExperiencesWithDiagnosticDataEnabled)
+        //    {
+        //        if (tailoredExperiencesWithDiagnosticDataEnabled == 1)
+        //            tailoredExperiencesWithDiagnosticDataEnabled = 0;
+        //    }
+        //}
 
-        if (RegistryTweaker.PaintDesktopVersion)
-        {
-            //Console.WriteLine("PaintDesktopVersion is Enabled");
-        }
+        //// Desktop Settings
+        //RegistryKey? desktop = Registry.CurrentUser.OpenSubKey("Control Panel\\Desktop");
+        //if (desktop != null)
+        //{
+        //    string[] values = desktop.GetValueNames();
+        //    foreach (string value in values)
+        //    {
+        //        //Log.Write($"{value}");
 
-        // Check Advertising Info
-        if (RegistryTweaker.AdvertisingInfo)
-        {
-            //Console.WriteLine("AdvertisingInfo is Enabled");
-        }
+        //        if (desktop.GetValue(value) is string data)
+        //        {
+        //            //Log.Write($"{data}");
+        //        }
 
-        //Console.WriteLine("================");
-        // Check Startup
-        RegistryKey? startupKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
-        if (startupKey != null)
-        {
-            //Console.WriteLine(startupKey.Name);
-            foreach (string valueName in startupKey.GetValueNames())
-            {
-                //Console.WriteLine($"{valueName} -> {startupKey.GetValue(valueName)}");
-            }
-        }
+        //        if (desktop.GetValue(value) is int data2)
+        //        {
+        //            //Log.Write($"{data2}");
+        //        }
+        //    }
+        //}
 
-        //Console.WriteLine("================");
-        // Uninstall Entries
-        List<RegistryKey> toCheck = [];
-        toCheck.Add(Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall") ?? throw new UnknownKeyException());
-        toCheck.Add(Registry.CurrentUser.OpenSubKey(@"Software\\Microsoft\Windows\CurrentVersion\Uninstall") ?? throw new UnknownKeyException());
+        //if (RegistryTweaker.PaintDesktopVersion)
+        //{
+        //    //Log.Write("PaintDesktopVersion is Enabled");
+        //}
 
-        foreach (RegistryKey root2 in toCheck)
-        {
-            foreach (string subKeyName in root2.GetSubKeyNames())
-            {
-                RegistryKey? subKey = root2.OpenSubKey(subKeyName);
-                if (subKey != null)
-                {
-                    string? displayName = subKey.GetValue("DisplayName")?.ToString();
+        //// Check Advertising Info
+        //if (RegistryTweaker.AdvertisingInfo)
+        //{
+        //    //Log.Write("AdvertisingInfo is Enabled");
+        //}
 
-                    if (string.IsNullOrEmpty(displayName))
-                        //Console.WriteLine($"Name for {subKey.Name} was NULL, using Key name");
-                        displayName = subKey.Name;
+        ////Log.Write("================");
+        //// Check Startup
+        //RegistryKey? startupKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+        //if (startupKey != null)
+        //{
+        //    //Log.Write(startupKey.Name);
+        //    foreach (string valueName in startupKey.GetValueNames())
+        //    {
+        //        //Log.Write($"{valueName} -> {startupKey.GetValue(valueName)}");
+        //    }
+        //}
 
-                    string? displayIcon = subKey.GetValue("DisplayIcon")?.ToString();
-                    if (string.IsNullOrEmpty(displayIcon))
-                    {
-                        //Console.WriteLine($"DisplayIcon not set for {displayName}");
-                    }
+        ////Log.Write("================");
+        //// Uninstall Entries
+        //List<RegistryKey> toCheck = [];
+        //toCheck.Add(Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall") ?? throw new UnknownKeyException());
+        //toCheck.Add(Registry.CurrentUser.OpenSubKey(@"Software\\Microsoft\Windows\CurrentVersion\Uninstall") ?? throw new UnknownKeyException());
 
-                    string? installLocation = subKey.GetValue("InstallLocation")?.ToString();
-                    if (string.IsNullOrEmpty(installLocation))
-                    {
-                        //Console.WriteLine($"InstallLocation not set for {displayName}");
-                    }
-                    else
-                    {
-                        if (!Directory.Exists(installLocation) && !File.Exists(installLocation))
-                        {
-                            //Console.WriteLine($"Invalid Install Path: {installLocation}");
-                        }
-                    }
-                }
-            }
-        }
+        //foreach (RegistryKey root2 in toCheck)
+        //{
+        //    foreach (string subKeyName in root2.GetSubKeyNames())
+        //    {
+        //        RegistryKey? subKey = root2.OpenSubKey(subKeyName);
+        //        if (subKey != null)
+        //        {
+        //            string? displayName = subKey.GetValue("DisplayName")?.ToString();
 
-        sw.Stop();
+        //            if (string.IsNullOrEmpty(displayName))
+        //                //Log.Write($"Name for {subKey.Name} was NULL, using Key name");
+        //                displayName = subKey.Name;
+
+        //            string? displayIcon = subKey.GetValue("DisplayIcon")?.ToString();
+        //            if (string.IsNullOrEmpty(displayIcon))
+        //            {
+        //                //Log.Write($"DisplayIcon not set for {displayName}");
+        //            }
+
+        //            string? installLocation = subKey.GetValue("InstallLocation")?.ToString();
+        //            if (string.IsNullOrEmpty(installLocation))
+        //            {
+        //                //Log.Write($"InstallLocation not set for {displayName}");
+        //            }
+        //            else
+        //            {
+        //                if (!Directory.Exists(installLocation) && !File.Exists(installLocation))
+        //                {
+        //                    //Log.Write($"Invalid Install Path: {installLocation}");
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+
+        //sw.Stop();
     }
 
-    private static bool CheckUninstallEntry(RegistryKey subKey)
+    private bool CheckUninstallEntry(RegistryKey subKey)
     {
         bool result = false;
         string? displayName = subKey.GetValue("DisplayName")?.ToString();
@@ -206,8 +202,7 @@ public class RegistryManager : ManagerBase
                 result = true;
         }
 
-        if (result && !string.IsNullOrEmpty(displayName))
-            Console.WriteLine($"{displayName} - is a ghost app");
+        if (result && !string.IsNullOrEmpty(displayName)) Log.Write($"{displayName} - is a ghost app");
 
         return result;
     }
