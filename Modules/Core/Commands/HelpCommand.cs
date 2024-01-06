@@ -2,12 +2,12 @@ namespace CheetahToolbox.Modules.Core.Commands;
 
 using global::CheetahToolbox.Commands;
 
-public class HelpCommand() : CommandBase("help", "this menu")
+public class HelpCommand(ModuleBase module) : CommandBase(module, "help", "this menu")
 {
-    public override CommandResult Execute(CommandContext context)
+    public override CommandResult Execute(string? subCommand, string[]? args)
     {
         StringBuilder sb = new();
-        foreach (ModuleBase module in ModuleManager.Modules)
+        foreach (ModuleBase module in Module.Toolbox.Context.Modules.Modules)
         {
             _ = sb.Append($"Module: {module.Info.Name}{Environment.NewLine}");
 

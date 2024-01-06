@@ -1,44 +1,38 @@
 namespace CheetahToolbox;
 
 using Commands;
-using Modules;
-using OS.Windows;
+using Exceptions;
 using System;
 
 public class CheetahToolbox
 {
-    public readonly CheetahEnvironment Environment = new();
-
-    public readonly ChocolateyManager Chocolatey = new();
+    public readonly ToolboxContext Context;
+    public readonly Logger Log;
 
     public CheetahToolbox(List<string> args)
     {
-        Log.Level = Log.LogLevel.SUPER;
-        Log.Write("CheetahToolbox");
+        Log = new Logger("[CheetahToolbox]", Logger.LogLevel.WARNING);
+        Log.Write("test");
 
-#if WINDOWS
-        Environment.Start();
-#endif
+        Version version = typeof(CheetahToolbox).Assembly.GetName().Version ?? throw new VersionNotFoundException();
+        Console.WriteLine($"CheetahToolbox v{version}");
 
-        ApplicationManager.Init();
-        RegistryManager.Init();
+        Context = new(this);
 
-        ModuleManager.Start();
-
-        if (Chocolatey.IsInstalled)
+        if (Context.Chocolatey.IsInstalled)
         {
-            Console.WriteLine($"Chocolatey {Chocolatey.Version}");
+            Console.WriteLine($"Chocolatey {Context.Chocolatey.Version}");
         }
 
-        // WIP: Better Prompt
-
-        string username = Environment.UserName;
-        string hostname = Environment.MachineName;
-        string prompt = string.Join("", username, "@", hostname, " $ ");
+        if (args.Count > 0)
+        {
+            // WIP: Argument Parsing
+            Console.WriteLine("Arguments detected, parsing..");
+        }
 
         while (true)
         {
-            Console.Write(prompt);
+            Console.Write(Prompt.Build(Context));
             string? line = Console.ReadLine();
 
             if (!string.IsNullOrEmpty(line))
@@ -47,11 +41,21 @@ public class CheetahToolbox
                 string command = split[0];
                 string[] arguments = split[1..];
 
-                CommandResult? result = ModuleManager.ExecuteCommand(this, command, arguments);
+                CommandResult? result = Context.Modules.ExecuteCommand(command, arguments);
                 if (result == null) break;
 
                 Console.WriteLine(result.Message);
             }
         }
+    }
+}
+
+public static class Prompt
+{
+    public static string Build(ToolboxContext context)
+    {
+        string username = context.Environment.UserName;
+        string hostname = context.Environment.MachineName;
+        return string.Join("", username, "@", hostname, " $ ");
     }
 }

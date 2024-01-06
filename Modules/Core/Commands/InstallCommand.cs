@@ -2,20 +2,37 @@
 namespace CheetahToolbox.Modules.Core.Commands;
 
 using global::CheetahToolbox.Commands;
+using System;
 
-public class InstallCommand() : CommandBase("install", "Install CheetahToolbox to this machine")
+/// <summary>
+/// Attribute to mark a command as requiring admin privileges to be executed.
+/// </summary>
+[AttributeUsage(AttributeTargets.Class)]
+public class AdminRequiredAttribute() : Attribute();
+
+[AdminRequired]
+public class InstallCommand(ModuleBase module) : CommandBase(module, "install", "Install CheetahToolbox to this machine")
 {
-    public override CommandResult Execute(CommandContext context)
+    public override CommandResult Execute(string? subCommand, string[]? args)
     {
-        string path = Path.Combine(FolderPaths.ProgramFiles, "CheetahToolbox");
-        Console.WriteLine(path);
+        if (string.IsNullOrEmpty(subCommand)) return new CommandResult(false, "No argument provided");
 
-        if (!context.Toolbox.Chocolatey.IsInstalled)
+        switch (subCommand)
         {
-            context.Toolbox.Chocolatey.Install();
+            case "toolbox":
+                Module.Toolbox.Context.Installer.Execute();
+                break;
+            case "chocolatey":
+                if (Module.Toolbox.Context.Chocolatey != null && !Module.Toolbox.Context.Chocolatey.IsInstalled)
+                {
+                    Log.Write("Installing Chocolatey, Please Wait..");
+                    Module.Toolbox.Context.Chocolatey.Install();
+                    return new CommandResult(true);
+                }
+                break;
+            default:
+                return new CommandResult(false, "Invalid argument");
         }
-
-        OS.Windows.Installer.Start();
 
         return new CommandResult(true);
     }

@@ -27,7 +27,9 @@ public class CommandHandler(Modules.ModuleBase module)
         foreach (CommandBase cmd in _commands)
         {
             if (cmd.Name == command)
-                return cmd.Execute(new(toolbox, Module, command, arguments));
+            {
+                return cmd.Execute(command, arguments);
+            }
         }
 
         return new CommandResult(false, $"Command not found: {command}");

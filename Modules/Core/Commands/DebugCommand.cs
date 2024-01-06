@@ -2,15 +2,13 @@ namespace CheetahToolbox.Modules.Core.Commands;
 
 using global::CheetahToolbox.Commands;
 
-public class DebugCommand() : CommandBase("debug", "debug command")
+public class DebugCommand(ModuleBase module) : CommandBase(module, "debug", "debug command")
 {
-    public override CommandResult Execute(CommandContext context)
+    public override CommandResult Execute(string? subCommand, string[]? args)
     {
         StringBuilder output = new();
         _ = output.AppendLine("Debug: ");
-        _ = output.AppendLine($"Modules Count: {ModuleManager.ModuleCount}");
-        _ = output.AppendLine($"Commands Count: {ModuleManager.CommandCount}");
-
+        _ = output.AppendLine($"  Module: {Module.Info.Name}");
         return new CommandResult(true, output.ToString());
     }
 }

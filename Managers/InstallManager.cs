@@ -1,30 +1,30 @@
 #if WINDOWS || WINDOWS_FAKE
-namespace CheetahToolbox.OS.Windows;
+namespace CheetahToolbox.Managers;
 
 using System.Runtime.Versioning;
 using Microsoft.Win32;
 
-public static class Installer
+public class InstallManager(ToolboxContext context) : ManagerBase(context, "Installer")
 {
     [SupportedOSPlatform("windows")]
     public static bool IsInstalled => Environment.CurrentDirectory.Equals(FolderPaths.ProgramFiles, StringComparison.Ordinal);
 
     [SupportedOSPlatform("windows")]
-    public static void Start()
+    public void Execute()
     {
-        Log.Write("Installing CheetahTerminal..");
+        Console.WriteLine("Installing CheetahTerminal..");
         RegistryKey? key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\CheetahTerminal");
         if (key == null)
         {
             key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\CheetahTerminal");
             if (key != null)
             {
-                Console.WriteLine($"Key Found: {key}");
+                //Console.WriteLine($"Key Found: {key}");
             }
             else
             {
                 key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\CheetahTerminal");
-                Console.WriteLine($"Key Created: {key}");
+                //Console.WriteLine($"Key Created: {key}");
             }
 
             string? value = key.GetValue(key.Name) as string;
@@ -32,10 +32,11 @@ public static class Installer
             if (!string.IsNullOrEmpty(value))
             {
                 Console.WriteLine($"Found: {value}");
+                key.SetValue("InstallPath", FolderPaths.ProgramFiles);
             }
-
+            //Console.WriteLine($"Found: {value}");
             //key.SetValue("InstallPath", FolderPaths.ProgramFiles);
-            Console.WriteLine($"Registry Entry: {key}");
+            //Console.WriteLine($"Registry Entry: {key}");
         }
 
         //key.SetValue("InstallPath", FolderPaths.ProgramFiles);

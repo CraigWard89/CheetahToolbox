@@ -1,15 +1,16 @@
-namespace CheetahToolbox.Modules;
+namespace CheetahToolbox.Managers;
 
+using Modules;
 using Commands;
 using System.Reflection;
 
-public static class ModuleManager
+public class ModuleManager : ManagerBase
 {
-    public static List<ModuleBase> Modules { get; private set; } = [];
+    public List<ModuleBase> Modules { get; private set; } = [];
 
-    public static int ModuleCount => Modules.Count;
+    public int ModuleCount => Modules.Count;
 
-    public static int CommandCount
+    public int CommandCount
     {
         get
         {
@@ -22,7 +23,7 @@ public static class ModuleManager
         }
     }
 
-    public static void Start()
+    public ModuleManager(ToolboxContext context) : base(context, "Modules")
     {
         string modulesPath = FolderPaths.Modules;
         if (!Directory.Exists(modulesPath)) _ = Directory.CreateDirectory(modulesPath);
@@ -37,14 +38,15 @@ public static class ModuleManager
             Type[] types = assembly.GetTypes();
             foreach (Type type in types)
             {
+                Console.WriteLine(type.Name);
                 if (type.BaseType == null || type.BaseType.FullName == null) continue;
                 if (type.BaseType.FullName.Equals(typeof(ModuleBase).FullName, StringComparison.OrdinalIgnoreCase))
                 {
                     if (type == null || string.IsNullOrEmpty(type.FullName)) continue;
                     if (assembly.FullName == null) continue;
-                    if (assembly.CreateInstance(type.FullName) is ModuleBase module)
+                    if (Activator.CreateInstance(type, context) is ModuleBase module)
                     {
-                        module.Initialize();
+                        //module.Initialize();
                         Modules.Add(module);
 
                         // Add Commands from Modules Namespace
@@ -54,7 +56,7 @@ public static class ModuleManager
                             if (!type2.BaseType.FullName.Equals(typeof(CommandBase).FullName, StringComparison.OrdinalIgnoreCase)) continue;
                             {
                                 if (type2 == null || string.IsNullOrEmpty(type2.FullName)) continue;
-                                if (assembly.CreateInstance(type2.FullName) is not CommandBase command) continue;
+                                if (Activator.CreateInstance(type2, module) is not CommandBase command) continue;
                                 module.Commands.Add(command);
                             }
                         }
@@ -64,17 +66,17 @@ public static class ModuleManager
         }
     }
 
-    public static ModuleBase? GetModule(string command)
+    public ModuleBase? GetModule(string command)
     {
         foreach (ModuleBase module in Modules)
         {
-            if (module.Info.Name == command)
+            if (module.Info.Name.Equals(command, StringComparison.OrdinalIgnoreCase))
                 return module;
         }
         return null;
     }
 
-    internal static CommandResult? ExecuteCommand(CheetahToolbox toolbox, string command, string[] cmdArgs)
+    internal CommandResult? ExecuteCommand(string command, string[] cmdArgs)
     {
         // TODO: Split commands by | and execute them in order, allowing for piping
         if (command.StartsWith('?'))
@@ -96,9 +98,7 @@ public static class ModuleManager
                 if (cmd.Name != null && !string.IsNullOrEmpty(cmd.Name))
                 {
                     if (cmd.Name.ToLowerInvariant().Equals(command.ToLowerInvariant(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        return cmd.Execute(new(toolbox, module, command, cmdArgs));
-                    }
+                        return cmd.Execute(command, cmdArgs);
                 }
             }
         }

@@ -1,25 +1,15 @@
 #if WINDOWS || EDITOR
-namespace CheetahToolbox;
+namespace CheetahToolbox.Managers;
 
 using System.Diagnostics;
-
-public static class KnownApplications
-{
-}
 
 /// <summary>
 /// WIP: This is a placeholder for now.
 /// </summary>
-public static class ApplicationManager
+public class ApplicationManager(ToolboxContext context) : ManagerBase(context, "Applications")
 {
     // TODO: Cache Locally Installed Programs
     private static readonly List<AppEntry> apps = [];
-
-    public static void Init()
-    {
-        apps.Clear();
-        Console.WriteLine("Application Manager Initialized");
-    }
 
     private static AppEntry? GetApp(string path)
     {
@@ -31,7 +21,7 @@ public static class ApplicationManager
             foreach (string file in files)
             {
                 // WIP: Cache AppEntry
-                return new AppEntry(Path.GetFileNameWithoutExtension(file), null, AppEntry.AppSource.LOCAL);
+                return new AppEntry(Path.GetFileNameWithoutExtension(file), null, file, AppEntry.AppSource.LOCAL);
             }
             return null;
         }

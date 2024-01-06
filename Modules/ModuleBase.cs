@@ -1,5 +1,6 @@
 namespace CheetahToolbox.Modules;
 
+using Commands;
 using System.Collections.Generic;
 
 /// <summary>
@@ -7,10 +8,9 @@ using System.Collections.Generic;
 /// </summary>
 /// <param name="name"></param>
 /// <param name="description"></param>
-public class ModuleBase(ModuleInfo info)
+public class ModuleBase(CheetahToolbox toolbox, ModuleInfo info)
 {
+    public CheetahToolbox Toolbox { get; private set; } = toolbox;
     public ModuleInfo Info { get; private set; } = info;
-    public List<Commands.CommandBase> Commands { get; private set; } = [];
-
-    internal void Initialize() => Console.WriteLine($"Module: {Info.Name} initialized.");
+    public List<CommandBase> Commands { get; private set; } = [];
 }

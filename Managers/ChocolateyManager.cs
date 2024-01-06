@@ -1,11 +1,9 @@
-namespace CheetahToolbox;
+namespace CheetahToolbox.Managers;
 
 using CheetahUtils;
 
-public class ChocolateyManager
+public class ChocolateyManager(ToolboxContext context) : ManagerBase(context, "Chocolatey")
 {
-    private static readonly string installCommand = "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))";
-
     private readonly List<AppEntry> apps = [];
 
     public string Version => NativeTerminal.Execute("choco", ["-v"]) ?? string.Empty;
@@ -19,9 +17,7 @@ public class ChocolateyManager
             {
                 result = NativeTerminal.Execute("choco", ["-v"]);
                 if (result != null)
-                {
                     return true;
-                }
                 return false;
             }
             catch
@@ -31,12 +27,7 @@ public class ChocolateyManager
         }
     }
 
-    public ChocolateyManager()
-    {
-        Console.WriteLine("Chocolatey Manager Initialized");
-    }
-
-    public void Uninstall()
+    public static void Uninstall()
     {
         // TODO: Remove Folders
 
@@ -61,13 +52,11 @@ public class ChocolateyManager
 
             string? result = NativeTerminal.Execute("pwsh", ["-Command", "Get-ExecutionPolicy"]);
             if (!string.IsNullOrEmpty(result))
-            {
                 Console.WriteLine(result);
-            }
 
             if (input.KeyChar is 'Y' or 'y')
             {
-                string[] lines = installCommand.Split(';');
+                string[] lines = GlobalStrings.Chocolatey.InstallCommand.Split(';');
 
                 foreach (string line in lines)
                 {
@@ -119,7 +108,7 @@ public class ChocolateyManager
         if (string.IsNullOrEmpty(lines[0])) return null;
         if (lines.Count != 2) return null;
 
-        return new AppEntry(lines[0], lines[0], AppEntry.AppSource.CHOCOLATEY);
+        return new AppEntry(lines[0], lines[0], null, AppEntry.AppSource.CHOCOLATEY);
     }
 
     /// <summary>
@@ -138,9 +127,7 @@ public class ChocolateyManager
         {
             AppEntry? item = CheckResult(temp);
             if (item != null)
-            {
                 apps.Add(item);
-            }
         }
         Console.WriteLine($"Chocolatey has {tempList.Count} packages installed.");
     }
