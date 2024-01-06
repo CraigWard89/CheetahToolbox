@@ -8,9 +8,9 @@ using System.Collections.Generic;
 /// </summary>
 /// <param name="name"></param>
 /// <param name="description"></param>
-public class ModuleBase(CheetahToolbox toolbox, ModuleInfo info)
+public class ModuleBase(ToolboxContext context, ModuleInfo info)
 {
-    public CheetahToolbox Toolbox { get; private set; } = toolbox;
+    public ToolboxContext Context { get; private set; } = context;
     public ModuleInfo Info { get; private set; } = info;
     public List<CommandBase> Commands { get; private set; } = [];
 }

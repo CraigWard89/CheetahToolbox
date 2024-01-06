@@ -35,6 +35,7 @@ public class ApplicationManager(ToolboxContext context) : ManagerBase(context, "
     {
         AppEntry? app = GetApp(path);
         if (app == null) return;
+        apps.Add(app);
     }
 
     public static void Scan()

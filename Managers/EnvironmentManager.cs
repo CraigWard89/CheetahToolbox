@@ -9,6 +9,7 @@ public class EnvironmentManager(ToolboxContext context) : ManagerBase(context, "
     public string MachineName = Environment.MachineName;
     public string MachineVersion = Environment.OSVersion.VersionString;
     public string Path = Environment.GetEnvironmentVariable("Path") ?? string.Empty;
+    public string CurrentDirectory = Environment.CurrentDirectory;
 
     //Console.WriteLine("Cheetah Environment Starting");
     //Console.WriteLine("Settings Environment Variables");

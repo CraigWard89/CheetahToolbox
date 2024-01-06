@@ -20,13 +20,13 @@ public class InstallCommand(ModuleBase module) : CommandBase(module, "install", 
         switch (subCommand)
         {
             case "toolbox":
-                Module.Toolbox.Context.Installer.Execute();
+                Module.Context.Installer.Execute();
                 break;
             case "chocolatey":
-                if (Module.Toolbox.Context.Chocolatey != null && !Module.Toolbox.Context.Chocolatey.IsInstalled)
+                if (Module.Context.Chocolatey != null && !Module.Context.Chocolatey.IsInstalled)
                 {
                     Log.Write("Installing Chocolatey, Please Wait..");
-                    Module.Toolbox.Context.Chocolatey.Install();
+                    Module.Context.Chocolatey.Install();
                     return new CommandResult(true);
                 }
                 break;

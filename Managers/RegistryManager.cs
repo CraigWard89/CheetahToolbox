@@ -1,11 +1,49 @@
 #if WINDOWS || WINDOWS_FAKE
 namespace CheetahToolbox.Managers;
 
-
 #region Using Statements
 using Exceptions;
 using Microsoft.Win32;
 #endregion
+
+public static class RegistryUtils
+{
+    public static string? GetString(RegistryTarget target, string keyPath, string? valuePath = null)
+    {
+        RegistryKey? key = target switch
+        {
+            RegistryTarget.HKLM => Registry.LocalMachine.OpenSubKey(keyPath),
+            RegistryTarget.HKCU => Registry.CurrentUser.OpenSubKey(keyPath),
+            _ => throw new UnknownKeyException()
+        };
+
+        if (key != null)
+        {
+            if (key.GetValue(valuePath) is string value)
+            {
+                Console.WriteLine($"{keyPath} => {value}");
+                return value;
+            }
+            else
+            {
+                Console.WriteLine(key.Name);
+                return null;
+            }
+        }
+
+        return null;
+    }
+
+    public static void SetString(RegistryTarget target, string keyPath, string? valuePath, string? value)
+    {
+        // TODO: Implement
+    }
+}
+
+public enum RegistryTarget
+{
+    HKLM, HKCU
+}
 
 /// <summary>
 /// Registry Manager
@@ -14,9 +52,13 @@ public class RegistryManager : ManagerBase
 {
     private readonly List<string> CLSID = [];
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "<Pending>")]
     public RegistryManager(ToolboxContext context) : base(context, "Registry")
     {
+        string path = RegistryUtils.GetString(RegistryTarget.HKCU, GlobalStrings.RegistryInstallPath) ?? string.Empty;
+        Console.WriteLine($"Registry InstallPath: {path}");
+
+
+        return;
         //Console.WriteLine("Registry Manager Initializing..");
         Stopwatch sw = Stopwatch.StartNew();
 

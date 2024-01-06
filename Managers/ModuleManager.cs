@@ -38,7 +38,6 @@ public class ModuleManager : ManagerBase
             Type[] types = assembly.GetTypes();
             foreach (Type type in types)
             {
-                Console.WriteLine(type.Name);
                 if (type.BaseType == null || type.BaseType.FullName == null) continue;
                 if (type.BaseType.FullName.Equals(typeof(ModuleBase).FullName, StringComparison.OrdinalIgnoreCase))
                 {

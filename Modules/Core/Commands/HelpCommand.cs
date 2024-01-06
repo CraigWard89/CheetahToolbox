@@ -7,7 +7,7 @@ public class HelpCommand(ModuleBase module) : CommandBase(module, "help", "this 
     public override CommandResult Execute(string? subCommand, string[]? args)
     {
         StringBuilder sb = new();
-        foreach (ModuleBase module in Module.Toolbox.Context.Modules.Modules)
+        foreach (ModuleBase module in Module.Context.Modules.Modules)
         {
             _ = sb.Append($"Module: {module.Info.Name}{Environment.NewLine}");
 
