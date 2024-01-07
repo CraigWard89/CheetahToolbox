@@ -9,6 +9,7 @@
 #if WINDOWS
 namespace CheetahToolbox.Registry;
 
+using Exceptions;
 using Microsoft.Win32;
 
 public readonly struct RegistryLocation
@@ -35,21 +36,19 @@ public readonly struct RegistryLocation
         Target = target;
         Key = key;
         Value = value;
-        Kind = RegistryValueKind.Unknown;
         Kind = RegistryKey?.GetValueKind(Value) ?? RegistryValueKind.Unknown;
-        Console.WriteLine($"{Target}: {Key} -> {Value} -> {Kind}");
     }
 
     public void SetString(string data) => RegistryKey?.SetValue(Value, data, Kind);
 
-    //public string? GetString()
-    //{
-    //    if (RegistryKey?.GetValue(Value) is string data)
-    //    {
-    //        return data;
-    //    }
-    //    return null;
-    //}
+    public string? GetString()
+    {
+        if (RegistryKey?.GetValue(Value) is string data)
+        {
+            return data;
+        }
+        return null;
+    }
 
     public void SetBool(bool data) => RegistryKey?.SetValue(Value, data, Kind);
 
@@ -57,21 +56,32 @@ public readonly struct RegistryLocation
     {
         if (RegistryKey?.GetValue(Value) is bool data)
         {
-            Console.WriteLine($"GetBool: {data}");
             return data;
+        }
+        if (RegistryKey?.GetValue(Value) is int data2)
+        {
+            if (data2 == 0)
+            {
+                return false;
+            }
+            else if (data2 == 1)
+            {
+                return true;
+            }
         }
         return null;
     }
 
     public void SetInt(int data) => RegistryKey?.SetValue(Value, data, Kind);
 
-    public int? GetInt()
+    public int GetInt()
     {
+        int result = 0;
         if (RegistryKey?.GetValue(Value) is int data)
         {
-            return data;
+            result = data;
         }
-        return null;
+        return result;
     }
 
     public RegistryKey? RegistryKey
@@ -90,6 +100,7 @@ public readonly struct RegistryLocation
                 default:
                     break;
             }
+            if (key == null) throw new RegistryException();
             return key;
         }
     }

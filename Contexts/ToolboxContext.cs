@@ -58,7 +58,7 @@ public class ToolboxContext
             }
         }
 
-        public void Update()
+        public readonly void Update()
         {
             if (Chocolatey.IsInstalled)
             {

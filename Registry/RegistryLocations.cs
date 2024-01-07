@@ -37,6 +37,7 @@ public static class RegistryLocations
             public static readonly RegistryLocation SeparateProcess = new(GlobalStrings.Registry.ExplorerAdvancedKey, "SeparateProcess", RegistryTarget.HKCU);
             public static readonly RegistryLocation ShowInfoTip = new(GlobalStrings.Registry.ExplorerAdvancedKey, "ShowInfoTip", RegistryTarget.HKCU);
             public static readonly RegistryLocation ShowCompColor = new(GlobalStrings.Registry.ExplorerAdvancedKey, "ShowCompColor", RegistryTarget.HKCU);
+            public static readonly RegistryLocation ShowEncryptCompressedColor = new(GlobalStrings.Registry.ExplorerAdvancedKey, "ShowEncryptCompressedColor", RegistryTarget.HKCU);
             public static readonly RegistryLocation TaskbarAnimations = new(GlobalStrings.Registry.ExplorerAdvancedKey, "TaskbarAnimations", RegistryTarget.HKCU);
         }
 
@@ -52,12 +53,53 @@ public static class RegistryLocations
     }
 
     /// <summary>
+    /// Google Chrome
+    /// </summary>
+    public static class Chrome
+    {
+        public static readonly RegistryLocation MetricsReportingEnabled = new(GlobalStrings.Registry.ChromeKey, "MetricsReportingEnabled", RegistryTarget.HKLM);
+        public static readonly RegistryLocation ChromeCleanupReportingEnabled = new(GlobalStrings.Registry.ChromeKey, "ChromeCleanupReportingEnabled", RegistryTarget.HKLM);
+        public static readonly RegistryLocation ChromeCleanupEnabled = new(GlobalStrings.Registry.ChromeKey, "ChromeCleanupEnabled", RegistryTarget.HKLM);
+    }
+
+    /// <summary>
+    /// Edge
+    /// </summary>
+    public static class Edge
+    {
+        /// <summary>
+        /// Giant Bing search (AI chat) button in Edge Browser
+        /// </summary>
+        public static readonly RegistryLocation HubsSidebarEnabled = new(GlobalStrings.Registry.EdgeKey, "HubsSidebarEnabled", RegistryTarget.HKLM);
+    }
+
+    /// <summary>
     /// Items in this category do not have their own yet.
     /// </summary>
     public static class Misc
     {
         //  \Control Panel\Desktop\WindowMetrics
         public static readonly RegistryLocation MinAnimate = new(GlobalStrings.Registry.WindowMetricsKey, "MinAnimate", RegistryTarget.HKCU);
+
+        public static readonly RegistryLocation SilentInstalledAppsEnabled = new(GlobalStrings.Registry.ContentDeliveryManagerKey, "SilentInstalledAppsEnabled", RegistryTarget.HKCU);
+        public static readonly RegistryLocation TailoredExperiencesWithDiagnosticDataEnabled = new(GlobalStrings.Registry.PrivacyKey, "TailoredExperiencesWithDiagnosticDataEnabled", RegistryTarget.HKCU);
+
+        /// <summary>
+        /// Suggested content in Settings app.
+        /// </summary>
+        public static readonly RegistryLocation SubscribedContent338393Enabled = new(GlobalStrings.Registry.ContentDeliveryManagerKey, "SubscribedContent338393Enabled", RegistryTarget.HKCU);
+
+        /// <summary>
+        /// Suggested content in Settings app.
+        /// </summary>
+        public static readonly RegistryLocation SubscribedContent353694Enabled = new(GlobalStrings.Registry.ContentDeliveryManagerKey, "SubscribedContent353694Enabled", RegistryTarget.HKCU);
+
+        /// <summary>
+        /// Suggested content in Settings app.
+        /// </summary>
+        public static readonly RegistryLocation SubscribedContent353696Enabled = new(GlobalStrings.Registry.ContentDeliveryManagerKey, "SubscribedContent353696Enabled", RegistryTarget.HKCU);
+
+
 
         // HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
     }

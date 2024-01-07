@@ -20,6 +20,12 @@ public static partial class GlobalStrings
         public const string RunKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
 
         /// <summary>
+        /// Privacy Key
+        /// <br>HKCU</br>
+        /// </summary>
+        public const string PrivacyKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy";
+
+        /// <summary>
         /// Tracks certain stats like how many times you've opened a program
         /// <br>HKCU</br>
         /// </summary>
@@ -41,43 +47,61 @@ public static partial class GlobalStrings
         /// <br>Windows Metrics Key</br>
         /// <br>HKLM</br>
         /// </summary>
-        public const string WindowMetricsKey = @" Control Panel\Desktop\WindowMetrics";
+        public const string WindowMetricsKey = @"Control Panel\Desktop\WindowMetrics";
+
+        /// <summary>
+        /// <br>Content Delivery Manager Key</br>
+        /// <br>HKLM</br>
+        /// </summary>
+        public const string ContentDeliveryManagerKey = @"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager";
 
         /// <summary>
         /// Windows Key
         /// <br>HKCU, HKLM</br>
         /// </summary>
-        public const string WindowsKey = @$"{SoftwareKey}\Microsoft\Windows";
+        public const string WindowsKey = @$"Software\Microsoft\Windows\Microsoft\Windows";
 
         /// <summary>
         /// Current Version Key
         /// </summary>
-        public const string CurrentVersionKey = @$"{WindowsKey}\CurrentVersion";
+        public const string CurrentVersionKey = @"Software\Microsoft\Windows\Microsoft\Windows\CurrentVersion";
 
         /// <summary>
         /// Uninstall Key - Programs and Features Install/Uninstall Programs
         /// </summary>
-        public const string UninstallKey = @$"{CurrentVersionKey}\Uninstall";
+        public const string UninstallKey = @"Software\Microsoft\Windows\Microsoft\Windows\CurrentVersion\Uninstall";
 
         /// <summary>
         /// Classes CLSID Key
         /// </summary>
-        public const string ClassesCLSIDKey = @$"{SoftwareKey}\Classes\CLSID";
+        public const string ClassesCLSIDKey = @"Software\Classes\CLSID";
 
         /// <summary>
         /// Explorer Key
         /// </summary>
-        public const string ExplorerKey = @$"{CurrentVersionKey}\Explorer";
+        public const string ExplorerKey = @"Software\Microsoft\Windows\Microsoft\Windows\CurrentVersion\Explorer";
 
         /// <summary>
         /// Explorer Key
         /// </summary>
-        public const string DWMKey = @$"{WindowsKey}\DWM";
+        public const string DWMKey = @"Software\Microsoft\Windows\Microsoft\Windows\DWM";
 
         /// <summary>
         /// Explorer Advanced Key
         /// </summary>
-        public const string ExplorerAdvancedKey = @$"{ExplorerKey}\Advanced";
+        public const string ExplorerAdvancedKey = @"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced";
+
+        /// <summary>
+        /// Google Chrome Key
+        /// <br>HKLM</br>
+        /// </summary>
+        public const string ChromeKey = @"SOFTWARE\Policies\Google\Chrome";
+
+        /// <summary>
+        /// Edge Key
+        /// <br>HKLM</br>
+        /// </summary>
+        public const string EdgeKey = @"SOFTWARE\Policies\Microsoft\Edge";
 
         public static class Toolbox
         {
@@ -89,7 +113,7 @@ public static partial class GlobalStrings
             /// <summary>
             /// Toolbox's <inheritdoc cref="Registry.SoftwareKey"/>
             /// </summary>
-            public const string SoftwareKey = @$"{Registry.SoftwareKey}\CheetahToolbox";
+            public const string SoftwareKey = @"Software\CheetahToolbox";
         }
     }
 }

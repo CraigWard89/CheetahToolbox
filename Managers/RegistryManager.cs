@@ -28,12 +28,13 @@ public class RegistryManager : ManagerBase
     {
 #if DEBUG && VERBOSE
         // TODO: Move to commands
-        Log.Write($"Paint Desktop Version: {RegistryLocations.Desktop.PaintDesktopVersion.GetBool()}");
-        Log.Write($"Show Menu Delay: {RegistryLocations.Desktop.MenuShowDelay.GetInt()}");
 
-        //Log.Write($"Show Copilot Button: {RegistryLocations.Explorer.ShowCopilotButton.GetBool()}");
-        //Log.Write($"Show Hidden Files: {RegistryLocations.Explorer.ShowHiddenFiles.GetBool()}");
-        //Log.Write($"Show System Files: {RegistryLocations.Explorer.ShowSystemFiles.GetBool()}");
+        //Log.Write($"Paint Desktop Version: {RegistryLocations.Desktop.PaintDesktopVersion.GetBool()}");
+        //Log.Write($"Show Menu Delay: {RegistryLocations.Desktop.MenuShowDelay.GetInt()}");
+
+        //Log.Write($"Show Copilot Button: {RegistryLocations.Explorer.Advanced.ShowCopilotButton.GetBool()}");
+        Log.Write($"Show Hidden Files: {RegistryLocations.Explorer.Advanced.ShowHiddenFiles.GetBool()}");
+        //Log.Write($"Show System Files: {RegistryLocations.Explorer.Advanced.ShowSystemFiles.GetBool()}");
 
         //int? paintDesktopVersion = RegistryUtils.GetInt(RegistryTarget.HKCU, RegistryLocations.Desktop.PaintDesktopVersion);
         //if (paintDesktopVersion is not null)
@@ -205,6 +206,27 @@ public class RegistryManager : ManagerBase
         if (result && !string.IsNullOrEmpty(displayName)) Log.Write($"{displayName} - is a ghost app");
 
         return result;
+    }
+
+    /// <summary>
+    /// Apply/Revert Registry to Defaults
+    /// </summary>
+    public static void ApplyDefaults()
+    {
+        // TODO: Implement Apply Defaults
+
+        // RegistryLocations.Desktop.PaintDesktopVersion.Reset();
+    }
+
+    /// <summary>
+    /// Apply Recommended Registry Tweaks
+    /// </summary>
+    public static void ApplyRecommended()
+    {
+        // TODO: Implement Apply Recommended
+
+        //RegistryLocations.Desktop.PaintDesktopVersion.Bool = false;
+        // Telemetry.AdvertisingInfo = false;
     }
 }
 #endif
