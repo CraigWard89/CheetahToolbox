@@ -21,6 +21,14 @@ public class CheetahToolbox
     {
         Log = new Logger("CheetahToolbox");
 
+        if (args.Count > 0)
+        {
+            string command = args[0];
+            args = args.Skip(1).ToList();
+            Console.WriteLine("test");
+            return;
+        }
+
         Version version = typeof(CheetahToolbox).Assembly.GetName().Version ?? throw new VersionNotFoundException();
         Log.Write($"CheetahToolbox v{version}");
 

@@ -6,62 +6,46 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-//#if WINDOWS
-//namespace CheetahToolbox.Registry;
+#if WINDOWS
+namespace CheetahToolbox.Registry;
 
-//#region Using Statements
-//using Exceptions;
-//using Microsoft.Win32;
-//#endregion
+#region Using Statements
+using Exceptions;
+using Microsoft.Win32;
+#endregion
 
-//public static class RegistryUtils
-//{
-//    public static string? GetString(RegistryTarget target, RegistryLocation location)
-//    {
-//        RegistryKey? key = Getkey(target, location);
-//        if (key?.GetValue(location.value) is string value)
-//        {
-//            return value;
-//        }
-//        else
-//        {
-//            return null;
-//        }
-//    }
+public static class RegistryUtils
+{
+    public static RegistryKey? GetKey(string name)
+    {
+        RegistryKey? result;
+        RegistryTarget target = RegistryTarget.HKCU;
+        if (string.IsNullOrEmpty(name)) throw new RegistryException();
+        string[] parts = name.Split('\\');
+        if (parts[0].Equals("HKLM", StringComparison.OrdinalIgnoreCase))
+        {
+            target = RegistryTarget.HKLM;
+            name = name.Replace("HKLM\\", "");
+            Console.WriteLine(name);
+        }
 
-//    public static int? GetInt(RegistryTarget target, RegistryLocation location)
-//    {
-//        RegistryKey? key = Getkey(target, location);
-//        if (key?.GetValue(location.value) is int value)
-//        {
-//            return value;
-//        }
-//        else
-//        {
-//            return null;
-//        }
-//    }
+        try
+        {
+            result = target switch
+            {
+                RegistryTarget.HKLM => Registry.LocalMachine.OpenSubKey(name),
+                RegistryTarget.HKCU => Registry.CurrentUser.OpenSubKey(name),
+                _ => throw new UnknownKeyException()
+            };
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            result = null;
+        }
 
-//    public static void SetString(RegistryTarget target, RegistryLocation location, string value)
-//    {
-//        RegistryKey? key = Getkey(target, location);
-//        key?.SetValue(location.key, value, RegistryValueKind.String);
-//    }
-
-//    public static void SetInt(RegistryTarget target, RegistryLocation location, int value)
-//    {
-//        RegistryKey? key = Getkey(target, location);
-//        key?.SetValue(location.key, value, RegistryValueKind.DWord);
-//    }
-
-//    private static RegistryKey? Getkey(RegistryTarget target, RegistryLocation location)
-//    {
-//        return target switch
-//        {
-//            RegistryTarget.HKLM => Registry.LocalMachine.OpenSubKey(location.key),
-//            RegistryTarget.HKCU => Registry.CurrentUser.OpenSubKey(location.key),
-//            _ => throw new UnknownKeyException()
-//        };
-//    }
-//}
-//#endif
+        if (result == null) throw new RegistryException();
+        return result;
+    }
+}
+#endif

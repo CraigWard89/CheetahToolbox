@@ -29,24 +29,14 @@ public class RegistryManager : ManagerBase
 #if DEBUG && VERBOSE
         // TODO: Move to commands
 
-        //Log.Write($"Paint Desktop Version: {RegistryLocations.Desktop.PaintDesktopVersion.GetBool()}");
-        //Log.Write($"Show Menu Delay: {RegistryLocations.Desktop.MenuShowDelay.GetInt()}");
+        Log.Write($"Paint Desktop Version: {RegistryLocations.Desktop.PaintDesktopVersion.GetBool()}");
+        Log.Write($"Show Menu Delay: {RegistryLocations.Desktop.MenuShowDelay.GetInt()}");
 
         //Log.Write($"Show Copilot Button: {RegistryLocations.Explorer.Advanced.ShowCopilotButton.GetBool()}");
         Log.Write($"Show Hidden Files: {RegistryLocations.Explorer.Advanced.ShowHiddenFiles.GetBool()}");
-        //Log.Write($"Show System Files: {RegistryLocations.Explorer.Advanced.ShowSystemFiles.GetBool()}");
+        Log.Write($"Show System Files: {RegistryLocations.Explorer.Advanced.ShowSystemFiles.GetBool()}");
+        //Log.Write($"Verbose Status: {RegistryLocations.Misc.VerboseStatus.GetInt()}");
 
-        //int? paintDesktopVersion = RegistryUtils.GetInt(RegistryTarget.HKCU, RegistryLocations.Desktop.PaintDesktopVersion);
-        //if (paintDesktopVersion is not null)
-        //{
-        //    Log.Write($"PaintDesktopVersion: {paintDesktopVersion}");
-        //}
-
-        //string? menuShowDelay = RegistryUtils.GetString(RegistryTarget.HKCU, RegistryLocations.Desktop.MenuShowDelay);
-        //if (!string.IsNullOrEmpty(menuShowDelay))
-        //{
-        //    Log.Write($"MenuShowDelay: {menuShowDelay}");
-        //}
 #endif
 
         // Scan Root Key

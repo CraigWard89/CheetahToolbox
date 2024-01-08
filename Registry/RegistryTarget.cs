@@ -8,7 +8,6 @@
 /// ======================================================================
 #if WINDOWS
 namespace CheetahToolbox.Registry;
-[Flags]
 public enum RegistryTarget
 {
     HKCU,

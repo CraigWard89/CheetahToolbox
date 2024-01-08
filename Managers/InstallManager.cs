@@ -16,7 +16,18 @@ using System.Runtime.Versioning;
 public class InstallManager(ToolboxContext context) : ManagerBase(context, "Installer")
 {
     [SupportedOSPlatform("windows")]
-    public static bool IsInstalled => Environment.CurrentDirectory.Equals(FolderPaths.ProgramFiles, StringComparison.Ordinal);
+    public static bool IsInstalled
+    {
+        get
+        {
+            try
+            {
+                return Environment.CurrentDirectory.Equals(FolderPaths.ProgramFiles, StringComparison.Ordinal);
+            }
+            catch { }
+            return false;
+        }
+    }
 
     [SupportedOSPlatform("windows")]
     public void Execute()

@@ -15,11 +15,6 @@ using Microsoft.Win32;
 public readonly struct RegistryLocation
 {
     /// <summary>
-    /// <see cref="RegistryTarget"/> of the key
-    /// </summary>
-    public readonly RegistryTarget Target;
-
-    /// <summary>
     /// Name of the key
     /// </summary>
     public readonly string Key;
@@ -31,9 +26,8 @@ public readonly struct RegistryLocation
 
     public readonly RegistryValueKind Kind;
 
-    public RegistryLocation(string key, string value, RegistryTarget target = RegistryTarget.HKCU)
+    public RegistryLocation(string key, string value)
     {
-        Target = target;
         Key = key;
         Value = value;
         Kind = RegistryKey?.GetValueKind(Value) ?? RegistryValueKind.Unknown;
@@ -88,19 +82,7 @@ public readonly struct RegistryLocation
     {
         get
         {
-            RegistryKey? key = null;
-            switch (Target)
-            {
-                case RegistryTarget.HKLM:
-                    key = Registry.LocalMachine.OpenSubKey(Key);
-                    break;
-                case RegistryTarget.HKCU:
-                    key = Registry.CurrentUser.OpenSubKey(Key);
-                    break;
-                default:
-                    break;
-            }
-            if (key == null) throw new RegistryException();
+            RegistryKey? key = RegistryUtils.GetKey(Key) ?? throw new RegistryException();
             return key;
         }
     }

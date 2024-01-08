@@ -13,7 +13,7 @@ using Attributes;
 using Utils;
 
 [Command("Chocolatey", ["Choco"])]
-public class Chocolatey() : CommandBase()
+public class ChocolateyCommands() : CommandBase()
 {
     [Command]
     public static CommandResult Default() => new(true, "Chocolatey Helper");

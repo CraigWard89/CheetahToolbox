@@ -17,19 +17,25 @@ public static partial class GlobalStrings
         /// Run Key - Startup Programs
         /// <br>HKCU</br>
         /// </summary>
-        public const string RunKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+        public const string RunKey = @"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+
+        /// <summary>
+        /// System Key
+        /// <br>HKLM</br>
+        /// </summary>
+        public const string SystemKey = @"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System";
 
         /// <summary>
         /// Privacy Key
         /// <br>HKCU</br>
         /// </summary>
-        public const string PrivacyKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy";
+        public const string PrivacyKey = @"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy";
 
         /// <summary>
         /// Tracks certain stats like how many times you've opened a program
         /// <br>HKCU</br>
         /// </summary>
-        public const string CensusKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Census";
+        public const string CensusKey = @"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Census";
 
         /// <summary>
         /// Desktop Settings Key
@@ -95,13 +101,13 @@ public static partial class GlobalStrings
         /// Google Chrome Key
         /// <br>HKLM</br>
         /// </summary>
-        public const string ChromeKey = @"SOFTWARE\Policies\Google\Chrome";
+        public const string ChromeKey = @"HKLM\SOFTWARE\Policies\Google\Chrome";
 
         /// <summary>
         /// Edge Key
         /// <br>HKLM</br>
         /// </summary>
-        public const string EdgeKey = @"SOFTWARE\Policies\Microsoft\Edge";
+        public const string EdgeKey = @"HKLM\SOFTWARE\Policies\Microsoft\Edge";
 
         public static class Toolbox
         {
