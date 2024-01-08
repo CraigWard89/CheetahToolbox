@@ -49,6 +49,7 @@ public class ToolboxContext
         public WingetManager Winget = new(context);
         public ScoopManager Scoop = new(context);
         public CygwinManager Cygwin = new(context);
+        public NpmManager Npm = new(context);
         public YarnManager Yarn = new(context);
 
         public readonly void Update()
@@ -66,6 +67,16 @@ public class ToolboxContext
             if (WingetManager.IsInstalled)
             {
                 Winget.Update();
+            }
+
+            if (NpmManager.IsInstalled)
+            {
+                Npm.Update();
+            }
+
+            if (YarnManager.IsInstalled)
+            {
+                Yarn.Update();
             }
         }
     }
