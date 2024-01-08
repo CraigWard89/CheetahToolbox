@@ -8,9 +8,6 @@
 /// ======================================================================
 #if WINDOWS
 namespace CheetahToolbox.Managers.Packages;
-
-using Contexts;
-
 public class ScoopManager(ToolboxContext context) : ManagerBase(context, "Scoop")
 {
     public string Version

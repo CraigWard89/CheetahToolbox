@@ -9,9 +9,6 @@
 #if DEBUG && EDITOR
 namespace CheetahToolbox.Commands;
 
-using Attributes;
-using Utils;
-
 [Command]
 public class SearchCommands() : CommandBase()
 {

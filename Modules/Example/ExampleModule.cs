@@ -8,9 +8,6 @@
 /// ======================================================================
 namespace CheetahToolbox.Modules.Example;
 
-using Contexts;
-
 public class ExampleModule(ToolboxContext context) : ModuleBase(context, "Example", "Example Module")
 {
-
 }

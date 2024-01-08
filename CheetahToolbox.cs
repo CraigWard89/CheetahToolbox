@@ -9,30 +9,75 @@
 namespace CheetahToolbox;
 
 using Exceptions;
-using Contexts;
-using Commands.Utils;
+using Commands;
 
 public class CheetahToolbox
 {
     public readonly ToolboxContext Context;
     public readonly Logger Log;
 
+    public Version ToolboxVersion;
+
     public CheetahToolbox(List<string> args)
     {
+        ToolboxVersion = typeof(CheetahToolbox).Assembly.GetName().Version ?? throw new VersionNotFoundException();
         Log = new Logger("CheetahToolbox");
+        Context = new(this);
 
         if (args.Count > 0)
         {
             string command = args[0];
-            args = args.Skip(1).ToList();
-            Console.WriteLine("test");
+
+            // Handle Settings Flags
+            foreach (string arg in args)
+            {
+                switch (command)
+                {
+                    case "-d":
+                        Console.WriteLine("Debug Mode");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            switch (command)
+            {
+                case "-v":
+                    Console.WriteLine(ToolboxVersion);
+                    break;
+                case "-c":
+                    Console.WriteLine("Coming soon");
+                    break;
+                case "-clsid":
+                    if (args.Count > 1)
+                    {
+                        Type? test = Type.GetTypeFromCLSID(Guid.Parse(args[1]));
+                        if (test == null)
+                        {
+                            Console.WriteLine("Failed");
+                            return;
+                        }
+                        Console.WriteLine($"CLSID: {test.FullName}");
+                        //object? test2 = Activator.CreateInstance(test);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed: No ID Provided");
+                    }
+                    break;
+                case "-s":
+                    string? result = NativeTerminal.Execute("pwsh get-AppxPackage");
+                    Console.WriteLine(result);
+                    break;
+                default:
+                    break;
+            }
             return;
         }
 
         Version version = typeof(CheetahToolbox).Assembly.GetName().Version ?? throw new VersionNotFoundException();
         Log.Write($"CheetahToolbox v{version}");
-
-        Context = new(this);
 
 #if WINDOWS
         if (Context.Packages.Chocolatey.IsInstalled)
@@ -63,33 +108,21 @@ public class CheetahToolbox
         }
 #endif
 
-        // TODO: Command Flags (e.g. --help, --version, etc.)
-        if (args.Count > 0)
+        while (true)
         {
-            string command = args[0];
-            string[] arguments = args.Take(1).ToArray();
-            CommandResult? result = Context.Commands.HandleCommand(command, arguments);
-            if (result == null) return;
-            Log.Write(result.Message);
-        }
-        else
-        {
-            while (true)
+            Console.Write(Prompt.Build(Context));
+            string? line = Console.ReadLine();
+
+            if (!string.IsNullOrEmpty(line))
             {
-                Console.Write(Prompt.Build(Context));
-                string? line = Console.ReadLine();
+                string[] split = line.Split(' ');
+                string command = split[0];
+                string[] arguments = split[1..];
 
-                if (!string.IsNullOrEmpty(line))
-                {
-                    string[] split = line.Split(' ');
-                    string command = split[0];
-                    string[] arguments = split[1..];
+                CommandResult? result = Context.Commands.HandleCommand(command, arguments);
+                if (result == null) break;
 
-                    CommandResult? result = Context.Commands.HandleCommand(command, arguments);
-                    if (result == null) break;
-
-                    Log.Write(result.Message);
-                }
+                Log.Write(result.Message);
             }
         }
     }

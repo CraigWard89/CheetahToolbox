@@ -9,11 +9,10 @@
 /// Windows Registry Information
 /// https://renenyffenegger.ch/notes/Windows/registry/
 #if WINDOWS
-namespace CheetahToolbox.Managers;
+namespace CheetahToolbox.Registry;
 
 #region Using Statements
-using Contexts;
-using Registry;
+using Managers;
 using Microsoft.Win32;
 #endregion
 
@@ -50,9 +49,7 @@ public class RegistryManager : ManagerBase
             {
                 RegistryKey? skey = root.OpenSubKey(key);
                 if (skey?.GetValue(string.Empty) is string value)
-                {
                     CLSID.Add(key);
-                }
             }
             Log.Write($"[RegistryManager] Cached: {CLSID.Count} CSLID");
         }

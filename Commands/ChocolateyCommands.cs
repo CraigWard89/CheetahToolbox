@@ -9,9 +9,6 @@
 #if WINDOWS
 namespace CheetahToolbox.Commands;
 
-using Attributes;
-using Utils;
-
 [Command("Chocolatey", ["Choco"])]
 public class ChocolateyCommands() : CommandBase()
 {

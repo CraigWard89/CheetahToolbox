@@ -6,12 +6,15 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox.Contexts;
+namespace CheetahToolbox;
 
 #if WINDOWS
 using Managers.Packages;
+using Registry;
+using Installer;
 #endif
 using Managers;
+using Commands;
 
 /// <summary>
 /// <br>Contains all the managers and context for the toolbox.</br>

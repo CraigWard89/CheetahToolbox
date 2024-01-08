@@ -7,9 +7,9 @@
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
 #if WINDOWS
-namespace CheetahToolbox.Managers;
+namespace CheetahToolbox.Installer;
 
-using Contexts;
+using Managers;
 using Microsoft.Win32;
 using System.Runtime.Versioning;
 

@@ -9,8 +9,6 @@
 #if WINDOWS
 namespace CheetahToolbox.Managers.Packages;
 
-using Contexts;
-
 public class CygwinManager(ToolboxContext context) : ManagerBase(context, "Cygwin")
 {
     public string Version => NativeTerminal.Execute("cygwin", ["-v"]) ?? string.Empty;

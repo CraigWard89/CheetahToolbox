@@ -7,9 +7,6 @@
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
 namespace CheetahToolbox.Managers;
-
-using Contexts;
-
 /// <summary>
 /// Contains information about the current environment.
 /// </summary>

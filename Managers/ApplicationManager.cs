@@ -9,8 +9,6 @@
 #if WINDOWS
 namespace CheetahToolbox.Managers;
 
-using Contexts;
-
 /// <summary>
 /// WIP: This is a placeholder for now.
 /// </summary>

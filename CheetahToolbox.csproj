@@ -5,9 +5,4 @@
         <OutputType>Exe</OutputType>
     </PropertyGroup>
 
-    <ItemGroup>
-        <Using Include="CheetahUtils" />
-      <ProjectReference Include="$(CheetahUtils)" />
-    </ItemGroup>
-
 </Project>

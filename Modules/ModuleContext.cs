@@ -6,9 +6,7 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox.Contexts;
-
-using Modules;
+namespace CheetahToolbox.Modules;
 
 public class ModuleContext : ToolboxContext
 {

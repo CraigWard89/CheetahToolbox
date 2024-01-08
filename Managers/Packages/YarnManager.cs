@@ -9,9 +9,7 @@
 #if WINDOWS
 namespace CheetahToolbox.Managers.Packages;
 
-using Contexts;
-
-public class YarnManager(ToolboxContext context) : ManagerBase(context, "Winget")
+public class YarnManager(ToolboxContext context) : ManagerBase(context, "Yarn")
 {
     public string Version => NativeTerminal.Execute("yarn", ["-v"]) ?? string.Empty;
 

@@ -7,9 +7,6 @@
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
 namespace CheetahToolbox;
-
-using Contexts;
-
 public static class Prompt
 {
     public static string Build(ToolboxContext context)

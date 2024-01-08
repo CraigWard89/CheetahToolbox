@@ -8,9 +8,6 @@
 /// ======================================================================
 #if WINDOWS
 namespace CheetahToolbox.Managers.Packages;
-
-using Contexts;
-
 public class WingetManager(ToolboxContext context) : ManagerBase(context, "Winget")
 {
     public string Version => NativeTerminal.Execute("winget", ["-v"]) ?? string.Empty;

@@ -6,11 +6,9 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox.Managers;
+namespace CheetahToolbox.Commands;
 
-using Attributes;
-using Commands.Utils;
-using Contexts;
+using Managers;
 using Modules;
 using System;
 using System.Reflection;
@@ -71,8 +69,7 @@ public class CommandManager : ManagerBase
             }
         }
 #if DEBUG && VERBOSE
-        Log.Write($"Attributes: {string.Join(", ", attributes)}");
-        Log.Write($"Cached {rootTypes.Count} Root Types");
+        //Log.Write($"Cached {rootTypes.Count} Root Types");
         Log.Write($"Cached {attributes.Count} Attributes");
 #endif
     }
@@ -117,9 +114,7 @@ public class CommandManager : ManagerBase
         // TODO: Handle Command Groups
 
         if (string.IsNullOrEmpty(command))
-        {
             return new CommandResult(false, "Command is null or empty");
-        }
 
         Log.Write($"Commands:\n{string.Join("\n", Commands)}");
 
@@ -137,10 +132,7 @@ public class CommandManager : ManagerBase
         foreach (CommandBase cmd in Commands)
         {
             if (cmd.Name == command)
-            {
                 Log.Write($"{cmd.Name}");
-                //return cmd.Execute(command, arguments);
-            }
         }
 
         return new CommandResult(true, "reworking commands");

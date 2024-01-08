@@ -6,21 +6,8 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-#if WIP
-namespace CheetahTerminal.Modules.Core.Commands;
+namespace CheetahToolbox.Commands;
 
-using System.IO;
-using CheetahTerminal.Commands;
-
-public class Ls() : Command("ls", "")
+public class CommandContext
 {
-	public override CommandResult Execute(CommandContext context)
-	{
-		foreach (string entry in Directory.GetFileSystemEntries(Terminal.Environment.CurrentDirectory))
-		{
-			Terminal.Output.Add(entry);
-		}
-		return new CommandResult(true, "");
-	}
 }
-#endif

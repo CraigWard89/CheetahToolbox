@@ -12,8 +12,6 @@
 /// https://renenyffenegger.ch/notes/Windows/Chocolatey/index
 #if WINDOWS
 namespace CheetahToolbox.Managers.Packages;
-
-using Contexts;
 public class ChocolateyManager(ToolboxContext context) : ManagerBase(context, "Chocolatey")
 {
     private readonly List<AppEntry> apps = [];

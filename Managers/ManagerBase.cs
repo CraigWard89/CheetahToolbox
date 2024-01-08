@@ -8,8 +8,6 @@
 /// ======================================================================
 namespace CheetahToolbox.Managers;
 
-using Contexts;
-
 public abstract class ManagerBase
 {
     public readonly string Name;

@@ -11,7 +11,7 @@ namespace CheetahToolbox.Managers;
 public class SettingsManager : ManagerBase
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0290:Use primary constructor", Justification = "")]
-    public SettingsManager(Contexts.ToolboxContext context, string name) : base(context, name)
+    public SettingsManager(ToolboxContext context, string name) : base(context, name)
     {
         // WIP: Implement Settings Manager
     }
