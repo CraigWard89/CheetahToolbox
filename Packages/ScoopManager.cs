@@ -7,14 +7,14 @@
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
 #if WINDOWS
-namespace CheetahToolbox.Managers.Packages;
+namespace CheetahToolbox.Packages;
 public class ScoopManager(ToolboxContext context) : ManagerBase(context, "Scoop")
 {
-    public string Version
+    public static string Version
     {
         get
         {
-            string? result = NativeTerminal.Execute("scoop", ["-v"]) ?? string.Empty;
+            string? result = TerminalUtils.Cmd("scoop -v") ?? string.Empty;
             string[] split = result.Replace("\r", "").Split("\n");
             string line = split[1].Replace("\n", "").Trim();
             string[] split2 = line.Split(' ');
@@ -22,17 +22,18 @@ public class ScoopManager(ToolboxContext context) : ManagerBase(context, "Scoop"
         }
     }
 
-    public bool IsInstalled
+    public static bool IsInstalled
     {
         get
         {
-            string? result = null;
             try
             {
-                result = NativeTerminal.Execute("scoop", []);
-                if (result != null)
-                    return true;
-                return false;
+                string? result = TerminalUtils.Cmd("scoop");
+                return result switch
+                {
+                    null => false,
+                    _ => true
+                };
             }
             catch
             {
@@ -46,20 +47,20 @@ public class ScoopManager(ToolboxContext context) : ManagerBase(context, "Scoop"
     /// </summary>
     public void Update()
     {
+        // WIP: https://github.com/ScoopInstaller/Scoop/issues/3954
         if (!WindowsUtils.IsRunningAsAdmin())
         {
             Log.Warn("Update Failed: Not running with Administrator privileges.");
             throw new Exceptions.PackageManagerUpdateException();
         }
-        string? result = NativeTerminal.Execute("scoop", ["update"]);
-        if (result != null)
-        {
-            Log.Write(result);
-        }
-        else
+        string? result = TerminalUtils.PowerShell("scoop update");
+        if (result == null)
         {
             Log.Warn("Failed to update Scoop");
+            return;
         }
+
+        Log.Write(result);
     }
 }
 #endif

@@ -11,24 +11,25 @@
 /// Information on Chocolatey
 /// https://renenyffenegger.ch/notes/Windows/Chocolatey/index
 #if WINDOWS
-namespace CheetahToolbox.Managers.Packages;
+namespace CheetahToolbox.Packages;
 public class ChocolateyManager(ToolboxContext context) : ManagerBase(context, "Chocolatey")
 {
     private readonly List<AppEntry> apps = [];
 
-    public string Version => NativeTerminal.Execute("choco", ["-v"])?.Trim() ?? string.Empty;
+    public static string Version => TerminalUtils.Cmd("choco -v")?.Trim() ?? string.Empty;
 
-    public bool IsInstalled
+    public static bool IsInstalled
     {
         get
         {
-            string? result = null;
             try
             {
-                result = NativeTerminal.Execute("choco", []);
-                if (result != null)
-                    return true;
-                return false;
+                string? result = TerminalUtils.Cmd("choco");
+                return result switch
+                {
+                    null => false,
+                    _ => true
+                };
             }
             catch
             {
@@ -56,15 +57,14 @@ public class ChocolateyManager(ToolboxContext context) : ManagerBase(context, "C
             Log.Warn("Update Failed: Not running with Administrator privileges.");
             throw new Exceptions.PackageManagerUpdateException();
         }
-        string? result = NativeTerminal.Execute("choco", ["upgrade", "all", "-y"]);
-        if (result != null)
-        {
-            Log.Write(result);
-        }
-        else
+        string? result = TerminalUtils.Cmd("choco upgrade all -y");
+        if (result == null)
         {
             Log.Warn("Failed to update Chocolatey");
+            return;
         }
+
+        Log.Write(result);
     }
 
     public void Install()
@@ -81,9 +81,8 @@ public class ChocolateyManager(ToolboxContext context) : ManagerBase(context, "C
             Log.Write("Do you want to install it? Y / N: ");
             ConsoleKeyInfo input = Console.ReadKey();
 
-            string? result = NativeTerminal.Execute("pwsh", ["-Command", "Get-ExecutionPolicy"]);
-            if (!string.IsNullOrEmpty(result))
-                Log.Write(result);
+            string? result = TerminalUtils.PowerShell("Get-ExecutionPolicy");
+            if (!string.IsNullOrEmpty(result)) Log.Write(result);
 
             if (input.KeyChar is 'Y' or 'y')
             {
@@ -94,10 +93,7 @@ public class ChocolateyManager(ToolboxContext context) : ManagerBase(context, "C
                     string cleanLine = line.Trim();
                     Log.Write(cleanLine);
 
-                    string[] args = cleanLine.Split(' ');
-                    string[] args2 = args.Prepend("-Command").ToArray();
-
-                    string? result1 = NativeTerminal.Execute("pwsh", args2);
+                    string? result1 = TerminalUtils.PowerShell(cleanLine);
                     if (!string.IsNullOrEmpty(result1)) Log.Write(result1);
                     if (result1 == null)
                     {
@@ -149,7 +145,7 @@ public class ChocolateyManager(ToolboxContext context) : ManagerBase(context, "C
     {
         apps.Clear();
 
-        string? test = NativeTerminal.Execute("choco", ["list"]);
+        string? test = TerminalUtils.PowerShell("choco list");
         if (test == null) return;
         List<string> tempList = [.. test.Split('\n')];
         tempList.RemoveAt(0);

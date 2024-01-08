@@ -7,23 +7,23 @@
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
 #if WINDOWS
-namespace CheetahToolbox.Managers.Packages;
-
+namespace CheetahToolbox.Packages;
 public class CygwinManager(ToolboxContext context) : ManagerBase(context, "Cygwin")
 {
-    public string Version => NativeTerminal.Execute("cygwin", ["-v"]) ?? string.Empty;
+    public static string Version => TerminalUtils.Cmd("cygwin -v") ?? string.Empty;
 
-    public bool IsInstalled
+    public static bool IsInstalled
     {
         get
         {
-            string? result = null;
             try
             {
-                result = NativeTerminal.Execute("cygwin", []);
-                if (result != null)
-                    return true;
-                return false;
+                string? result = TerminalUtils.Cmd("cygwin");
+                return result switch
+                {
+                    null => false,
+                    _ => true
+                };
             }
             catch
             {

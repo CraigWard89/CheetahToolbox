@@ -6,7 +6,7 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox.Managers;
+namespace CheetahToolbox;
 
 using Modules;
 using System.Reflection;
@@ -39,9 +39,7 @@ public class ModuleManager : ManagerBase
                 Log.Write($"\t{type.BaseType.FullName}");
 
                 if (Activator.CreateInstance(type, context) is ModuleBase module)
-                {
                     Modules.Add(module);
-                }
             }
         }
     }

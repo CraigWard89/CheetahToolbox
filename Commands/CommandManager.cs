@@ -8,7 +8,6 @@
 /// ======================================================================
 namespace CheetahToolbox.Commands;
 
-using Managers;
 using Modules;
 using System;
 using System.Reflection;

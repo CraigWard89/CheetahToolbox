@@ -9,12 +9,12 @@
 namespace CheetahToolbox;
 
 #if WINDOWS
-using Managers.Packages;
 using Registry;
 using Installer;
 #endif
-using Managers;
+using Applications;
 using Commands;
+using Packages;
 
 /// <summary>
 /// <br>Contains all the managers and context for the toolbox.</br>
@@ -48,32 +48,22 @@ public class ToolboxContext
         public ChocolateyManager Chocolatey = new(context);
         public WingetManager Winget = new(context);
         public ScoopManager Scoop = new(context);
-
-        public readonly bool HasAny
-        {
-            get
-            {
-                bool flag = false;
-                if (Chocolatey.IsInstalled) flag = true;
-                if (Scoop.IsInstalled) flag = true;
-                if (Winget.IsInstalled) flag = true;
-                return flag;
-            }
-        }
+        public CygwinManager Cygwin = new(context);
+        public YarnManager Yarn = new(context);
 
         public readonly void Update()
         {
-            if (Chocolatey.IsInstalled)
+            if (ChocolateyManager.IsInstalled)
             {
                 Chocolatey.Update();
             }
 
-            if (Scoop.IsInstalled)
+            if (ScoopManager.IsInstalled)
             {
                 Scoop.Update();
             }
 
-            if (Winget.IsInstalled)
+            if (WingetManager.IsInstalled)
             {
                 Winget.Update();
             }

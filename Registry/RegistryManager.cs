@@ -12,7 +12,6 @@
 namespace CheetahToolbox.Registry;
 
 #region Using Statements
-using Managers;
 using Microsoft.Win32;
 #endregion
 
@@ -28,14 +27,13 @@ public class RegistryManager : ManagerBase
 #if DEBUG && VERBOSE
         // TODO: Move to commands
 
-        Log.Write($"Paint Desktop Version: {RegistryLocations.Desktop.PaintDesktopVersion.GetBool()}");
-        Log.Write($"Show Menu Delay: {RegistryLocations.Desktop.MenuShowDelay.GetInt()}");
+        //Log.Write($"Paint Desktop Version: {RegistryLocations.Desktop.PaintDesktopVersion.GetBool()}");
+        //Log.Write($"Show Menu Delay: {RegistryLocations.Desktop.MenuShowDelay.GetInt()}");
 
         //Log.Write($"Show Copilot Button: {RegistryLocations.Explorer.Advanced.ShowCopilotButton.GetBool()}");
-        Log.Write($"Show Hidden Files: {RegistryLocations.Explorer.Advanced.ShowHiddenFiles.GetBool()}");
-        Log.Write($"Show System Files: {RegistryLocations.Explorer.Advanced.ShowSystemFiles.GetBool()}");
+        //Log.Write($"Show Hidden Files: {RegistryLocations.Explorer.Advanced.ShowHiddenFiles.GetBool()}");
+        //Log.Write($"Show System Files: {RegistryLocations.Explorer.Advanced.ShowSystemFiles.GetBool()}");
         //Log.Write($"Verbose Status: {RegistryLocations.Misc.VerboseStatus.GetInt()}");
-
 #endif
 
         // Scan Root Key

@@ -10,6 +10,7 @@ namespace CheetahToolbox;
 
 using Exceptions;
 using Commands;
+using Packages;
 
 public class CheetahToolbox
 {
@@ -67,8 +68,11 @@ public class CheetahToolbox
                     }
                     break;
                 case "-s":
-                    string? result = NativeTerminal.Execute("pwsh get-AppxPackage");
+                    string? result = TerminalUtils.Cmd("pwsh get-AppxPackage");
                     Console.WriteLine(result);
+                    break;
+                case "-u":
+                    Context.Packages.Update();
                     break;
                 default:
                     break;
@@ -80,31 +84,19 @@ public class CheetahToolbox
         Log.Write($"CheetahToolbox v{version}");
 
 #if WINDOWS
-        if (Context.Packages.Chocolatey.IsInstalled)
+        if (ChocolateyManager.IsInstalled)
         {
-            Log.Write($"Chocolatey v{Context.Packages.Chocolatey.Version}");
+            Log.Write($"Chocolatey v{ChocolateyManager.Version}");
         }
 
-        if (Context.Packages.Scoop.IsInstalled)
+        if (ScoopManager.IsInstalled)
         {
-            Log.Write($"Scoop {Context.Packages.Scoop.Version}");
+            Log.Write($"Scoop {ScoopManager.Version}");
         }
 
-        if (Context.Packages.Winget.IsInstalled)
+        if (WingetManager.IsInstalled)
         {
-            Log.Write($"Winget {Context.Packages.Winget.Version}");
-        }
-
-        if (Context.Packages.HasAny)
-        {
-            Log.Write("Package Managers Detected");
-            Log.Write("Would you like to auto update?");
-            Log.Write("Y/N");
-            string? line = Console.ReadLine();
-            if (line != null && line.Equals("y", StringComparison.OrdinalIgnoreCase))
-            {
-                Context.Packages.Update();
-            }
+            Log.Write($"Winget {WingetManager.Version}");
         }
 #endif
 

@@ -7,23 +7,23 @@
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
 #if WINDOWS
-namespace CheetahToolbox.Managers.Packages;
-
-public class YarnManager(ToolboxContext context) : ManagerBase(context, "Yarn")
+namespace CheetahToolbox.Packages;
+public class WingetManager(ToolboxContext context) : ManagerBase(context, "Winget")
 {
-    public string Version => NativeTerminal.Execute("yarn", ["-v"]) ?? string.Empty;
+    public static string Version => TerminalUtils.Cmd("winget -v") ?? string.Empty;
 
-    public bool IsInstalled
+    public static bool IsInstalled
     {
         get
         {
-            string? result = null;
             try
             {
-                result = NativeTerminal.Execute("yarn", []);
-                if (result != null)
-                    return true;
-                return false;
+                string? result = TerminalUtils.Cmd("winget");
+                return result switch
+                {
+                    null => false,
+                    _ => true
+                };
             }
             catch
             {
@@ -33,7 +33,7 @@ public class YarnManager(ToolboxContext context) : ManagerBase(context, "Yarn")
     }
 
     /// <summary>
-    /// Run Yarn Updates
+    /// Run Winget Updates
     /// </summary>
     public void Update()
     {
@@ -42,6 +42,14 @@ public class YarnManager(ToolboxContext context) : ManagerBase(context, "Yarn")
             Log.Warn("Update Failed: Not running with Administrator privileges.");
             throw new Exceptions.PackageManagerUpdateException();
         }
+        string? result = TerminalUtils.Cmd("winget upgrade --all --disable-interactivity");
+        if (result == null)
+        {
+            Log.Warn("Failed to update Winget");
+            return;
+        }
+
+        Log.Write(result);
     }
 }
 #endif

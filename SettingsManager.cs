@@ -6,18 +6,12 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox.Managers;
-
-public abstract class ManagerBase
+namespace CheetahToolbox;
+public class SettingsManager : ManagerBase
 {
-    public readonly string Name;
-    public readonly ToolboxContext Context;
-    public readonly Logger Log;
-
-    public ManagerBase(ToolboxContext context, string name)
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0290:Use primary constructor", Justification = "")]
+    public SettingsManager(ToolboxContext context, string name) : base(context, name)
     {
-        Name = name;
-        Context = context;
-        Log = new Logger($"{Name}");
+        // WIP: Implement Settings Manager
     }
 }

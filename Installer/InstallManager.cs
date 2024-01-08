@@ -9,13 +9,10 @@
 #if WINDOWS
 namespace CheetahToolbox.Installer;
 
-using Managers;
 using Microsoft.Win32;
-using System.Runtime.Versioning;
 
 public class InstallManager(ToolboxContext context) : ManagerBase(context, "Installer")
 {
-    [SupportedOSPlatform("windows")]
     public static bool IsInstalled
     {
         get
@@ -29,34 +26,33 @@ public class InstallManager(ToolboxContext context) : ManagerBase(context, "Inst
         }
     }
 
-    [SupportedOSPlatform("windows")]
     public void Execute()
     {
-        Console.WriteLine("Installing CheetahTerminal..");
+        Log.Write("Installing CheetahTerminal..");
         RegistryKey? key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\CheetahTerminal");
         if (key == null)
         {
             key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\CheetahTerminal");
             if (key != null)
             {
-                //Console.WriteLine($"Key Found: {key}");
+                //Log.Write($"Key Found: {key}");
             }
             else
             {
                 key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\CheetahTerminal");
-                //Console.WriteLine($"Key Created: {key}");
+                //Log.Write($"Key Created: {key}");
             }
 
             string? value = key.GetValue(key.Name) as string;
 
             if (!string.IsNullOrEmpty(value))
             {
-                Console.WriteLine($"Found: {value}");
+                Log.Write($"Found: {value}");
                 key.SetValue("InstallPath", FolderPaths.ProgramFiles);
             }
-            //Console.WriteLine($"Found: {value}");
+            //Log.Write($"Found: {value}");
             //key.SetValue("InstallPath", FolderPaths.ProgramFiles);
-            //Console.WriteLine($"Registry Entry: {key}");
+            //Log.Write($"Registry Entry: {key}");
         }
 
         //key.SetValue("InstallPath", FolderPaths.ProgramFiles);
@@ -85,7 +81,7 @@ public class InstallManager(ToolboxContext context) : ManagerBase(context, "Inst
         //    {
         //        if (o.Id != Environment.ProcessId && o.StartInfo.WorkingDirectory.Equals(FolderPaths.ProgramFiles, StringComparison.Ordinal))
         //        {
-        //            Console.WriteLine($"Killing Old CheetahTerminal: pid {o.Id}");
+        //            Log.Write($"Killing Old CheetahTerminal: pid {o.Id}");
         //            o.Kill();
         //        }
         //    });
@@ -98,7 +94,7 @@ public class InstallManager(ToolboxContext context) : ManagerBase(context, "Inst
         Log.Write($"Installed CheetahTerminal -> {FolderPaths.ProgramFiles}");
     }
 
-    private static void CopyFolder(string source, string target, bool overwrite = false)
+    private void CopyFolder(string source, string target, bool overwrite = false)
     {
         if (!Directory.Exists(target))
             _ = Directory.CreateDirectory(target);
@@ -114,7 +110,7 @@ public class InstallManager(ToolboxContext context) : ManagerBase(context, "Inst
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            Log.Write(e);
         }
 
         try
@@ -128,7 +124,7 @@ public class InstallManager(ToolboxContext context) : ManagerBase(context, "Inst
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            Log.Write(e);
         }
     }
 }

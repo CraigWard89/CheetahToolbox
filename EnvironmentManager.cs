@@ -6,7 +6,7 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox.Managers;
+namespace CheetahToolbox;
 /// <summary>
 /// Contains information about the current environment.
 /// </summary>
