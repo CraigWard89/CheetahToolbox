@@ -109,6 +109,11 @@ public static partial class GlobalStrings
         /// </summary>
         public const string EdgeKey = @"HKLM\SOFTWARE\Policies\Microsoft\Edge";
 
+        public static class InstallPaths
+        {
+            public const string Cygwin = @"Software\Cygwin\Installations";
+        }
+
         public static class Toolbox
         {
             /// <summary>

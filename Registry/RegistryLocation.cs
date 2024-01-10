@@ -26,11 +26,19 @@ public readonly struct RegistryLocation
 
     public readonly RegistryValueKind Kind;
 
-    public RegistryLocation(string key, string value)
+    public RegistryLocation(string key, string? value = null)
     {
         Key = key;
-        Value = value;
-        Kind = RegistryKey?.GetValueKind(Value) ?? RegistryValueKind.Unknown;
+        if (value != null)
+        {
+            Value = value;
+            Kind = RegistryKey?.GetValueKind(Value) ?? RegistryValueKind.Unknown;
+        }
+        else
+        {
+            Value = string.Empty;
+            Kind = RegistryKey?.GetValueKind(Value) ?? RegistryValueKind.Unknown;
+        }
     }
 
     public void SetString(string data) => RegistryKey?.SetValue(Value, data, Kind);

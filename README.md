@@ -68,4 +68,12 @@ You can read more about the MIT License [here](https://choosealicense.com/licens
 [Windows](Information/Windows.md)<br>
 [Tchis' Research](Information/Tchis-Research.md)
 
+## Dependencies
+This project depends on the following libraries.<br>
+A massive <3 to any contributors of our dependencies.<br>
+
 </div>
+
+- [CliWrap](https://github.com/Tyrrrz/CliWrap) by Tyrrrz
+- [ShellLink](https://github.com/securifybv/ShellLink) by securifybv
+- [Newtonsoft Json](https://github.com/JamesNK/Newtonsoft.Json) by JamesNK 

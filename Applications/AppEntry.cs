@@ -7,7 +7,6 @@
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
 namespace CheetahToolbox;
-
 public class AppEntry(string? name, string? version, string? clsid, string? installPath, AppEntry.AppSource source)
 {
     public string? Name = name;
@@ -19,7 +18,7 @@ public class AppEntry(string? name, string? version, string? clsid, string? inst
 #if WINDOWS
     public enum AppSource
     {
-        LOCAL, CHOCOLATEY, WINGET, SCOOP
+        LOCAL, CHOCOLATEY, WINGET, SCOOP, NPM
     }
 #else
     public enum AppSource

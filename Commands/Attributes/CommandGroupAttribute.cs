@@ -9,29 +9,24 @@
 namespace CheetahToolbox.Commands;
 
 /// <summary>
-/// <br>Defines a method as a command.</br>
-/// <br>Be sure to inherit the <seealso cref="CommandBase"/> class.</br>
-/// <br>Make sure to use <seealso cref="CommandGroupAttribute"/> on the class the command is in.</br>
+/// <br>Defines a class as a group of commands.</br>
+/// <br>Be sure to inherit the <seealso cref="CommandGroup"/> class.</br>
 /// </summary>
-[AttributeUsage(AttributeTargets.Method, Inherited = false)]
-public class CommandAttribute : Attribute
+[AttributeUsage(AttributeTargets.Class, Inherited = false)]
+public class CommandGroupAttribute : Attribute
 {
     public string Name;
     public string[] Aliases;
     public string Description;
 
-    /// <summary>
-    /// <br>Defines this command as the default for the command group.</br>
-    /// <br>Meaning this command will be invoked when the group is called directly by the user.</br>
-    /// </summary>
-    public bool Default;
+    public List<CommandGroupAttribute> Children = [];
+    public List<CommandAttribute> Commands = [];
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0290:Use primary constructor", Justification = "Breaks Reflection")]
-    public CommandAttribute(string? name = null, string[]? aliases = null, string? description = null, bool defaultCommand = false) : base()
+    public CommandGroupAttribute(string? name = null, string[]? aliases = null, string? description = null) : base()
     {
         Name = name ?? string.Empty;
         Aliases = aliases ?? [];
         Description = description ?? string.Empty;
-        Default = defaultCommand;
     }
 }

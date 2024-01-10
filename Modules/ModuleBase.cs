@@ -8,8 +8,6 @@
 /// ======================================================================
 namespace CheetahToolbox.Modules;
 
-using Commands;
-
 /// <summary>
 /// Base class for all modules.
 /// </summary>
@@ -20,5 +18,5 @@ public class ModuleBase(ToolboxContext context, string name, string description)
     public ToolboxContext Context { get; private set; } = context;
     public string Name { get; private set; } = name;
     public string Description { get; private set; } = description;
-    public List<CommandBase> Commands { get; private set; } = [];
+    public Logger Log { get; private set; } = new(name);
 }

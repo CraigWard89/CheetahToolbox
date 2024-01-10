@@ -6,15 +6,17 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
+#if DEBUG && EDITOR
 namespace CheetahToolbox.Commands;
 
-[Command("Console", null, "Console Commands")]
-public class ConsoleCommands() : CommandBase()
+[CommandGroup("Search")]
+public class Search() : CommandBase()
 {
-    [Command("Clear", ["Clr"], "Clear the console")]
-    public static CommandResult? Clear()
-    {
-        Console.Clear();
-        return new CommandResult(true);
-    }
+    [Command(defaultCommand: true)]
+    public static void Default() => Console.WriteLine("WIP: Coming Soon.."); // WIP: Search
+
+    // TODO: Search Files
+    // TODO: Search Registry
+    // TODO: Search Package Managers
 }
+#endif

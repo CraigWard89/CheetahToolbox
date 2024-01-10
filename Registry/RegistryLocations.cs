@@ -12,10 +12,15 @@ namespace CheetahToolbox.Registry;
 public static class RegistryLocations
 {
     // WIP: Add other locations
-    public static readonly RegistryLocation Software = new(GlobalStrings.Registry.Toolbox.SoftwareKey, string.Empty);
-    public static readonly RegistryLocation InstallPath = new(GlobalStrings.Registry.Toolbox.SoftwareKey, "InstallPath");
-    public static readonly RegistryLocation Uninstall = new(GlobalStrings.Registry.Toolbox.UninstallKey, string.Empty);
-    public static readonly RegistryLocation UninstallName = new(GlobalStrings.Registry.Toolbox.UninstallKey, "DisplayName");
+    public static readonly RegistryLocation ProgramsInstallLocation = new(GlobalStrings.Registry.UninstallKey, string.Empty);
+
+    public static class Toolbox
+    {
+        public static readonly RegistryLocation Software = new(GlobalStrings.Registry.Toolbox.SoftwareKey, string.Empty);
+        public static readonly RegistryLocation InstallPath = new(GlobalStrings.Registry.Toolbox.SoftwareKey, "InstallPath");
+        public static readonly RegistryLocation Uninstall = new(GlobalStrings.Registry.Toolbox.UninstallKey, string.Empty);
+        public static readonly RegistryLocation UninstallName = new(GlobalStrings.Registry.Toolbox.UninstallKey, "DisplayName");
+    }
 
     public static class Desktop
     {
@@ -47,6 +52,9 @@ public static class RegistryLocations
         public static readonly RegistryLocation NoNetCrawling = new(GlobalStrings.Registry.ExplorerAdvancedKey, "NoNetCrawling");
     }
 
+    /// <summary>
+    /// Desktop Window Manager
+    /// </summary>
     public static class DWM
     {
 

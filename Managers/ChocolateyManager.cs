@@ -11,7 +11,7 @@
 /// Information on Chocolatey
 /// https://renenyffenegger.ch/notes/Windows/Chocolatey/index
 #if WINDOWS
-namespace CheetahToolbox.Packages;
+namespace CheetahToolbox;
 public class ChocolateyManager(ToolboxContext context) : ManagerBase(context, "Chocolatey")
 {
     private readonly List<AppEntry> apps = [];
@@ -105,6 +105,12 @@ public class ChocolateyManager(ToolboxContext context) : ManagerBase(context, "C
                         if (result1.Contains("Chocolatey (choco.exe) is now ready"))
                         {
                             Log.Write("Chocolatey Installed");
+
+                            string? result2 = TerminalUtils.PowerShell("choco feature enable -n allowGlobalConfirmation");
+                            if (result2 != null)
+                            {
+                                Log.Write("choco feature enable -n allowGlobalConfirmation");
+                            }
                             return;
                         }
                         else

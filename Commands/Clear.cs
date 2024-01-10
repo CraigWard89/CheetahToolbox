@@ -6,12 +6,15 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox;
-public class SettingsManager : ManagerBase
+namespace CheetahToolbox.Commands;
+
+[CommandGroup("Clear", null, "Clear the console")]
+public class Clear() : CommandBase()
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0290:Use primary constructor", Justification = "")]
-    public SettingsManager(ToolboxContext context, string name) : base(context, name)
+    [Command(defaultCommand: true)]
+    public static CommandResult? Default()
     {
-        // WIP: Implement Settings Manager
+        Console.Clear();
+        return new CommandResult(true);
     }
 }

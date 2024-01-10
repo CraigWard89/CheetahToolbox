@@ -5,4 +5,8 @@
         <OutputType>Exe</OutputType>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Content Include="Applications\Known.xml" />
+    </ItemGroup>
+
 </Project>

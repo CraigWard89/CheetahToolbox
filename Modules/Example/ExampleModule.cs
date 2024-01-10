@@ -10,4 +10,5 @@ namespace CheetahToolbox.Modules.Example;
 
 public class ExampleModule(ToolboxContext context) : ModuleBase(context, "Example", "Example Module")
 {
+
 }

@@ -12,6 +12,7 @@
 namespace CheetahToolbox.Registry;
 
 #region Using Statements
+using Exceptions;
 using Microsoft.Win32;
 #endregion
 
@@ -36,21 +37,43 @@ public class RegistryManager : ManagerBase
         //Log.Write($"Verbose Status: {RegistryLocations.Misc.VerboseStatus.GetInt()}");
 #endif
 
-        // Scan Root Key
-        RegistryKey? root = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes\CLSID");
-
-        if (root != null)
+        // Check Run Entries
+        RegistryKey? runKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+        if (runKey != null)
         {
-            string[]? keys = root.GetSubKeyNames();
-
-            foreach (string key in keys)
+            foreach (string valueName in runKey.GetValueNames())
             {
-                RegistryKey? skey = root.OpenSubKey(key);
-                if (skey?.GetValue(string.Empty) is string value)
-                    CLSID.Add(key);
+                //Log.Write($"{valueName} -> {runKey.GetValue(valueName)}");
+                if (runKey.GetValue(valueName) is string path)
+                {
+                    if (path.StartsWith('"'))
+                    {
+                        // WIP: Get real path from registry without arguments
+                    }
+                    Log.Write($"{valueName} -> {path}");
+                }
+                else
+                {
+                    Log.Error("path was null");
+                }
             }
-            Log.Write($"[RegistryManager] Cached: {CLSID.Count} CSLID");
         }
+
+        // Scan Root Key
+        //RegistryKey? root = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes\CLSID");
+
+        //if (root != null)
+        //{
+        //    string[]? keys = root.GetSubKeyNames();
+
+        //    foreach (string key in keys)
+        //    {
+        //        RegistryKey? skey = root.OpenSubKey(key);
+        //        if (skey?.GetValue(string.Empty) is string value)
+        //            CLSID.Add(key);
+        //    }
+        //    Log.Write($"[RegistryManager] Cached: {CLSID.Count} CSLID");
+        //}
 
         //string installPath = RegistryUtils.GetString(RegistryTarget.HKCU, RegistryLocations.InstallPath) ?? string.Empty;
         //Log.Write($"Registry InstallPath: {installPath}");
@@ -58,7 +81,6 @@ public class RegistryManager : ManagerBase
         // Test Setting InstallPath
         //RegistryUtils.SetString(RegistryTarget.HKCU, RegistryLocations.InstallPath, "test");
 
-        return;
         ////Log.Write("Registry Manager Initializing..");
         //Stopwatch sw = Stopwatch.StartNew();
 
@@ -129,46 +151,49 @@ public class RegistryManager : ManagerBase
 
         ////Log.Write("================");
         //// Uninstall Entries
-        //List<RegistryKey> toCheck = [];
-        //toCheck.Add(Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall") ?? throw new UnknownKeyException());
-        //toCheck.Add(Registry.CurrentUser.OpenSubKey(@"Software\\Microsoft\Windows\CurrentVersion\Uninstall") ?? throw new UnknownKeyException());
+        List<RegistryKey> toCheck = [];
+        toCheck.Add(Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall") ?? throw new UnknownKeyException());
+        toCheck.Add(Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall") ?? throw new UnknownKeyException());
 
-        //foreach (RegistryKey root2 in toCheck)
-        //{
-        //    foreach (string subKeyName in root2.GetSubKeyNames())
-        //    {
-        //        RegistryKey? subKey = root2.OpenSubKey(subKeyName);
-        //        if (subKey != null)
-        //        {
-        //            string? displayName = subKey.GetValue("DisplayName")?.ToString();
+        foreach (RegistryKey root2 in toCheck)
+        {
+            Log.Write(root2);
 
-        //            if (string.IsNullOrEmpty(displayName))
-        //                //Log.Write($"Name for {subKey.Name} was NULL, using Key name");
-        //                displayName = subKey.Name;
+            //    foreach (string subKeyName in root2.GetSubKeyNames())
+            //    {
+            //        RegistryKey? subKey = root2.OpenSubKey(subKeyName);
+            //        if (subKey != null)
+            //        {
+            //            string? displayName = subKey.GetValue("DisplayName")?.ToString();
 
-        //            string? displayIcon = subKey.GetValue("DisplayIcon")?.ToString();
-        //            if (string.IsNullOrEmpty(displayIcon))
-        //            {
-        //                //Log.Write($"DisplayIcon not set for {displayName}");
-        //            }
+            //            if (string.IsNullOrEmpty(displayName))
+            //                //Log.Write($"Name for {subKey.Name} was NULL, using Key name");
+            //                displayName = subKey.Name;
 
-        //            string? installLocation = subKey.GetValue("InstallLocation")?.ToString();
-        //            if (string.IsNullOrEmpty(installLocation))
-        //            {
-        //                //Log.Write($"InstallLocation not set for {displayName}");
-        //            }
-        //            else
-        //            {
-        //                if (!Directory.Exists(installLocation) && !File.Exists(installLocation))
-        //                {
-        //                    //Log.Write($"Invalid Install Path: {installLocation}");
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+            //            string? displayIcon = subKey.GetValue("DisplayIcon")?.ToString();
+            //            if (string.IsNullOrEmpty(displayIcon))
+            //            {
+            //                //Log.Write($"DisplayIcon not set for {displayName}");
+            //            }
 
-        //sw.Stop();
+            //            string? installLocation = subKey.GetValue("InstallLocation")?.ToString();
+            //            if (string.IsNullOrEmpty(installLocation))
+            //            {
+            //                //Log.Write($"InstallLocation not set for {displayName}");
+            //            }
+            //            else
+            //            {
+            //                if (!Directory.Exists(installLocation) && !File.Exists(installLocation))
+            //                {
+            //                    //Log.Write($"Invalid Install Path: {installLocation}");
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+
+            //sw.Stop();
+        }
     }
 
     private bool CheckUninstallEntry(RegistryKey subKey)

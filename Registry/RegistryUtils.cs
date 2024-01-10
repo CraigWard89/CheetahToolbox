@@ -16,6 +16,8 @@ using Microsoft.Win32;
 
 public static class RegistryUtils
 {
+    public static RegistryKey[]? GetKeys(string key) => null; // WIP
+
     public static RegistryKey? GetKey(string name)
     {
         RegistryKey? result;

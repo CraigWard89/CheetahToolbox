@@ -6,6 +6,8 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
+/// link:CommandManager.cs
+/// ======================================================================
 namespace CheetahToolbox.Commands;
 
 public class CommandBase
@@ -22,7 +24,7 @@ public class CommandBase
         Name = name ?? GetType().Name;
         Description = description ?? "No description provided.";
         if (subCommands) SubCommands = [];
-        Log = new Logger($"{Name}");
+        Log = new Logger();
     }
 
     public override string? ToString()

@@ -12,6 +12,11 @@ using Exceptions;
 using Commands;
 using Packages;
 
+/// <summary>
+/// <br>Main class for CheetahToolbox</br>
+/// <br></br>
+/// <br>All contexts can be accessed by using the <see cref="Context"/> property</br>
+/// </summary>
 public class CheetahToolbox
 {
     public readonly ToolboxContext Context;
@@ -35,17 +40,21 @@ public class CheetahToolbox
                 switch (command)
                 {
                     case "-d":
-                        Console.WriteLine("Debug Mode");
+                        Log.Write("Debug Mode");
                         break;
                     default:
                         break;
                 }
             }
 
+            // TODO: Make flags loads via reflection like commands 
             switch (command)
             {
                 case "-v":
                     Console.WriteLine(ToolboxVersion);
+                    break;
+                case "-h":
+                    Log.Write($"Help Coming Soon..");
                     break;
                 case "-c":
                     Console.WriteLine("Coming soon");
@@ -53,26 +62,30 @@ public class CheetahToolbox
                 case "-clsid":
                     if (args.Count > 1)
                     {
-                        Type? test = Type.GetTypeFromCLSID(Guid.Parse(args[1]));
-                        if (test == null)
-                        {
-                            Console.WriteLine("Failed");
-                            return;
-                        }
-                        Console.WriteLine($"CLSID: {test.FullName}");
-                        //object? test2 = Activator.CreateInstance(test);
+                        Context.Experimental.CheckCLSID(args[1]);
                     }
                     else
                     {
-                        Console.WriteLine("Failed: No ID Provided");
+                        Log.Error("Failed: No ID Provided");
                     }
                     break;
                 case "-s":
-                    string? result = TerminalUtils.Cmd("pwsh get-AppxPackage");
+                    string? result = TerminalUtils.PowerShell("pwsh get-AppxPackage");
                     Console.WriteLine(result);
                     break;
                 case "-u":
                     Context.Packages.Update();
+                    break;
+                case "-e":
+                    Context.Experimental.CheckStartMenu();
+                    break;
+                case "-e2":
+                    Context.Packages.Cygwin.Update();
+                    break;
+                case "-e3":
+                    Context.Experimental.DoExperiment3();
+                    break;
+                case "-nada": // This is a command that does nothing, mainly for testing purposes from CLI
                     break;
                 default:
                     break;
@@ -118,4 +131,6 @@ public class CheetahToolbox
             }
         }
     }
+
+    internal static void Main(string[] args) => _ = new CheetahToolbox([.. args]);
 }

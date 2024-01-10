@@ -12,23 +12,29 @@ namespace CheetahToolbox;
 using Registry;
 using Installer;
 #endif
-using Applications;
+using Modules;
 using Commands;
 using Packages;
 
 /// <summary>
-/// <br>Contains all the managers and context for the toolbox.</br>
+/// <br>Contains all the managers for the toolbox.</br>
 /// <br>Managers are used to manage the state of the system.</br>
-/// <br>Contexts are used to provide information about the system.</br>
+/// <list type="definition">
+/// <item><see cref="Toolbox"/></item>
+/// <item>Test</item>
+/// </list>
+/// <br><a href="https://github.com/CraigCraig/SuperSolution">SuperSolution</a></br>
+/// <br><a href="https://github.com/CraigCraig/CheetahToolbox">CheetahToolbox</a></br>
 /// </summary>
 public class ToolboxContext
 {
     #region Core Managers
     public CheetahToolbox Toolbox;
+    public SettingsManager Settings;
 #if WINDOWS
     public RegistryManager Registry;
 #endif
-    public EnvironmentManager Environment;
+    public CheetahEnvironment Environment;
 #if WINDOWS
     public ApplicationManager Applications;
     public InstallManager Installer;
@@ -36,6 +42,8 @@ public class ToolboxContext
     public ModuleManager Modules;
     public CommandManager Commands;
     #endregion
+
+    public ExperimentalManager Experimental;
 
     #region Package Managers
 #if WINDOWS
@@ -86,6 +94,7 @@ public class ToolboxContext
     public ToolboxContext(CheetahToolbox toolbox)
     {
         Toolbox = toolbox;
+        Settings = new(this);
 #if WINDOWS
         Registry = new(this);
 #endif
@@ -99,5 +108,6 @@ public class ToolboxContext
 #if WINDOWS
         Packages = new(this);
 #endif
+        Experimental = new(this);
     }
 }

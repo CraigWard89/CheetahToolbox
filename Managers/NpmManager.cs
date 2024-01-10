@@ -7,10 +7,10 @@
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
 #if WINDOWS
-namespace CheetahToolbox.Packages;
-public class CygwinManager(ToolboxContext context) : ManagerBase(context, "Cygwin")
+namespace CheetahToolbox;
+public class NpmManager(ToolboxContext context) : ManagerBase(context, "Npm")
 {
-    public static string Version => TerminalUtils.Cmd("cygwin -v") ?? string.Empty;
+    public static string Version => TerminalUtils.Cmd("npm -v") ?? string.Empty;
 
     public static bool IsInstalled
     {
@@ -18,7 +18,7 @@ public class CygwinManager(ToolboxContext context) : ManagerBase(context, "Cygwi
         {
             try
             {
-                string? result = TerminalUtils.Cmd("cygwin");
+                string? result = TerminalUtils.Cmd("npm");
                 return result switch
                 {
                     null => false,
@@ -33,7 +33,7 @@ public class CygwinManager(ToolboxContext context) : ManagerBase(context, "Cygwi
     }
 
     /// <summary>
-    /// Run Winget Updates
+    /// Run Npm Updates
     /// </summary>
     public void Update()
     {
@@ -42,6 +42,14 @@ public class CygwinManager(ToolboxContext context) : ManagerBase(context, "Cygwi
             Log.Warn("Update Failed: Not running with Administrator privileges.");
             throw new Exceptions.PackageManagerUpdateException();
         }
+        string? result = TerminalUtils.Cmd("npm update -g");
+        if (result == null)
+        {
+            Log.Warn("Failed to update Npm");
+            return;
+        }
+
+        Log.Write(result);
     }
 }
 #endif

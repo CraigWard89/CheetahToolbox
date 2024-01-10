@@ -6,9 +6,8 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox;
+namespace CheetahToolbox.Modules;
 
-using Modules;
 using System.Reflection;
 
 public class ModuleManager : ManagerBase
@@ -27,7 +26,9 @@ public class ModuleManager : ManagerBase
             if (entry.EndsWith(".module.dll", StringComparison.OrdinalIgnoreCase)) _ = Assembly.LoadFile(entry);
         }
 
-        Assembly assembly = typeof(ModuleBase).Assembly;
+        Assembly? assembly = Assembly.GetEntryAssembly();
+        if (assembly == null) return;
+        Log.Super($"Assembly: {assembly.FullName}");
 
         // Load Modules
         foreach (Type type in assembly.GetTypes())
@@ -85,15 +86,17 @@ public class ModuleManager : ManagerBase
     //    }
     //}
 
-    //public ModuleBase? GetModule(string command)
-    //{
-    //    foreach (ModuleBase module in Modules)
-    //    {
-    //        if (module.Info.Name.Equals(command, StringComparison.OrdinalIgnoreCase))
-    //            return module;
-    //    }
-    //    return null;
-    //}
+    public ModuleBase? GetModule<T>() where T : ModuleBase => Modules.First(m => m is T);
+
+    public ModuleBase? GetModule(string name)
+    {
+        foreach (ModuleBase module in Modules)
+        {
+            if (module.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
+                return module;
+        }
+        return null;
+    }
 
     //internal CommandResult? ExecuteCommand(string command, string[] cmdArgs)
     //{

@@ -14,6 +14,7 @@ public static class Prompt
         string username = context.Environment.UserName;
         string hostname = context.Environment.MachineName;
         string current = context.Environment.CurrentDirectory;
-        return string.Join("", username, "@", hostname, $" {current} $ ");
+        string token = context.Environment.IsAdmin ? "$" : ">";
+        return string.Join("", username, "@", hostname, $" {current} {token} ");
     }
 }

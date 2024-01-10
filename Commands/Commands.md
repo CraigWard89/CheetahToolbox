@@ -13,8 +13,9 @@ Flags work only in CLI.
 
 - `-d` enbale debug mode :warning:
 - `-t` testing flag :warning:
+- `-v` version flag
 
 ## Console Commands
 
-- `help` show help :spider:
-- `exit` :spider:
+- `help` show help :warning:
+- `exit` close the toolbox :warning:

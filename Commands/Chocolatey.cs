@@ -9,10 +9,10 @@
 #if WINDOWS
 namespace CheetahToolbox.Commands;
 
-[Command("Chocolatey", ["Choco"])]
-public class ChocolateyCommands() : CommandBase()
+[CommandGroup("Chocolatey", ["Choco"])]
+public class Chocolatey() : CommandBase()
 {
-    [Command]
+    [Command(defaultCommand: true)]
     public static CommandResult Default() => new(true, "Chocolatey Helper");
 
     [Command]
@@ -22,10 +22,10 @@ public class ChocolateyCommands() : CommandBase()
         return new(true, "GO GO CHOCO");
     }
 
-    [Command]
+    [CommandGroup]
     public class Find() : CommandBase()
     {
-        [Command]
+        [Command(defaultCommand: true)]
         public static CommandResult Default()
         {
             Console.WriteLine(Localization.WorkInProgressCommand);
