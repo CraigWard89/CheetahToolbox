@@ -6,7 +6,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Content Include="Applications\Known.xml" />
+      <Content Include="Applications\Known.xml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

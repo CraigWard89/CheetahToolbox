@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 
 public class SettingsManager : ManagerBase
 {
-    private Settings Settings { get; set; } = new();
+    public Settings Settings { get; private set; } = new();
 
     private readonly string folderPath;
     private readonly string filePath;

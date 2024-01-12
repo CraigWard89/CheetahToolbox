@@ -96,11 +96,11 @@ public class ToolboxContext
         Toolbox = toolbox;
         Settings = new(this);
 #if WINDOWS
+        Applications = new(this);
         Registry = new(this);
 #endif
         Environment = new(this);
 #if WINDOWS
-        Applications = new(this);
         Installer = new(this);
 #endif
         Modules = new(this);

@@ -8,47 +8,23 @@
 /// ======================================================================
 #if WINDOWS
 namespace CheetahToolbox;
+
 /// <summary>
 /// WIP: This is a placeholder for now.
 /// </summary>
-public class ApplicationManager(ToolboxContext context) : ManagerBase(context, "Applications")
+public class ApplicationManager : ManagerBase
 {
     // TODO: Cache Locally Installed Programs
     private static readonly List<AppEntry> apps = [];
+    private static readonly List<AppEntry> known = [];
 
-    private static AppEntry? GetApp(string path)
+    public ApplicationManager(ToolboxContext context) : base(context, "Applications")
     {
-        if (!Directory.Exists(path)) return null;
-
-        try
-        {
-            string[] files = Directory.GetFiles(path, "*.exe", SearchOption.AllDirectories);
-            foreach (string file in files)
-            {
-                // WIP: Cache AppEntry
-                return new AppEntry(Path.GetFileNameWithoutExtension(file), null, null, file, AppEntry.AppSource.LOCAL);
-            }
-            return null;
-        }
-        catch /*(UnauthorizedAccessException ex)*/
-        {
-            // TODO: Abort and request admin
-            // Console.WriteLine($"Error: {ex.Message}");
-            return null;
-        }
-    }
-
-    private static void ScanAppFolder(string path)
-    {
-        AppEntry? app = GetApp(path);
-        if (app == null) return;
-        apps.Add(app);
-    }
-
-    public void Scan()
-    {
-        Console.WriteLine("Application Manager Scanning..");
+        Log.Super("Application Manager Scanning..");
         Stopwatch sw = Stopwatch.StartNew();
+
+        // WIP: Load known Applications
+
 
         string startMenuPath = Environment.GetFolderPath(Environment.SpecialFolder.Programs);
         Log.Super($"Start Menu Path: {startMenuPath}");
@@ -107,7 +83,40 @@ public class ApplicationManager(ToolboxContext context) : ManagerBase(context, "
         }
 
         sw.Stop();
-        Console.WriteLine($"Cached: {apps.Count} Applications: {sw.ElapsedMilliseconds}ms");
+        Log.Super($"Cached: {apps.Count} Applications: {sw.ElapsedMilliseconds}ms");
+    }
+
+    private AppEntry? GetApp(string path)
+    {
+        if (!Directory.Exists(path)) return null;
+
+        try
+        {
+            string[] files = Directory.GetFiles(path, "*.exe", SearchOption.AllDirectories);
+            foreach (string file in files)
+            {
+                // WIP: Check if Application is known
+
+
+                // WIP: Cache AppEntry
+                Log.Super(file);
+                return new AppEntry(Path.GetFileNameWithoutExtension(file), null, null, file, AppEntry.AppSource.LOCAL);
+            }
+            return null;
+        }
+        catch /*(UnauthorizedAccessException ex)*/
+        {
+            // TODO: Abort and request admin
+            // Console.WriteLine($"Error: {ex.Message}");
+            return null;
+        }
+    }
+
+    private void ScanAppFolder(string path)
+    {
+        AppEntry? app = GetApp(path);
+        if (app == null) return;
+        apps.Add(app);
     }
 }
 #endif

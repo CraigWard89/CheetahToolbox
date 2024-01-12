@@ -6,9 +6,8 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox.Modules.Example;
+namespace CheetahToolbox.Modules;
 
-public class ExampleModule(ToolboxContext context) : ModuleBase(context, "Example", "Example Module")
+public class ExperimentalModule(ToolboxContext context) : ModuleBase(context, "Example", "Experimental")
 {
-
 }

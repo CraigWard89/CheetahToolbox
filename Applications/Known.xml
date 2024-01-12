@@ -2,5 +2,10 @@
 <applications>
   <application>
     <name>chocolatey</name>
+    <exe>choco.exe</exe>
+  </application>
+  <application>
+    <name>discord</name>
+    <exe>discord.exe</exe>
   </application>
 </applications>
