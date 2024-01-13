@@ -14,12 +14,11 @@ C:\Users\craig\AppData\Roaming\Microsoft\Windows\Start Menu\
 ## Investigate
 
 Investigate These Paths as Windows seems to leave entries from uninstalled programs here
-```
+
+```text
 HKEY_USERS\S-1-5-21-4135085899-3670623898-1780540100-1001\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\MuiCache
 HKEY_USERS\S-1-5-21-4135085899-3670623898-1780540100-1001\Control Panel\NotifyIconSettings
 ```
-[Title](IShellDispatch3:%253AExplore%2509%2509%25091610743814%2520%25280x60020006%2529%2509shell32.dll%2509C%253A%255CWINDOWS%255Csystem32%255Cshell32.dll%2509COM%2520Method%2509)
-[Title](C:/)
 
 ## Miscellaneous
 
