@@ -12,6 +12,7 @@ namespace CheetahToolbox.Registry;
 #region Using Statements
 using Exceptions;
 using Microsoft.Win32;
+using System;
 #endregion
 
 public static class RegistryUtils
@@ -35,8 +36,8 @@ public static class RegistryUtils
         {
             result = target switch
             {
-                RegistryTarget.HKLM => Registry.LocalMachine.OpenSubKey(name),
-                RegistryTarget.HKCU => Registry.CurrentUser.OpenSubKey(name),
+                RegistryTarget.HKLM => Microsoft.Win32.Registry.LocalMachine.OpenSubKey(name),
+                RegistryTarget.HKCU => Microsoft.Win32.Registry.CurrentUser.OpenSubKey(name),
                 _ => throw new UnknownKeyException()
             };
         }

@@ -6,15 +6,17 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox;
-public static class Prompt
+#if DEBUG && EDITOR
+namespace CheetahToolbox.Commands;
+
+[CommandGroup("Search")]
+public class Search
 {
-    public static string Build()
-    {
-        string username = Environment.UserName;
-        string hostname = Environment.MachineName;
-        string current = Environment.CurrentDirectory;
-        string token = Environment.IsAdmin ? "$" : ">";
-        return string.Join("", username, "@", hostname, $" {current} {token} ");
-    }
+    [Command(defaultCommand: true)]
+    public static void Default() => Log.Write("WIP: Coming Soon.."); // WIP: Search
+
+    // TODO: Search Files
+    // TODO: Search Registry
+    // TODO: Search Package Managers
 }
+#endif

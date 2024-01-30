@@ -7,14 +7,15 @@
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
 namespace CheetahToolbox;
-public static class Prompt
+using System.Diagnostics.CodeAnalysis;
+[AttributeUsage(AttributeTargets.Class)]
+public class ModuleAttribute : Attribute
 {
-    public static string Build()
+    public string Name { get; private set; } = string.Empty;
+
+    [SuppressMessage("Style", "IDE0290:Use primary constructor", Justification = "<Pending>")]
+    public ModuleAttribute(string name)
     {
-        string username = Environment.UserName;
-        string hostname = Environment.MachineName;
-        string current = Environment.CurrentDirectory;
-        string token = Environment.IsAdmin ? "$" : ">";
-        return string.Join("", username, "@", hostname, $" {current} {token} ");
+        Name = name;
     }
 }

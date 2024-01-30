@@ -6,15 +6,25 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox;
-public static class Prompt
+#if WINDOWS
+namespace CheetahToolbox.Modules;
+[Module("Windows")]
+public static class Windows
 {
-    public static string Build()
+    public static void Init()
     {
-        string username = Environment.UserName;
-        string hostname = Environment.MachineName;
-        string current = Environment.CurrentDirectory;
-        string token = Environment.IsAdmin ? "$" : ">";
-        return string.Join("", username, "@", hostname, $" {current} {token} ");
+        if (WindowsUtils.IsWin11())
+        {
+            // TODO: Implement Windows 11 Specific Features
+        }
+
+        // TODO: Implement Windows 10 Specific Features
+
+        // TODO: Implement Universal Windows Features
+    }
+
+    public static void Close()
+    {
     }
 }
+#endif

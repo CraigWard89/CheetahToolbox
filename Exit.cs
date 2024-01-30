@@ -6,15 +6,16 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox;
-public static class Prompt
+namespace CheetahToolbox.Commands;
+
+[CommandGroup()]
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1716:Identifiers should not match keywords", Justification = "<Pending>")]
+public class Exit
 {
-    public static string Build()
+    [Command()]
+    public static CommandResult Execute(string? subCommand, string[]? args)
     {
-        string username = Environment.UserName;
-        string hostname = Environment.MachineName;
-        string current = Environment.CurrentDirectory;
-        string token = Environment.IsAdmin ? "$" : ">";
-        return string.Join("", username, "@", hostname, $" {current} {token} ");
+        Environment.Exit(0);
+        return new CommandResult(true);
     }
 }

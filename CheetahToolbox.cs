@@ -9,26 +9,20 @@
 namespace CheetahToolbox;
 
 using Exceptions;
-using Commands;
 using Packages;
+using Features;
 
 /// <summary>
 /// <br>Main class for CheetahToolbox</br>
-/// <br></br>
-/// <br>All contexts can be accessed by using the <see cref="Context"/> property</br>
 /// </summary>
 public class CheetahToolbox
 {
-    public readonly ToolboxContext Context;
-    public readonly Logger Log;
-
     public Version ToolboxVersion;
 
     public CheetahToolbox(List<string> args)
     {
         ToolboxVersion = typeof(CheetahToolbox).Assembly.GetName().Version ?? throw new VersionNotFoundException();
-        Log = new Logger("CheetahToolbox");
-        Context = new(this);
+        Log.Init("Toolbox");
 
         if (args.Count > 0)
         {
@@ -62,7 +56,7 @@ public class CheetahToolbox
                 case "-clsid":
                     if (args.Count > 1)
                     {
-                        Context.Experimental.CheckCLSID(args[1]);
+                        Experimental.CheckCLSID(args[1]);
                     }
                     else
                     {
@@ -74,16 +68,16 @@ public class CheetahToolbox
                     Console.WriteLine(result);
                     break;
                 case "-u":
-                    Context.Packages.Update();
+                    //Context.Packages.Update();
                     break;
                 case "-e":
-                    Context.Experimental.CheckStartMenu();
+                    Experimental.CheckStartMenu();
                     break;
                 case "-e2":
-                    Context.Packages.Cygwin.Update();
+                    //Context.Packages.Cygwin.Update();
                     break;
                 case "-e3":
-                    Context.Experimental.DoExperiment3();
+                    //Context.Experimental.DoExperiment3();
                     break;
                 case "-nada": // This is a command that does nothing, mainly for testing purposes from CLI
                     break;
@@ -95,27 +89,29 @@ public class CheetahToolbox
 
         Version version = typeof(CheetahToolbox).Assembly.GetName().Version ?? throw new VersionNotFoundException();
         Log.Write($"CheetahToolbox v{version}");
+        Log.Write($"{Environment.OSVersion}");
+
 
 #if WINDOWS
-        if (ChocolateyManager.IsInstalled)
+        if (Chocolatey.IsInstalled)
         {
-            Log.Write($"Chocolatey v{ChocolateyManager.Version}");
+            Log.Write($"Chocolatey v{Chocolatey.Version}");
         }
 
-        if (ScoopManager.IsInstalled)
+        if (Scoop.IsInstalled)
         {
-            Log.Write($"Scoop {ScoopManager.Version}");
+            Log.Write($"Scoop {Scoop.Version}");
         }
 
-        if (WingetManager.IsInstalled)
+        if (Winget.IsInstalled)
         {
-            Log.Write($"Winget {WingetManager.Version}");
+            Log.Write($"Winget {Winget.Version}");
         }
 #endif
 
         while (true)
         {
-            Console.Write(Prompt.Build(Context));
+            Console.Write(Prompt.Build());
             string? line = Console.ReadLine();
 
             if (!string.IsNullOrEmpty(line))
@@ -124,10 +120,10 @@ public class CheetahToolbox
                 string command = split[0];
                 string[] arguments = split[1..];
 
-                CommandResult? result = Context.Commands.HandleCommand(command, arguments);
-                if (result == null) break;
+                //Commands.CommandResult? result = Commands.HandleCommand(command, arguments);
+                //if (result == null) break;
 
-                Log.Write(result.Message);
+                //Log.Write(result.Message);
             }
         }
     }
