@@ -7,8 +7,14 @@
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
 namespace CheetahToolbox;
-
-public static partial class GlobalStrings
+public static class Prompt
 {
-    public const string RegistryInstallPath = @"Software\Microsoft\Windows\CurrentVersion\Uninstall\CheetahToolbox";
+    public static string Build()
+    {
+        string username = Environment.UserName;
+        string hostname = Environment.MachineName;
+        string current = Environment.CurrentDirectory;
+        string token = Environment.IsAdmin ? "$" : ">";
+        return string.Join("", username, "@", hostname, $" {current} {token} ");
+    }
 }

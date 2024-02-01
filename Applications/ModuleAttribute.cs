@@ -7,8 +7,15 @@
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
 namespace CheetahToolbox;
-
-public static partial class GlobalStrings
+using System.Diagnostics.CodeAnalysis;
+[AttributeUsage(AttributeTargets.Class)]
+public class ModuleAttribute : Attribute
 {
-    public const string RegistryInstallPath = @"Software\Microsoft\Windows\CurrentVersion\Uninstall\CheetahToolbox";
+    public string Name { get; private set; } = string.Empty;
+
+    [SuppressMessage("Style", "IDE0290:Use primary constructor", Justification = "<Pending>")]
+    public ModuleAttribute(string name)
+    {
+        Name = name;
+    }
 }

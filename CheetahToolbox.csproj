@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <ProjectName>CheetahToolbox</ProjectName>
@@ -6,8 +6,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Using Include="CheetahUtils" />
-      <ProjectReference Include="$(CheetahUtils)" />
+      <Content Include="Applications\Known.xml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
-
+    
 </Project>

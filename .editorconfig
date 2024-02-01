@@ -1,13 +1,21 @@
-# Global .editorconfig file
+# Craig's' Universal .editorconfig file
 # ===========================================
 # Created and maintained by https://github.com/CraigCraig
 # ===========================================
-# This file is used by the Visual Studio Code editor to maintain consistent coding styles between editors and developers.
+# This file is used by the .NET tooling to maintain consistent coding styles between editors and developers.
 # https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/code-style-rule-options?view=vs-2022
 # https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference?view=vs-2022
 # http://editorconfig.org
 # ===========================================
-
+# If you found yourself here because my config is annoying you, please feel free to fork and modify to your liking.
+# However please do not submit pull requests to this repo to change the config.
+# I will not accept any pull requests to change the config.
+# However I will accept pull requests that do not adhere to the rules below.
+# This is because I will probably clean your code up to match my config anyway.
+# Eventually I will have my bot https://github.com/GoodKittyBot automatically clean up any pull requests that do not adhere to the rules below.
+# ===========================================
+# Thank you for being an awesome contributor to the open source community!
+# ===========================================
 root = true
 
 # All files
@@ -30,7 +38,7 @@ ident_style = tab
 indent_size = 4
 
 # XML Files
-[*.xml]
+[*.{xml}]
 ident_style = tab
 indent_size = 4
 
@@ -89,3 +97,27 @@ dotnet_diagnostic.CA1305.severity = none
 
 # CA1838: Avoid 'StringBuilder' parameters for P/Invokes
 dotnet_diagnostic.CA1838.severity = none
+
+# IDE0290: Use primary constructor
+dotnet_diagnostic.IDE0290.severity = suggestion
+
+# CS9124: Parameter is captured into the state of the enclosing type and its value is also used to initialize a field, property, or event.
+dotnet_diagnostic.CS9124.severity = none
+
+# IDE0057: Use range operator
+dotnet_style_prefer_range_operator = true
+
+# IDE0071: Simplify interpolation
+dotnet_style_interpolation_for_single_expression = true
+
+# IDE0058: Expression value is never used
+dotnet_style_unused_value_expression_statement_preference = discard_variable
+
+# IDE0059: Unnecessary assignment of a value
+dotnet_style_unused_value_assignment_preference = discard_variable
+
+# IDE0130: Namespace does not match folder structure
+dotnet_diagnostic.IDE0130.severity = warning
+
+# IDE0130: Namespace does not match folder structure
+dotnet_style_namespace_match_folder = false

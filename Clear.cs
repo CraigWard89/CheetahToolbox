@@ -6,9 +6,15 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace CheetahToolbox;
+namespace CheetahToolbox.Commands;
 
-public static partial class GlobalStrings
+[CommandGroup("Clear", null, "Clear the console")]
+public class Clear
 {
-    public const string RegistryInstallPath = @"Software\Microsoft\Windows\CurrentVersion\Uninstall\CheetahToolbox";
+    [Command(defaultCommand: true)]
+    public static CommandResult? Default()
+    {
+        Console.Clear();
+        return new CommandResult(true);
+    }
 }
