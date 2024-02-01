@@ -65,4 +65,9 @@ HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninsta
 In here you can remove it from showing up on installed apps on windows
 ```
 
+it would be really really nice to get a cleaner to remove old discord registery paths. as there is alot of them as they make new once for every new version they push. aka there is alot of them :)
+not even gonna list them as there is to many
+
+
+
 👍 👎 💯
