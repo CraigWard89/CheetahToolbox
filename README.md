@@ -15,7 +15,7 @@ Join the Discord server.<br>
 This project is still in development.<br>
 This means that there will be bugs and missing features.<br>
 
-# Description
+## Description
 
 CheetahToolbox is a comprehensive collection of tools for Windows, serving as a Swiss Army Knife for Developers and Power Users.<br>
 

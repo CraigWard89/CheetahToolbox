@@ -1,5 +1,6 @@
-MIT License
+The MIT License (MIT)
 
+Copyright ©️ 2024
 [CheetahToolbox](https://github.com/CraigCraig/CheetahToolbox) by [Craig Craig](https://github.com/CraigCraig)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
