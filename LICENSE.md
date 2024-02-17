@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2024 [Craig Craig](https://github.com/CraigCraig)
+[CheetahToolbox](https://github.com/CraigCraig/CheetahToolbox) by [Craig Craig](https://github.com/CraigCraig)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

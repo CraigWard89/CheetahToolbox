@@ -19,29 +19,10 @@ This means that there will be bugs and missing features.<br>
 
 CheetahToolbox is a comprehensive collection of tools for Windows, serving as a Swiss Army Knife for Developers and Power Users.<br>
 
-## How to Use
-
-You use [SuperSolution](https://github.com/CraigCraig/SuperSolution) to build CheetahToolbox.<br>
-You'll need [net8.0](http://microsoft.com/net/download/dotnet-core/8.0) installed.<br>
-You will also need [Visual Studio 2022 Preview](https://visualstudio.microsoft.com/vs/preview/) installed.<br>
-
-<a href="https://github.com/CraigCraig/SuperSolution">
-<img src="https://craigcraig.vercel.app/api/pin/?username=CraigCraig&repo=SuperSolution&theme=transparent"></img>
-</a><br>
-
-Use this command to clone the repository
-`git clone https://github.com/CraigCraig/SuperSolution`
-
 ## Project Maintainers
 
 [Craig Craig](https://github.com/CraigCraig)<br>
 Founder & Lead Maintainer
-
-[Kanedsodas](https://github.com/Kanedsodas)<br>
-Programmer
-
-[Radix](https://github.com/RADIXTheProto)<br>
-Programmer
 
 [Tchis](https://github.com/Tchisz)<br>
 Research/Testing/Ideas
