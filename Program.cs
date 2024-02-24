@@ -8,22 +8,10 @@
 /// ======================================================================
 namespace Toolbox;
 
-using Modules;
-
-public class Installer : ModuleBase
+public class Program
 {
-    public override string Name { get; set; } = "Installer";
-
-    public override string[] Aliases { get; set; } = ["install"];
-
-    public override string Description { get; set; } = "Installer Module";
-
-    public override void Initialize()
+    public static void Main(string[] args)
     {
-    }
-
-    public override void Execute(string command, string[] args)
-    {
-        Console.WriteLine("Success");
+        Toolbox.Initialize(args);
     }
 }

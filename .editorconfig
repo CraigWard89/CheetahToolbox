@@ -69,10 +69,10 @@ dotnet_diagnostic.SYSLIB1054.severity = none
 dotnet_diagnostic.CA2101.severity = none
 
 # IDE0022: Use block body for method
-csharp_style_expression_bodied_methods = when_on_single_line
+csharp_style_expression_bodied_methods = false
 
 # IDE0024: Use block body for operator
-csharp_style_expression_bodied_operators = when_on_single_line
+csharp_style_expression_bodied_operators = false
 
 # IDE0011: Add braces
 csharp_prefer_braces = when_multiline

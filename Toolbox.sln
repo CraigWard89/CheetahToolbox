@@ -1,0 +1,113 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34526.213
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7692DACA-76BF-40D9-A78C-64B5A246A02F}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolbox", "Toolbox.csproj", "{8BAB7C44-473D-461A-B961-1EE541206624}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolbox.Experimental", "Experimental\Toolbox.Experimental.csproj", "{2A76ECA0-8B42-4F31-86B5-A1A495547A90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolbox.Modules", "Modules\Toolbox.Modules.csproj", "{18B993C0-675F-420E-89E0-B4FB07B6E3F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Linux = Debug|Linux
+		Debug|MacOS = Debug|MacOS
+		Debug|Windows = Debug|Windows
+		DebugVerbose|Any CPU = DebugVerbose|Any CPU
+		DebugVerbose|Linux = DebugVerbose|Linux
+		DebugVerbose|MacOS = DebugVerbose|MacOS
+		DebugVerbose|Windows = DebugVerbose|Windows
+		Release|Any CPU = Release|Any CPU
+		Release|Linux = Release|Linux
+		Release|MacOS = Release|MacOS
+		Release|Windows = Release|Windows
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Debug|Any CPU.ActiveCfg = Debug|Windows
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Debug|Any CPU.Build.0 = Debug|Windows
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Debug|Linux.ActiveCfg = Debug|Linux
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Debug|Linux.Build.0 = Debug|Linux
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Debug|MacOS.ActiveCfg = Debug|MacOS
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Debug|MacOS.Build.0 = Debug|MacOS
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Debug|Windows.ActiveCfg = Debug|Windows
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Debug|Windows.Build.0 = Debug|Windows
+		{8BAB7C44-473D-461A-B961-1EE541206624}.DebugVerbose|Any CPU.ActiveCfg = DebugVerbose|Windows
+		{8BAB7C44-473D-461A-B961-1EE541206624}.DebugVerbose|Any CPU.Build.0 = DebugVerbose|Windows
+		{8BAB7C44-473D-461A-B961-1EE541206624}.DebugVerbose|Linux.ActiveCfg = DebugVerbose|Linux
+		{8BAB7C44-473D-461A-B961-1EE541206624}.DebugVerbose|Linux.Build.0 = DebugVerbose|Linux
+		{8BAB7C44-473D-461A-B961-1EE541206624}.DebugVerbose|MacOS.ActiveCfg = DebugVerbose|MacOS
+		{8BAB7C44-473D-461A-B961-1EE541206624}.DebugVerbose|MacOS.Build.0 = DebugVerbose|MacOS
+		{8BAB7C44-473D-461A-B961-1EE541206624}.DebugVerbose|Windows.ActiveCfg = DebugVerbose|Windows
+		{8BAB7C44-473D-461A-B961-1EE541206624}.DebugVerbose|Windows.Build.0 = DebugVerbose|Windows
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Release|Any CPU.ActiveCfg = Release|Windows
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Release|Any CPU.Build.0 = Release|Windows
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Release|Linux.ActiveCfg = Release|Linux
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Release|Linux.Build.0 = Release|Linux
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Release|MacOS.ActiveCfg = Release|MacOS
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Release|MacOS.Build.0 = Release|MacOS
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Release|Windows.ActiveCfg = Release|Windows
+		{8BAB7C44-473D-461A-B961-1EE541206624}.Release|Windows.Build.0 = Release|Windows
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Debug|Linux.ActiveCfg = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Debug|Linux.Build.0 = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Debug|MacOS.ActiveCfg = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Debug|MacOS.Build.0 = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Debug|Windows.ActiveCfg = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Debug|Windows.Build.0 = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.DebugVerbose|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.DebugVerbose|Any CPU.Build.0 = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.DebugVerbose|Linux.ActiveCfg = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.DebugVerbose|Linux.Build.0 = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.DebugVerbose|MacOS.ActiveCfg = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.DebugVerbose|MacOS.Build.0 = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.DebugVerbose|Windows.ActiveCfg = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.DebugVerbose|Windows.Build.0 = Debug|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Release|Linux.ActiveCfg = Release|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Release|Linux.Build.0 = Release|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Release|MacOS.ActiveCfg = Release|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Release|MacOS.Build.0 = Release|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Release|Windows.ActiveCfg = Release|Any CPU
+		{2A76ECA0-8B42-4F31-86B5-A1A495547A90}.Release|Windows.Build.0 = Release|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Debug|Linux.ActiveCfg = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Debug|Linux.Build.0 = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Debug|MacOS.ActiveCfg = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Debug|MacOS.Build.0 = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Debug|Windows.ActiveCfg = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Debug|Windows.Build.0 = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.DebugVerbose|Any CPU.ActiveCfg = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.DebugVerbose|Any CPU.Build.0 = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.DebugVerbose|Linux.ActiveCfg = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.DebugVerbose|Linux.Build.0 = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.DebugVerbose|MacOS.ActiveCfg = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.DebugVerbose|MacOS.Build.0 = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.DebugVerbose|Windows.ActiveCfg = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.DebugVerbose|Windows.Build.0 = Debug|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Release|Linux.ActiveCfg = Release|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Release|Linux.Build.0 = Release|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Release|MacOS.ActiveCfg = Release|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Release|MacOS.Build.0 = Release|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Release|Windows.ActiveCfg = Release|Any CPU
+		{18B993C0-675F-420E-89E0-B4FB07B6E3F1}.Release|Windows.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {83376B6E-7D8D-4E49-9997-CE343731203D}
+	EndGlobalSection
+EndGlobal

@@ -6,24 +6,19 @@
 ///			Author: Craig Craig (https://github.com/CraigCraig)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace Toolbox;
+namespace Toolbox.Modules;
 
-using Modules;
-
-public class Installer : ModuleBase
+public class ModuleBase
 {
-    public override string Name { get; set; } = "Installer";
+    public virtual string Name { get; set; } = string.Empty;
+    public virtual string[] Aliases { get; set; } = [];
+    public virtual string Description { get; set; } = string.Empty;
 
-    public override string[] Aliases { get; set; } = ["install"];
-
-    public override string Description { get; set; } = "Installer Module";
-
-    public override void Initialize()
+    public virtual void Initialize()
     {
     }
 
-    public override void Execute(string command, string[] args)
+    public virtual void Execute(string command, string[] args)
     {
-        Console.WriteLine("Success");
     }
 }
