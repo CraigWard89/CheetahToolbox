@@ -7,6 +7,7 @@ using Microsoft.Win32;
 /// </summary>
 public static class Software
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "<Pending>")]
     public static void Test()
     {
         // Get All Installed Programs - Entire PC
