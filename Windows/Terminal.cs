@@ -1,4 +1,4 @@
-namespace Toolbox.Experimental;
+namespace Toolbox.Windows;
 
 using System.Diagnostics;
 

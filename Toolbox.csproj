@@ -21,8 +21,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="Experimental\Toolbox.Experimental.csproj" />
-      <ProjectReference Include="Modules\Toolbox.Modules.csproj" />
+        <ProjectReference Include="Experimental\Toolbox.Experimental.csproj" />
+        <ProjectReference Include="Modules\Toolbox.Modules.csproj" />
+        <ProjectReference Include="Windows\Toolbox.Windows.csproj" />
     </ItemGroup>
 
     <PropertyGroup>

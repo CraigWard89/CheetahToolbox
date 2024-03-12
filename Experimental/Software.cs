@@ -11,7 +11,7 @@ public static class Software
     public static void Test()
     {
         // Get All Installed Programs - Entire PC
-        RegistryKey? machine = Registry.LocalMachine.OpenSubKey("HSoftware\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Spotify");
+        RegistryKey? machine = Registry.LocalMachine.OpenSubKey(@"HSoftware\Microsoft\Windows\CurrentVersion\Uninstall\Spotify");
         if (machine != null)
         {
             Console.WriteLine($"{machine}");

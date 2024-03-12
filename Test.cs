@@ -17,7 +17,7 @@ public class Test : ModuleBase
 
     public override void Initialize()
     {
-        Experimental.Terminal.Test();
+        Windows.Terminal.Test();
     }
 
     public override void Execute(string command, string[] args)
