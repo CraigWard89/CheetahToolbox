@@ -1,3 +1,11 @@
+/// ======================================================================
+///		CheetahToolbox: (https://github.com/CraigCraig/CheetahToolbox)
+///				Project:  CheetahToolbox a Swiss Army Knife
+///
+///
+///			Author: Craig Craig (https://github.com/CraigCraig)
+///		License:     MIT License (http://opensource.org/licenses/MIT)
+/// ======================================================================
 namespace Toolbox.Experimental;
 
 using Microsoft.Win32;
