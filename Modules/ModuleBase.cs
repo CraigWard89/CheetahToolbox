@@ -18,6 +18,13 @@ public class ModuleBase
     {
     }
 
+    /// <summary>
+    /// Is called after all mods are initialized
+    /// </summary>
+    public virtual void PostInitialize()
+    {
+    }
+
     public virtual void Execute(string command, string[] args)
     {
     }

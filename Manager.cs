@@ -31,12 +31,11 @@ public static class Manager
             }
         }
 
+        Modules.ForEach((m) => m.PostInitialize());
+
 #if VERBOSE
         Console.WriteLine($"Modules Loaded [{Modules.Count}]: {string.Join(", ", Modules)}");
 #endif
-
-        // Refresh Cache
-
     }
 
     public static void ExecuteCommand(string command, string[] args)
