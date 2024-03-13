@@ -8,6 +8,8 @@
 [![Windows 11](https://img.shields.io/badge/Windows-11-0078D6?style=flat-square&logo=windows)](https://www.microsoft.com/en-us/windows/windows-11)
 [![Repo Size](https://img.shields.io/github/repo-size/CraigCraig/CheetahToolbox?style=flat-square)](http://github.com/CraigCraig/CheetahToolbox)
 
+![Dependabot](https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white)
+
 Join the Discord server.<br>
 [![Discord](https://img.shields.io/discord/1191111275749572658?style=flat-square&logo=discord)](https://discord.gg/cvfjHKE5Ee)
 
