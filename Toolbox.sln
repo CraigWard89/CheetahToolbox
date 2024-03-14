@@ -15,7 +15,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolbox.Experimental", "Exp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolbox.Modules", "Modules\Toolbox.Modules.csproj", "{18B993C0-675F-420E-89E0-B4FB07B6E3F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolbox.Windows", "Windows\Toolbox.Windows.csproj", "{93C517DE-E8C8-4A9E-9E1F-421DC3883287}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toolbox.Windows", "Windows\Toolbox.Windows.csproj", "{93C517DE-E8C8-4A9E-9E1F-421DC3883287}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{695EF81D-48B0-4478-A55B-B93FEBA4550A}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\Chocolatey.md = Documentation\Chocolatey.md
+		Documentation\Ideas.md = Documentation\Ideas.md
+		Documentation\Information.code-workspace = Documentation\Information.code-workspace
+		Documentation\Roadmap.md = Documentation\Roadmap.md
+		Documentation\Tchis-Research.md = Documentation\Tchis-Research.md
+		Documentation\Windows.md = Documentation\Windows.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
