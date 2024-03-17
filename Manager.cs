@@ -40,15 +40,12 @@ public static class Manager
 
     public static void ExecuteCommand(string command, string[] args)
     {
-        Console.WriteLine($"Command: {command}");
         foreach (ModuleBase module in Modules)
         {
             if (module.Name.Equals(command, StringComparison.OrdinalIgnoreCase))
             {
                 string subCommand = args.Length > 0 ? args[0] : string.Empty;
                 args = args.Length > 1 ? args[1..] : [];
-                Console.WriteLine($"SubCommand: {subCommand}");
-                Console.WriteLine($"Args: {string.Join(", ", args)}");
                 module.Execute(command, args);
                 break;
             }
