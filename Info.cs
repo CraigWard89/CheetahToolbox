@@ -10,10 +10,13 @@ namespace Toolbox;
 
 using Modules;
 
-public class Test : ModuleBase
+public class Info : ModuleBase
 {
-    public override string Name { get; set; } = "Test";
-    public override string Description { get; set; } = "Test Module";
+    public override string Name { get; set; } = "Info";
+
+    public override string[] Aliases { get; set; } = ["info"];
+
+    public override string Description { get; set; } = "Information Module";
 
     public override void Initialize()
     {
@@ -21,6 +24,6 @@ public class Test : ModuleBase
 
     public override void Execute(string command, string[] args)
     {
-        Windows.Terminal.Test();
+        Console.WriteLine("WIP Feature!");
     }
 }

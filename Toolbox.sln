@@ -20,7 +20,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{695EF81D-48B0-4478-A55B-B93FEBA4550A}"
 	ProjectSection(SolutionItems) = preProject
 		Documentation\Chocolatey.md = Documentation\Chocolatey.md
-		Documentation\Ideas.md = Documentation\Ideas.md
 		Documentation\Information.code-workspace = Documentation\Information.code-workspace
 		Documentation\Roadmap.md = Documentation\Roadmap.md
 		Documentation\Tchis-Research.md = Documentation\Tchis-Research.md
