@@ -20,6 +20,12 @@ HKEY_USERS\S-1-5-21-4135085899-3670623898-1780540100-1001\Software\Classes\Local
 HKEY_USERS\S-1-5-21-4135085899-3670623898-1780540100-1001\Control Panel\NotifyIconSettings
 ```
 
+## Start Menu
+```text
+C:\ProgramData\Microsoft\Windows\Start Menu\Programs
+C:\Users\craig\AppData\Roaming\Microsoft\Windows\Start Menu
+```
+
 ## Miscellaneous
 
 When putting `Applications` in to Explorer, it will show the `Applications` folder.<br>
