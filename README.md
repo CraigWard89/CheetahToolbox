@@ -1,12 +1,12 @@
 <div align=center>
  
-# <a href="http://github.com/CraigCraig"><img src="https://raw.githubusercontent.com/CraigCraig/SuperSolution/main/Resources/cheetah.ico" width=24 height=24 /><a/> CheetahToolbox
+# <a href="http://github.com/CraigWard89"><img src="https://raw.githubusercontent.com/CraigWard89/CheetahToolbox/main/Resources/cheetah.ico" width=24 height=24 /><a/> CheetahToolbox
 
 [![MIT License](https://img.shields.io/github/license/CraigCraig/CheetahToolbox?style=flat-square)](https://pickalicense.com/licenses/mit/)
 [![.NET 8.0](https://img.shields.io/badge/.NET-8.0-512BD4?style=flat-square&logo=.net)](https://dotnet.microsoft.com/download/dotnet/8.0)
 [![Visual Studio 2022](https://img.shields.io/badge/Visual%20Studio-2022-5C2D91?style=flat-square&logo=visual-studio)](https://visualstudio.microsoft.com/vs/preview/)
 [![Windows 11](https://img.shields.io/badge/Windows-11-0078D6?style=flat-square&logo=windows)](https://www.microsoft.com/en-us/windows/windows-11)
-[![Repo Size](https://img.shields.io/github/repo-size/CraigCraig/CheetahToolbox?style=flat-square)](http://github.com/CraigCraig/CheetahToolbox)
+[![Repo Size](https://img.shields.io/github/repo-size/CraigWard89/CheetahToolbox?style=flat-square)](http://github.com/CraigWard89/CheetahToolbox)
 
 ![Dependabot](https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white)
 
@@ -23,7 +23,7 @@ CheetahToolbox is a comprehensive collection of tools for Windows, serving as a 
 
 ## Project Maintainers
 
-[Craig Craig](https://github.com/CraigCraig)<br>
+[Craig Ward](https://github.com/CraigWard89)<br>
 Founder & Lead Maintainer
 
 [Tchis](https://github.com/Tchisz)<br>
@@ -36,7 +36,7 @@ Bot used for automation (WIP)
 
 If you would like to contribute to CheetahToolbox, please fork the repository and create a pull request.<br>
 Please ensure that you document your code and provide a description of your changes.<br>
-For bug reports or feature requests, please create an [issue](https://github.com/CraigCraig/CheetahToolbox/issues/new).<br>
+For bug reports or feature requests, please create an [issue](https://github.com/CraigWard89/CheetahToolbox/issues/new).<br>
 
 ## License :book:
 
