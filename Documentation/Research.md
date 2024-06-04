@@ -1,6 +1,6 @@
 # Header
 
-Tchis, put stuff here please
+put stuff here please
 
 ```txt
 Example of this thing
