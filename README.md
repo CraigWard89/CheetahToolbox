@@ -26,9 +26,6 @@ CheetahToolbox is a comprehensive collection of tools for Windows, serving as a 
 [Craig Ward](https://github.com/CraigWard89)<br>
 Founder & Lead Maintainer
 
-[Tchis](https://github.com/Tchisz)<br>
-Research/Testing/Ideas
-
 [GoodKitty](https://github.com/GoodKittyBot)<br>
 Bot used for automation (WIP)
 
