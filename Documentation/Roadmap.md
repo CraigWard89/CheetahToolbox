@@ -1,4 +1,4 @@
-⬅️ [Back to Readme](https://github.com/CraigCraig/CheetahToolbox/blob/main/README.md)
+⬅️ [Back to Readme](https://github.com/CraigWard89/CheetahToolbox/blob/main/README.md)
 ---
 
 <div align=center>
@@ -7,7 +7,7 @@
 
 ` Working hard, or hardly working? `
 
-<a href="https://github.com/CraigCraig"><img src="https://raw.githubusercontent.com/CraigCraig/SuperSolution/main/Resources/penguin.ico" width=64 height=64 /></a>
+<a href="https://github.com/CraigWard89"><img src="https://raw.githubusercontent.com/CraigWard89/SuperSolution/main/Resources/penguin.ico" width=64 height=64 /></a>
 
 ## Windows
 
@@ -24,7 +24,7 @@
 
 - [ ] Registry Tweaks
   - [ ] Detect and fix ghost apps in "add or remove programs"
-  - [ ] Detect and fix broken clsid
+  - [ ] Detect and fix broken CLSID
 
 - [ ] Junk/Temp File Cleanup
 - [ ] Run as a Windows Service

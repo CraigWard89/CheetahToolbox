@@ -34,4 +34,4 @@ As I believe this is where the `Start Menu` is stored when you click `All Apps`<
 Sometimes Windows will leave entries in the `Start Menu` even after uninstalling the program.<br>
 
 ---
-[Back to Readme](https://github.com/CraigCraig/CheetahToolbox/blob/main/README.md)
+[Back to Readme](https://github.com/CraigWard89/CheetahToolbox/blob/main/README.md)

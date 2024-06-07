@@ -2,7 +2,7 @@
  
 # <a href="http://github.com/CraigWard89"><img src="https://raw.githubusercontent.com/CraigWard89/CheetahToolbox/main/Resources/cheetah.ico" width=24 height=24 /><a/> CheetahToolbox
 
-[![MIT License](https://img.shields.io/github/license/CraigCraig/CheetahToolbox?style=flat-square)](https://pickalicense.com/licenses/mit/)
+[![MIT License](https://img.shields.io/github/license/CraigWard89/CheetahToolbox?style=flat-square)](https://pickalicense.com/licenses/mit/)
 [![.NET 8.0](https://img.shields.io/badge/.NET-8.0-512BD4?style=flat-square&logo=.net)](https://dotnet.microsoft.com/download/dotnet/8.0)
 [![Visual Studio 2022](https://img.shields.io/badge/Visual%20Studio-2022-5C2D91?style=flat-square&logo=visual-studio)](https://visualstudio.microsoft.com/vs/preview/)
 [![Windows 11](https://img.shields.io/badge/Windows-11-0078D6?style=flat-square&logo=windows)](https://www.microsoft.com/en-us/windows/windows-11)
@@ -21,17 +21,6 @@ This means that there will be bugs and missing features.<br>
 
 CheetahToolbox is a comprehensive collection of tools for Windows, serving as a Swiss Army Knife for Developers and Power Users.<br>
 
-## Project Maintainers
-
-[Craig Ward](https://github.com/CraigWard89)<br>
-Founder & Lead Maintainer
-
-[Tchis](https://github.com/Tchisz)<br>
-Research/Testing/Ideas
-
-[GoodKitty](https://github.com/GoodKittyBot)<br>
-Bot used for automation (WIP)
-
 ## Contributing
 
 If you would like to contribute to CheetahToolbox, please fork the repository and create a pull request.<br>
@@ -49,7 +38,7 @@ You can read more about the MIT License [here](https://choosealicense.com/licens
 
 [Roadmap](Information/Roadmap.md)<br>
 [Windows](Information/Windows.md)<br>
-[Tchis' Research](Information/Tchis-Research.md)
+[General Research](Information/Research.md)
 
 ## Dependencies
 This project depends on the following libraries.<br>

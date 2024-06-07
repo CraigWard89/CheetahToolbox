@@ -1,42 +1,13 @@
-# Header
+# RnD
 
-Tchis, put stuff here please
-
-```txt
-Example of this thing
-```
-
-- [ ] Peck
-- [ ] Heck
-- [ ] Peck
-- [ ] Feck
-
-## Subheader
-
-[WebpageLink](https://www.google.com)
-![Image](https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png)
-
-| Table | Table | Table |
-| ----- | ----- | ----- |
-| Table | Table | Table |
-| Table | Table | Table |
-| Table | Table | Table |
-
-<!-- This is a comment -->
-
-### 555
-
-#### 4444
-
-scorecardresearch.com gathers data of windows for market research.
-could be blocked for more privacy.
+scorecardresearch.com gathers data of windows for market research, could be blocked for more privacy.
 
 assets.msn.com is used for getting news/weather and stuff for widgets and edge
-can be blocked. but will make it so widget dosent work on windows at all
+can be blocked. but will make it so widget doesn't work on windows at all
 
-edge.microsoft.com Provide data for browser features such as tracking protection, certification recovation list, spellcheck dictionaries and more
+edge.microsoft.com Provide data for browser features such as tracking protection, certification revocation list, spellcheck dictionaries and more
 
-bingapis.com basically what i could find is that edge sends what urls you visit to here for bing
+bingapis.com basically what i could find is that edge sends what urls you visit to here for Bing
 can be block wont cause any problem.
 
 activity.windows.com go [here](https://support.microsoft.com/en-us/windows/-windows-activity-history-and-your-privacy-2b279964-44ec-8c2f-e0c2-6779b07d2cbd) for more info what its sent here 
@@ -65,7 +36,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninsta
 In here you can remove it from showing up on installed apps on windows
 ```
 
-it would be really really nice to get a cleaner to remove old discord registery paths. as there is alot of them as they make new once for every new version they push. aka there is alot of them :)
+it would be really really nice to get a cleaner to remove old discord registry paths. as there is a lot of them as they make new once for every new version they push. aka there is a lot of them :)
 not even gonna list them as there is to many
 
 
