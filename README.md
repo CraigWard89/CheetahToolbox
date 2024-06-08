@@ -10,9 +10,6 @@
 
 ![Dependabot](https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white)
 
-Join the Discord server.<br>
-[![Discord](https://img.shields.io/discord/1191111275749572658?style=flat-square&logo=discord)](https://discord.gg/cvfjHKE5Ee)
-
 ## 👷 ⚠️ Work in Progress ⚠️ 👷
 This project is still in development.<br>
 This means that there will be bugs and missing features.<br>
@@ -34,11 +31,11 @@ The MIT License is a permissive license that allows you to do anything with the 
 
 You can read more about the MIT License [here](https://choosealicense.com/licenses/mit/).
 
-## Information
+## Documentation
 
-[Roadmap](Information/Roadmap.md)<br>
-[Windows](Information/Windows.md)<br>
-[General Research](Information/Research.md)
+[Roadmap](Documentation/Roadmap.md)<br>
+[Windows](Documentation/Windows.md)<br>
+[General Research](Documentation/Research.md)
 
 ## Dependencies
 This project depends on the following libraries.<br>
