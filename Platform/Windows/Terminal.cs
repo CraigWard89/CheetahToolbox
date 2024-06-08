@@ -6,7 +6,7 @@
 ///			Author: Craig Ward (https://github.com/CraigWard89)
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
-namespace Toolbox.Windows;
+namespace Toolbox.Platform.Windows;
 
 using System.Diagnostics;
 

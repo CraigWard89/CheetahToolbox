@@ -15,6 +15,8 @@ public static class Manager
 {
     private static List<ModuleBase> Modules { get; set; } = [];
 
+    public static int ModuleCount => Modules.Count;
+
     public static void Initialize()
     {
         // Load Modules
@@ -47,7 +49,6 @@ public static class Manager
                 string subCommand = args.Length > 0 ? args[0] : string.Empty;
                 args = args.Length > 1 ? args[1..] : [];
                 module.Execute(command, args);
-                break;
             }
         }
     }

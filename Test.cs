@@ -21,6 +21,6 @@ public class Test : ModuleBase
 
     public override void Execute(string command, string[] args)
     {
-        Windows.Terminal.Test();
+        Platform.Windows.Terminal.Test();
     }
 }

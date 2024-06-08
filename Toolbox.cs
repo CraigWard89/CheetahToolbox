@@ -7,6 +7,9 @@
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
 namespace Toolbox;
+
+using Core;
+
 public static class Toolbox
 {
     public static Version? ToolboxVersion { get; } = typeof(Toolbox).Assembly.GetName().Version;
@@ -16,6 +19,8 @@ public static class Toolbox
 
     internal static void Initialize(string[] pargs)
     {
+        Log.Write($"CheetahToolbox v{ToolboxVersion}");
+        Log.Write($"https://github.com/CraigWard89/CheetahToolbox");
         if (pargs.Length > 0)
         {
             foreach (string arg in pargs)
@@ -49,6 +54,8 @@ public static class Toolbox
         if (!IsInteractive) return;
 
         Manager.Initialize();
+
+        Window window = new("main", "Main Window");
 
         while (true)
         {

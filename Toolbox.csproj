@@ -22,14 +22,17 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="Core\Toolbox.Core.csproj">
+          <ReferenceOutputAssembly>True</ReferenceOutputAssembly>
+        </ProjectReference>
         <ProjectReference Include="Experimental\Toolbox.Experimental.csproj" />
         <ProjectReference Include="Modules\Toolbox.Modules.csproj" />
-        <ProjectReference Include="Windows\Toolbox.Windows.csproj" />
+        <ProjectReference Include="Platform\Toolbox.Platform.csproj" />
     </ItemGroup>
 
     <PropertyGroup>
         <DefineConstants Condition=" $(Configuration) == 'DebugVerbose' ">$(Constants);VERBOSE</DefineConstants>
-        <DefineConstants Condition=" $(Platform) == 'Windows' ">WINDOWS</DefineConstants>
+        <DefineConstants Condition=" $(Platform) == 'Windows' ">$(Constants);WINDOWS</DefineConstants>
     </PropertyGroup>
 
 </Project>
