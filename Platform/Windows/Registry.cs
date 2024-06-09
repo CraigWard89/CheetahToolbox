@@ -7,7 +7,7 @@
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
 #if WINDOWS
-namespace Toolbox;
+namespace Toolbox.Platform.Windows;
 
 using Microsoft.Win32;
 using System.Runtime.Versioning;
