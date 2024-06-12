@@ -7,17 +7,17 @@
 ///		License:     MIT License (http://opensource.org/licenses/MIT)
 /// ======================================================================
 #if WINDOWS
-namespace Toolbox.Platform.Windows;
+namespace Toolbox.Windows;
 
 using Microsoft.Win32;
 using System.Runtime.Versioning;
 
 [SupportedOSPlatform("windows")]
-public static class WindowsRegistry
+public static class Registry
 {
     public static void ListInstalledApplications()
     {
-        using RegistryKey? key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
+        using RegistryKey? key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
         if (key != null)
         {
             foreach (string subkey in key.GetSubKeyNames())
