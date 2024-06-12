@@ -8,8 +8,6 @@
 /// ======================================================================
 namespace Toolbox;
 
-using Modules;
-
 public class Test : ModuleBase
 {
     public override string Name { get; set; } = "Test";

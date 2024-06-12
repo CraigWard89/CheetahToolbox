@@ -8,20 +8,24 @@
 /// ======================================================================
 namespace Toolbox;
 
-public class Info : ModuleBase
+public class ModuleBase
 {
-    public override string Name { get; set; } = "Info";
+    public virtual string Name { get; set; } = string.Empty;
+    public virtual string[] Aliases { get; set; } = [];
+    public virtual string Description { get; set; } = string.Empty;
 
-    public override string[] Aliases { get; set; } = ["info"];
-
-    public override string Description { get; set; } = "Information Module";
-
-    public override void Initialize()
+    public virtual void Initialize()
     {
     }
 
-    public override void Execute(string command, string[] args)
+    /// <summary>
+    /// Is called after all mods are initialized
+    /// </summary>
+    public virtual void PostInitialize()
     {
-        Console.WriteLine("WIP Feature!");
+    }
+
+    public virtual void Execute(string command, string[] args)
+    {
     }
 }
