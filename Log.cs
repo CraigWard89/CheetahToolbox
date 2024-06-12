@@ -8,6 +8,8 @@
 /// ======================================================================
 namespace Toolbox;
 
+using System.Runtime.CompilerServices;
+
 public static class Log
 {
     public static void Write(string message)
@@ -15,8 +17,8 @@ public static class Log
         Console.WriteLine(message);
     }
 
-    public static void Debug(string message)
+    public static void Debug(string message, [CallerMemberName] string caller = "")
     {
-        Write($"[DEBUG] {message}");
+        Write($"[DEBUG] [{caller}] {message}");
     }
 }
