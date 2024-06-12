@@ -8,20 +8,15 @@
 /// ======================================================================
 namespace Toolbox;
 
-public class Info : ModuleBase
+public static class Log
 {
-    public override string Name { get; set; } = "Info";
-
-    public override string[] Aliases { get; set; } = ["info"];
-
-    public override string Description { get; set; } = "Information Module";
-
-    public override void Initialize()
+    public static void Write(string message)
     {
+        Console.WriteLine(message);
     }
 
-    public override void Execute(string command, string[] args)
+    public static void Debug(string message)
     {
-        Console.WriteLine("WIP Feature!");
+        Write($"[DEBUG] {message}");
     }
 }

@@ -8,7 +8,6 @@
 /// ======================================================================
 namespace Toolbox;
 
-using Modules;
 using System.Reflection;
 
 public static class Manager

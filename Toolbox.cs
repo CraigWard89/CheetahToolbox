@@ -8,8 +8,6 @@
 /// ======================================================================
 namespace Toolbox;
 
-using Core;
-
 public static class Toolbox
 {
     public static Version? ToolboxVersion { get; } = typeof(Toolbox).Assembly.GetName().Version;

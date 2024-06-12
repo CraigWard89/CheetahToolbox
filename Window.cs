@@ -1,4 +1,4 @@
-namespace Toolbox.Core;
+namespace Toolbox;
 
 using SFML.Window;
 
